@@ -1,3 +1,7 @@
 # spp-time-tracker
-Project will be developed in a folder "Time tracker".
-"UML" directory is for diagrams.
+451002
+Удот Анастасия (teamlead)
+Скрипко Анна
+Смоленский Павел
+
+Приложение для отслеживания рабочего времени
