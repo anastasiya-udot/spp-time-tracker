@@ -1,0 +1,8 @@
+# Intellij
+.idea/
+out/
+Tracker.iml
+node_modules/
+.gulp-scss-cache
+.sass-cache
+public/
