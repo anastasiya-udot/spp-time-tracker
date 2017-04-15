@@ -1,0 +1,21 @@
+{
+  "name": "time_tracker",
+  "description": "Application designed for tracking time and tasks",
+  "main": "index.js",
+  "authors": [
+    "anastasiya-udot <anastasiya.udot@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/anastasiya-udot/spp-time-tracker",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.6.4",
+    "angular-route": "^1.6.4"
+  }
+}
