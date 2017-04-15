@@ -2,7 +2,7 @@
   "name": "time_tracker",
   "version": "1.0.0",
   "description": "Application designed for tracking time and tasks",
-  "main": "index.js",
+  "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -16,10 +16,17 @@
     "eslint-plugin-promise": "^3.4.2",
     "eslint-plugin-standard": "^2.0.1",
     "gulp": "^3.9.1",
+    "gulp-browserify": "^0.5.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-debug": "^3.1.0",
+    "gulp-eslint": "^3.0.1",
+    "gulp-inject": "^4.2.0",
     "gulp-notify": "^3.0.0",
+    "gulp-order": "^1.1.1",
     "gulp-scss": "^1.4.0",
     "gulp-sequence": "^0.4.6",
     "gulp-sourcemaps": "^2.4.1",
-    "multipipe": "^1.0.2"
+    "multipipe": "^1.0.2",
+    "through2": "^2.0.3"
   }
 }

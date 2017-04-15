@@ -2,14 +2,15 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../stylesheet/main.css">
+    <link rel="stylesheet" href="stylesheet/main.css">
+    <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+    <script type="text/javascript" src="bower_components/angular-route/angular-route.min.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+    <script type="text/javascript" src="js/directives/applicationContent.directive.js"></script>
+    <script type="text/javascript" src="js/services/initialPageLoader.factory.js"></script>
+    <script type="text/javascript" src="js/app.controller.js"></script>
 </head> 
-<body>
-    <header class="header">Hello, world!!!!
-        <div class="lala lolo">
-            <div class="lolo"> </div>
-        </div>
-    </header>
-    <div class="lala"></div>
+<body ng-app="time-tracker">
+    <div id="time-tracker-container" ng-view></div>
 </body>       
 </html>   
