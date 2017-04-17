@@ -1,20 +1,10 @@
-@import './header';
-$lalala: red;
-
-@mixin nastya($length) {
-    width: $length;
+html, body {
+    margin: 0;
+    height: 100%;
+    width: 100%;
 }
 
-
-body {
-    background-color: $lalala;
-    .lala {
-        &.lolo {
-          @include nastya(40px);
-        }
-        .lolo {
-            @include nastya(30px);
-        }
-    }
-}
-
+@import './color';
+@import './front-page/header';
+@import './front-page/main';
+@import './front-page/registr-auth';

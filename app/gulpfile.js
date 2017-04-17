@@ -63,11 +63,11 @@ gulp.task('clean', function() {
 gulp.task('build', sequence('clean', ['styles', 'assets', 'index', 'js', 'templates']));
 
 gulp.task('watch', function() {
-    gulp.watch('client/stylesheet/**.*', ['styles']);
-    gulp.watch('client/assets/**.*', ['assets']);
+    gulp.watch('client/stylesheet/**/*.*', ['styles']);
+    gulp.watch('client/assets/**/*.*', ['assets']);
     gulp.watch('client/index.html', ['index']);
     gulp.watch('client/templates/**/*.html', ['templates']);
-    gulp.watch('client/js/**.*', ['js']);
+    gulp.watch('client/js/**/*.*', ['js']);
 });
 
 gulp.task('default', sequence('build', ['watch', 'serve']));
