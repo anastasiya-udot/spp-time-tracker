@@ -42,49 +42,33 @@
         background-size: cover;
     }
 
-    @media (min-width: 961px) {
+    @media (min-width: 412px) {
         .upper-pink-container {
-            height: 60%;
+            height: 46%;
         }
         .lower-pink-container {
             height: 70%;
         }
         #inscription {
-           margin-top: 40px;
-           font-size: 4vw;
+           margin-top: 0.5vh;
+           font-size: 9vw;
         }
         .description-container {
            padding-right: 8vw;
-           font-size: 30px;
+           font-size: 22px;
            width: 300px;
            line-height: 40px;
            word-spacing: 8px;
+           display: none;
         }
     }
 
-    @media (max-width: 960px) {
-        .upper-pink-container {
-            height: 50%;
+    @media (min-width: 413px) and (max-width: 1023px) {
+         #inscription {
+           font-size: 8vw;
         }
-        .lower-pink-container {
-            height: 80%;
-        }
-        #inscription {
-            font-size: 8vw;
-            margin-top: 0px;
-        }
-        .description-container {
-            padding-right: 5vw;
-            font-size: 23px;
-            width: 250px;
-            line-height: 30px;
-            word-spacing: 6px;
-        }
-    }
 
-    @media (max-width: 780px) {
-        .description-container {
-            display: none;
-        }
+
+
     }
 }
