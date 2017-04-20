@@ -1,10 +1,16 @@
 .authorization-form-container {
     display: flex;
+    display: -webkit-flex;
+    display: -ms-flex;
+    display: -moz-flex;
     align-items: center;
     width: 40vw; 
     margin-left: 10vw;
     .authorization-form {
         display: flex;
+        display: -webkit-flex;
+        display: -ms-flex;
+        display: -moz-flex;
         flex-direction: column;
         justify-content: space-around;
     }
@@ -21,4 +27,5 @@
         height: 42px;
         width: 65vw;
     }
-} 
+   
+}  

@@ -2,12 +2,14 @@
     height: 80vh;
     display: flex;
     align-items: center;
+    min-width: 320px;
+    flex-grow: 1;
 
     #inscription {
         position: relative;
         text-transform: uppercase;
         color: white;
-        transform: rotate(4deg);
+        transform: rotate(4.5deg);
         z-index: 10;
         border: none;
         text-align: center;
@@ -25,6 +27,8 @@
         background-image: url('../assets/klldjawkld.png');
         background-repeat: no-repeat;
         width: 100%;
+        min-width: 320px;
+        min-height: 40%;
         position: absolute;
         background-size: cover;
 
@@ -35,13 +39,26 @@
         background-image: url('../assets/afsgegewg.png');
         background-repeat: no-repeat;
         width: 100%;
+        min-width: 320px;
+        min-height: 30%;
         display: flex;
+        display: -webkit-flex;
+        display: -ms-flex;
+        display: -moz-flex;
         align-items: center;
         flex-wrap: wrap;
         justify-content: flex-end;
         background-size: cover;
     }
 
+ @media (min-width: 0px) {
+        .upper-pink-container {
+            height: 46%;
+        }
+        .lower-pink-container {
+            height: 70%;
+        }
+ }
     @media (min-width: 412px) {
         .upper-pink-container {
             height: 46%;
