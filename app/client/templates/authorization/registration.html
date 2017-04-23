@@ -1,11 +1,9 @@
-<span class="authorization-form-container">
-    <form class="authorization-form">
-        <input id="company-name" class="form-input">
-        <input id="company-legal-number" class="form-input">
-        <input id="company-director-name" class="form-input">
-        <input id="company-director-surname" class="form-input">
-        <input id="company-director-patronymic" class="form-input">
-        <input id="company-director-password" class="form-input">
-        <input id="company-director-confirm-password" class="form-input">
-    </form> 
-</span>  
+<form class="authorization-form">
+    <span class="from-input-group">
+        <input id="company-name" ng-model="name" class="form-input" placeholder="Compay's' name..." required>
+        <input id="company-legal-number" ng-model="legalNumber" class="form-input" placeholder="Legal number..." required>
+    </span>
+    <span class="button-container">
+        <button id="confirm-button" class="authorization-button"></button>
+    </span>    
+</form> 

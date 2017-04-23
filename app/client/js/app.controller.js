@@ -1,8 +1,7 @@
 TimeTrackerApplication
-    .controller('InitialController', initialController);
+    .controller('InitialController', InitialController);
 
-function initialController($scope, InitialPageLoader) {
-    $scope.name = "NASTYA";
+function InitialController($scope, InitialPageLoader) {
 }
 
-initialController.$inject = ['$scope', 'InitialPageLoader'];
+InitialController.$inject = ['$scope', 'InitialPageLoader'];

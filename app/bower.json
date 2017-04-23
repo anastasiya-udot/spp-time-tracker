@@ -17,5 +17,9 @@
   "dependencies": {
     "angular": "^1.6.4",
     "angular-route": "^1.6.4"
+  },
+  "devDependencies": {
+    "underscore": "^1.8.3",
+    "angular-underscore-module": "^1.0.3"
   }
 }
