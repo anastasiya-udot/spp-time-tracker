@@ -13,6 +13,10 @@
         z-index: 10;
         border: none;
         text-align: center;
+        font-size:55px;
+        text-shadow: 3px 2px 1px rgba(0,0,0,0.5);
+
+
     }
 
     .description-container {
@@ -20,6 +24,12 @@
 
         #description {
             color: white;
+            padding-top: 50px;
+            padding-right: 8vw;
+            font-size: 2rem;
+            width: 35vw;
+            line-height: 40px;
+            word-spacing: 8px;
         }
     }
 
@@ -53,13 +63,20 @@
 
  @media (min-width: 0px) {
         .upper-pink-container {
-            height: 46%;
+            height: 60%;
         }
         .lower-pink-container {
             height: 70%;
         }
+
  }
-    @media (min-width: 412px) {
+
+   @media (min-width: 320px) and (max-width: 378px){
+        #inscription {
+          padding: 6px;
+        }
+   }
+   @media (max-width: 425px)  {
         .upper-pink-container {
             height: 46%;
         }
@@ -67,25 +84,34 @@
             height: 70%;
         }
         #inscription {
-           margin-top: 0.5vh;
+           margin-top: 0px;
            font-size: 9vw;
         }
-        .description-container {
-           padding-right: 8vw;
-           font-size: 22px;
-           width: 300px;
-           line-height: 40px;
-           word-spacing: 8px;
-           display: none;
-        }
+        
     }
 
-    @media (min-width: 413px) and (max-width: 1023px) {
+    @media  (max-width: 767px) {
          #inscription {
            font-size: 8vw;
         }
+    }
 
+    @media (min-width: 768px) and (max-width: 979px){
+         #inscription {    
+             font-size: 7vw;
+             margin-top: -7px;
+         }
+    }
 
+    @media (min-width: 920px)  and (max-width: 980px) {
+         #inscription {    
+             margin-top: -12px;
+         }
+    }
 
+    @media (min-width: 1200px){
+        #inscription {    
+             margin-top: 17px;
+         }
     }
 }

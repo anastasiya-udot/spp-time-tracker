@@ -5,7 +5,8 @@
     display: -moz-flex;
     align-items: center;
     width: 40vw; 
-    margin-left: 10vw;
+    height: 60%;
+    margin-left: 5vw;
 
    
      .from-input-group {
@@ -32,17 +33,41 @@
         margin-left: 15px;
     }
 }
-
-@media (min-width: 412px) {
-    .authorization-form-container {
-        height: 70%;
-    }
-    .authorization-form {
+ @media (min-width: 320px) and (max-width: 412px){
+ .authorization-form {
         height: 85%;
+        margin-top: -25px;
     }
     .form-input {
         height: 42px;
         width: 65vw;
     }
 }
-       
+
+@media (min-width: 413px)  and (max-width: 767px) {
+    .authorization-form-container {
+        height: 70%;
+    }
+    .authorization-form {
+        height: 85%;
+        margin-top: -20px;
+    }
+    .form-input {
+        height: 42px;
+        width: 65vw;
+    }
+}
+
+@media (min-width: 768px)  and (max-width: 980px){
+    .form-input {
+        height: 42px;
+        width: 50vw;
+    }
+}
+  
+@media (min-width: 981px) and (max-width: 1400px){
+    .form-input {
+        height: 42px;
+        width: 50vw;
+    }
+}
