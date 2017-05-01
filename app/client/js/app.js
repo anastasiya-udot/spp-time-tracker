@@ -10,6 +10,10 @@ function setApplicationConfig($routeProvider) {
     $routeProvider
         .when('/', {
             controller: 'InitialController',
-            templateUrl: '../templates/application-body.html'
+            templateUrl: '../templates/front-page/index.html'
+        })
+        .when('/employee/:id', {
+            controller: 'EmployeePageController',
+            templateUrl: '../templates/employee-page/index.html'
         });
 }

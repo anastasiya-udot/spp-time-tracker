@@ -4,7 +4,7 @@ TimeTrackerApplication
 function SignUpContainerDirective() {
     return {
         restrict: 'E',
-        templateUrl: '../../templates/authorization/sign-up.html',
+        templateUrl: '../../templates/front-page/sign-up.html',
         controller: SignUpContainerDirectiveController
     }
 }

@@ -4,7 +4,7 @@ TimeTrackerApplication
 function SignInContainerDirective() {
     return {
         restrict: 'E',
-        templateUrl: '../../templates/authorization/sign-in.html',
+        templateUrl: '../../templates/front-page/sign-in.html',
         controller: signInContainerDirectiveController
     }
 }

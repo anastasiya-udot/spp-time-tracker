@@ -4,7 +4,7 @@ TimeTrackerApplication
 function RegistrationContainerDirective() {
     return {
         restrict: 'E',
-        templateUrl: '../../templates/authorization/registration.html',
+        templateUrl: '../../templates/front-page/registration.html',
         controller: registrationContainerDirectiveController
     }
 }
