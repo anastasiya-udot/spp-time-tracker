@@ -1,14 +1,35 @@
 .authorization-form {
-    display: flex;
-    align-items: center;
     width: 40vw; 
     height: 70%;
     margin-left: 10vw;
+
+    .from-input-group-button {
+        display: flex;
+        align-items: center;
+    }
     .from-input-group {
         height: 65%;
         display: flex;
         flex-direction: column;
         justify-content: space-around;
+
+        .input-line {
+            display: flex;
+        }
+
+        .form-input {
+            &.dropdown, a{
+                color: black;
+                margin: 0px;
+            }
+            .wrap-dd-select .dropdown {
+                max-height: 350px;
+            }
+        }
+
+        .ng-dirty.ng-invalid {
+            background-color: wheat;
+        }
 
         @media (max-width: 780px) {
             .form-input {
@@ -44,6 +65,19 @@
         background-color: transparent;
         cursor: pointer;
         margin-left: 15px;
+
+        &.back {
+            transform: rotate(180deg);
+            margin-left: 0;
+            margin-right: 15px;
+        }
+    }
+
+    .warnings {
+        padding-top: 10px;
+        font-size: 20px;
+        color: white;
+        text-align: center;
     }
 }
 
@@ -64,4 +98,3 @@
         height: 50%;
     }
 }
-       

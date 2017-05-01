@@ -1,6 +1,8 @@
 let TimeTrackerApplication = angular.module('time-tracker', [
         'ngRoute',
-        'underscore'
+        'underscore',
+        'ngDropdowns',
+        'ngMessages'
     ])
     .config(setApplicationConfig);
 

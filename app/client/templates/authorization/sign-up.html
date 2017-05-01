@@ -1,14 +1,110 @@
-<form class="authorization-form">
-    <span class="from-input-group">
-        <input id="company-name" ng-model="companyName" class="form-input" placeholder="Compay's' name..." required>
-        <input id="company-director-name" ng-model="username" class="form-input" placeholder="Your name..." required>
-        <input id="company-director-surname" ng-model="surname" class="form-input" placeholder="Your surname..." required>
-        <input id="company-director-patronymic" ng-model="patronymic" class="form-input" placeholder="Your patronymic..." required>
-        <input id="company-director-email" ng-model="email" class="form-input" placeholder="Your email" required>
-        <input id="company-director-password" ng-model="password" class="form-input" placeholder="Password..." required>
-        <input id="company-director-confirm-password" ng-model="confirmPassword" class="form-input" placeholder="Confirm password..." required>
-    </span>
-    <span class="button-container">
-        <button id="confirm-button" class="authorization-button"></button>
-    </span>    
-</form> 
+<form
+    class="authorization-form"
+    name="signUpForm"
+    ng-submit="signUpForm.$valid && sendSignUpForm()">
+    <div class="from-input-group-button">
+        <span class="button-container">
+            <div
+                id="back-button"
+                ng-click="back()"
+                class="authorization-button back"
+                ng-show="newCompany"></div>
+        </span>
+        <span class="from-input-group">
+            <div
+                class="form-input dropdown"
+                ng-show="!newCompany"
+                dropdown-select="companies"
+                dropdown-model="company"
+                dropdown-item-label="text"
+                companies-validation="emptyCompanies"
+                required>
+            </div>
+            <input
+                name="name"
+                ng-model="signUpName"
+                class="wrap-dd-select form-input"
+                placeholder="Your name..."
+                name-validation="nameInvalid"
+                required>
+            <input
+                name="surname"
+                type="text"
+                ng-model="signUpSurname"
+                class="wrap-dd-select form-input"
+                placeholder="Your surname..."
+                name-validation="surnameInvalid"
+                required>
+            <input
+                name="patronymic"
+                ng-model="signUpPatronymic"
+                class="wrap-dd-select form-input"
+                placeholder="Your patronymic..."
+                name-validation="patronymicInvalid"
+                required>
+            <input
+                name="email"
+                ng-model="signUpEmail"
+                class="wrap-dd-select form-input"
+                placeholder="Your email..."
+                user-exists="userExists"
+                email-validation="emailInvalid"
+                required>
+            <input
+                name="password"
+                ng-model="signUpPassword"
+                type="password"
+                ng-model="signUpPassword"
+                class="wrap-dd-select form-input"
+                placeholder="Password..."
+                password-validation="passwordInvalid"
+                required>
+            <input
+                name="confirmPassword"
+                ng-model="signUpConfimPassword"
+                type="password"
+                class="wrap-dd-select form-input"
+                placeholder="Confirm password..."
+                confirm-password-validation="passwordsDifferent"
+                required>
+        </span>
+        <span class="button-container">
+            <button
+                type="submit"
+                id="confirm-button"
+                class="authorization-button"
+                ng-disabled="disableSave"></button>
+        </span>
+    </div>
+    <ng-messages for="registerCompanyForm.$error" class="warnings">
+        <ng-message when="companyExists">
+            Company with such name already exists.
+        </ng-message>
+    </ng-messages>
+    <ng-messages for="signUpForm.$error" class="warnings">
+        <ng-message when="emptyCompanies">
+            No companies registered.
+        </ng-message>    
+        <ng-message when="nameInvalid">
+            Name should contain 3-20 letters or digits.
+        </ng-message>
+        <ng-message when="surnameInvalid">
+            Surname should contain 3-20 letters or digits.
+        </ng-message>
+        <ng-message when="patronymicInvalid">
+            Surname should contain 3-20 letters or digits.
+        </ng-message>
+        <ng-message when="emailInvalid">
+            Email is invalid.
+        </ng-message>
+        <ng-message when="userExists">
+            User with such email already exists in this company.
+        </ng-message>
+        <ng-message when="passwordInvalid">
+            Password should contain 8-15 letters or digits.
+        </ng-message>
+        <ng-message when="passwordsDifferent">
+            Passwords are different.
+        </ng-message>
+    </ng-messages>
+</form>

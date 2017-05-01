@@ -2,7 +2,7 @@
     <div class="upper-pink-container">
         <div id="inscription" ng-model="inscription" ng-show="tabs.registerCompany">Registration</div>
         <div id="inscription" ng-model="inscription" ng-show="tabs.signIn">Sign in</div>
-        <div id="inscription" ng-model="inscription" ng-show="tabs.signUp">Sign up</div>
+        <div id="inscription" ng-model="inscription" ng-show="tabs.signUp">Sign up <span ng-show="newCompany">director</span></div>
         <registration-container ng-show="tabs.registerCompany"></registration-container>
         <sign-in-container ng-show="tabs.signIn"></sign-in-container>
         <sign-up-container ng-show="tabs.signUp"></sign-up-container>
@@ -12,11 +12,14 @@
             <div id="description" ng-show="tabs.registerCompany">
                 You can CREATE your company's account and START tracking.
             </div>
-            <div id="description" ng-show="tabs.signUp">
+            <div id="description" ng-show="!newCompany && tabs.signUp">
                 CREATE your profile to REGISTER your person in company.
             </div>
             <div id="description" ng-show="tabs.signIn">
                 START your workday after signing in.
+            </div>
+             <div id="description" ng-show="newCompany && tabs.signUp">
+                SIGN UP as a DIRECTOR of your company.
             </div>
         </div>
     </div>

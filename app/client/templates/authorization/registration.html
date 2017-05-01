@@ -1,9 +1,39 @@
-<form class="authorization-form">
-    <span class="from-input-group">
-        <input id="company-name" ng-model="name" class="form-input" placeholder="Compay's' name..." required>
-        <input id="company-legal-number" ng-model="legalNumber" class="form-input" placeholder="Legal number..." required>
-    </span>
-    <span class="button-container">
-        <button id="confirm-button" class="authorization-button"></button>
-    </span>    
-</form> 
+<form
+    class="authorization-form"
+    name="registerCompanyForm"
+    ng-submit="registerCompanyForm.$valid && confirm()">
+    <div class="from-input-group-button">
+        <span class="from-input-group">
+            <input
+                name="company"
+                ng-model="companyName"
+                class="wrap-dd-select form-input"
+                placeholder="Company's name..."
+                comapny-validation="companyInvalid"
+                company-exists="companyExists"
+                required>
+            <input
+                name="legalNumber"
+                type="text"
+                ng-model="registrationLegalNumber"
+                class="wrap-dd-select form-input"
+                placeholder="Legal number..."
+                required>
+        </span>
+        <span class="button-container">
+            <button 
+                id="confirm-button" 
+                class="authorization-button"
+                ng-disabled="disableSave">
+            </button>
+        </span>
+    </div>
+    <ng-messages for="registerCompanyForm.$error" class="warnings">   
+        <ng-message when="companyInvalid">
+            Invalid company's name.
+        </ng-message>
+        <ng-message when="companyExists">
+            Company with such name already exists.
+        </ng-message>    
+    </ng-messages>
+</form>
