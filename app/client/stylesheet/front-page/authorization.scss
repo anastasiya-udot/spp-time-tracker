@@ -1,15 +1,13 @@
 .authorization-form {
-    display: flex;
-    display: -webkit-flex;
-    display: -ms-flex;
-    display: -moz-flex;
-    align-items: center;
     width: 40vw; 
-    height: 60%;
-    margin-left: 5vw;
+    height: 70%;
+    margin-left: 10vw;
 
-   
-     .from-input-group {
+    .from-input-group-button {
+        display: flex;
+        align-items: center;
+    }
+    .from-input-group {
         height: 65%;
         display: flex;
         display: -webkit-flex;
@@ -17,6 +15,46 @@
         display: -moz-flex;
         flex-direction: column;
         justify-content: space-around;
+
+
+        .input-line {
+            display: flex;
+        }
+
+        .form-input {
+            &.dropdown, a{
+                color: black;
+                margin: 0px;
+            }
+            .wrap-dd-select .dropdown {
+                max-height: 350px;
+            }
+        }
+
+        .ng-dirty.ng-invalid {
+            background-color: wheat;
+        }
+
+        @media (max-width: 780px) {
+            .form-input {
+                width: 60vw;
+                height: 20px;
+            }
+        }
+
+        @media (min-width: 781px) and (max-width: 960px) {
+            .form-input {
+                width: 40vw;
+                height: 20px;
+            }
+        }
+
+        @media (min-width: 961px) {
+            .form-input {
+                width: 30vw;
+                height: 26px;
+            }
+        }
     }
 
     .authorization-button {
@@ -31,6 +69,19 @@
         background-color: transparent;
         cursor: pointer;
         margin-left: 15px;
+
+        &.back {
+            transform: rotate(180deg);
+            margin-left: 0;
+            margin-right: 15px;
+        }
+    }
+
+    .warnings {
+        padding-top: 10px;
+        font-size: 20px;
+        color: white;
+        text-align: center;
     }
 }
  @media (min-width: 320px) and (max-width: 412px){

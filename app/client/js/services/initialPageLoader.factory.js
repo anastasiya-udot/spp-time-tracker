@@ -1,9 +1,9 @@
 TimeTrackerApplication
-    .factory('InitialPageLoader', initialPageLoader);
+    .factory('InitialPageLoader', InitialPageLoaderController);
 
-function initialPageLoader(_) {
+function InitialPageLoaderController(GetData, _) {
     return {
-        currentTab: 'registerCompany',
+        currentTab: 'signUp',
         initializeRender: function(render) {
             this.renderScope = render;
             this.setTab(this.currentTab);
@@ -19,8 +19,14 @@ function initialPageLoader(_) {
         setTab: function(tab) {
             this.currentTab = tab;
             this.renderScope(tab);
-        }  
+        },
+        setCompanies: function(companies) {
+            this.companies = companies;
+        },
+        getCompnies: function(callback) {
+            GetData('/companies/get', callback);
+        }
     };
 }
 
-initialPageLoader.$inject = ['_'];
+InitialPageLoaderController.$inject = ['GetData', '_'];

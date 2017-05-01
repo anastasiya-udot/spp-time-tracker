@@ -1,7 +1,8 @@
 TimeTrackerApplication
     .controller('InitialController', InitialController);
 
-function InitialController($scope, InitialPageLoader) {
+function InitialController($scope, CompaniesService) {
+   //  CompaniesService.get();
 }
 
-InitialController.$inject = ['$scope', 'InitialPageLoader'];
+InitialController.$inject = ['$scope', 'CompaniesService'];
