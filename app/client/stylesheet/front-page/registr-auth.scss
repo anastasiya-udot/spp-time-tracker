@@ -1,7 +1,7 @@
 .registration-authorization-area-container {
     height: 80vh;
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     min-width: 320px;
     flex-grow: 1;
 
@@ -9,11 +9,10 @@
         position: relative;
         text-transform: uppercase;
         color: white;
-        transform: rotate(4.5deg);
         z-index: 10;
         border: none;
         text-align: center;
-        font-size:55px;
+        font-size: 4vw;
         text-shadow: 3px 2px 1px rgba(0,0,0,0.5);
 
 
@@ -24,18 +23,17 @@
 
         #description {
             color: white;
-            padding-top: 50px;
             padding-right: 8vw;
-            font-size: 2rem;
+            font-size: 1.5vw;
             width: 35vw;
-            line-height: 40px;
-            word-spacing: 8px;
+            line-height: 2.5vw;
+            word-spacing: 0.7vw;
         }
     }
 
     .upper-pink-container {
-        background-image: url('../assets/klldjawkld.png');
-        background-repeat: no-repeat;
+        background-color: $pink-light;
+       // background-repeat: no-repeat;
         width: 100%;
         min-width: 320px;
         min-height: 40%;
@@ -44,8 +42,13 @@
 
         @import './authorization';
     }
+    .main-upper-pink-content{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
 
-    .lower-pink-container {
+   /* .lower-pink-container {
         background-image: url('../assets/afsgegewg.png');
         background-repeat: no-repeat;
         width: 100%;
@@ -59,37 +62,37 @@
         flex-wrap: wrap;
         justify-content: flex-end;
         background-size: cover;
-    }
+    }*/
 
  @media (min-width: 0px) {
         .upper-pink-container {
-            height: 60%;
+            height: 50%;
         }
-        .lower-pink-container {
+       /* .lower-pink-container {
             height: 70%;
-        }
+        }*/
 
  }
 
-   @media (min-width: 320px) and (max-width: 378px){
+   /*@media (min-width: 320px) and (max-width: 378px){
         #inscription {
           padding: 6px;
         }
-   }
+   }*/
    @media (max-width: 425px)  {
         .upper-pink-container {
             height: 46%;
         }
-        .lower-pink-container {
+       /* .lower-pink-container {
             height: 70%;
-        }
-        #inscription {
+        }*/
+     /*   #inscription {
            margin-top: 0px;
            font-size: 9vw;
         }
-        
+       */ 
     }
-
+/*
     @media  (max-width: 767px) {
          #inscription {
            font-size: 8vw;
@@ -113,5 +116,5 @@
         #inscription {    
              margin-top: 17px;
          }
-    }
+    }*/
 }
