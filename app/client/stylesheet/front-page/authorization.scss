@@ -27,7 +27,7 @@
             &.dropdown, a{
                 color: black;
                 margin: 0px;
-                padding: 1vw;
+                padding: 0.7vw;
                
             }
             .wrap-dd-select .dropdown {
@@ -35,8 +35,8 @@
             }
             padding: 0.5vw;
             border-radius: 2vw;
-            line-height: 1vw;
-            width: 40vw;
+            line-height: 0.5vw;
+           // width: 40vw;
             font-size: 1vw;
         }
 
@@ -73,14 +73,20 @@
         text-align: center;
     }
 }
- @media (min-width: 320px) and (max-width: 412px){
-   .form-input {
-      
-       &.dropdown, a{
-            color:white;
-       }
-   }
- }
+
+
+  @media (min-width: 300px) and (max-width: 740px){
+        .form-input {
+            width: 75vw;
+            margin: 0 auto;
+        }
+  }
+
+  @media (min-width: 741px) and (max-width: 1250px){
+      .form-input {
+            width: 40vw;
+        }
+  }
 
  /*       @media (max-width: 780px) {
             .form-input {

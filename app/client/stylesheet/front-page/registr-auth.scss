@@ -48,31 +48,25 @@
         justify-content: space-between;
     }
 
-   /* .lower-pink-container {
-        background-image: url('../assets/afsgegewg.png');
-        background-repeat: no-repeat;
-        width: 100%;
-        min-width: 320px;
-        min-height: 30%;
-        display: flex;
-        display: -webkit-flex;
-        display: -ms-flex;
-        display: -moz-flex;
-        align-items: center;
-        flex-wrap: wrap;
-        justify-content: flex-end;
-        background-size: cover;
-    }*/
 
  @media (min-width: 0px) {
         .upper-pink-container {
             height: 50%;
         }
-       /* .lower-pink-container {
-            height: 70%;
-        }*/
-
+         .main-upper-pink-content{
+            padding-top: 3vh;
+        }
  }
+
+ @media (min-width: 320px) and (max-width: 740px){
+        .main-upper-pink-content{
+            padding-top: 3vh;
+        }
+         #inscription {
+             font-size: 5vw;
+         }
+ }
+
 
    /*@media (min-width: 320px) and (max-width: 378px){
         #inscription {
