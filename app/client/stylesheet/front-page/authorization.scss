@@ -1,63 +1,56 @@
 .authorization-form {
     width: 40vw; 
     height: 70%;
-    margin-left: 10vw;
+    margin-left: 7vw;
 
     .from-input-group-button {
         display: flex;
         align-items: center;
+        justify-content: space-between;
     }
     .from-input-group {
         height: 65%;
         display: flex;
+        display: -webkit-flex;
+        display: -ms-flex;
+        display: -moz-flex;
         flex-direction: column;
         justify-content: space-around;
+
 
         .input-line {
             display: flex;
         }
 
         .form-input {
+           
             &.dropdown, a{
                 color: black;
                 margin: 0px;
+                padding: 0.7vw;
+               
             }
             .wrap-dd-select .dropdown {
                 max-height: 350px;
             }
+            padding: 0.5vw;
+            border-radius: 2vw;
+            line-height: 0.5vw;
+           // width: 40vw;
+            font-size: 1vw;
         }
 
         .ng-dirty.ng-invalid {
             background-color: wheat;
         }
 
-        @media (max-width: 780px) {
-            .form-input {
-                width: 60vw;
-                height: 20px;
-            }
-        }
-
-        @media (min-width: 781px) and (max-width: 960px) {
-            .form-input {
-                width: 40vw;
-                height: 20px;
-            }
-        }
-
-        @media (min-width: 961px) {
-            .form-input {
-                width: 30vw;
-                height: 26px;
-            }
-        }
     }
 
     .authorization-button {
         background-image: url('../assets/lightbox_controls_next.png');
         background-size: contain;
-        width: 40px;
-        height: 150px;
+        width: 5vw;
+        height: 10vw;
         background-repeat: no-repeat;
         background-position: center;
         outline: none;
@@ -81,20 +74,16 @@
     }
 }
 
-@media (max-width: 610px) {
-    .authorization-form-container {
-        height: 90%;
-    }
-    .authorization-form {
-        height: 50%;
-    }
-} 
 
-@media (min-width: 611px) and (min-width: 1100px) {
-    .authorization-form-container {
-        height: 90%;
-    }
-    .authorization-form {
-        height: 50%;
-    }
-}
+  @media (min-width: 300px) and (max-width: 740px){
+        .form-input {
+            width: 75vw;
+            margin: 0 auto;
+        }
+  }
+
+  @media (min-width: 741px) and (max-width: 1250px){
+      .form-input {
+            width: 40vw;
+        }
+  }
