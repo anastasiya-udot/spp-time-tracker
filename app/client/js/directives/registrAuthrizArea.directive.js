@@ -4,7 +4,7 @@ TimeTrackerApplication
 function RegistraionAuthorizationAreaDirective() {
     return {
         restrict: 'E',
-        templateUrl: '../../templates/registr-auth.html',
+        templateUrl: '../../templates/front-page/register-auth.html',
         controller: registraionAuthorizationAreaDirectiveController
     }
 }

@@ -4,7 +4,7 @@ TimeTrackerApplication
 function ApplicationHeaderDirective() {
     return {
         restrict: 'E',
-        templateUrl: '../../templates/header.html',
+        templateUrl: '../../templates/front-page/header.html',
         controller: applicationHeaderDirectiveController
     }
 }
