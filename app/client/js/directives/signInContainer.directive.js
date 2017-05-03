@@ -9,7 +9,7 @@ function SignInContainerDirective() {
     }
 }
 
-function signInContainerDirectiveController($scope, $location, SessionService, InitialPageLoader, PostData, _) {
+function signInContainerDirectiveController($scope, InitialPageLoader, EmplyeePageLoader, PostData, _) {
     $scope.confirm = function() {
         $scope.newCompany = true;
         InitialPageLoader.setTab('signUp');
@@ -29,13 +29,8 @@ function signInContainerDirectiveController($scope, $location, SessionService, I
                 this.disableSave = false;
             }; break;
             case 200: {
-                let token = res.data.token;
-                let id;
-
-                SessionService.startSession(token);
-                id = SessionService.getSessionUserId();
+                EmplyeePageLoader.load(res.data.token);
                 this.disableSave = false;
-
             }; break;
         }
     }, $scope);
@@ -52,4 +47,5 @@ function signInContainerDirectiveController($scope, $location, SessionService, I
     };
 }
 
-signInContainerDirectiveController.$inject = ['$scope', "$location", "SessionService", 'InitialPageLoader', 'PostData', '_'];
+signInContainerDirectiveController.$inject = ["$scope", "InitialPageLoader",
+"EmplyeePageLoader", "PostData", "_"];

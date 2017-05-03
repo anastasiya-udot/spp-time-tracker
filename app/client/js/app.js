@@ -9,7 +9,7 @@ let TimeTrackerApplication = angular.module('time-tracker', [
 function setApplicationConfig($routeProvider) {
     $routeProvider
         .when('/', {
-            controller: 'InitialController',
+            controller: 'InitialPageController',
             templateUrl: '../templates/front-page/index.html'
         })
         .when('/employee/:id', {

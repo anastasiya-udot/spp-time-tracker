@@ -29,11 +29,15 @@ function CompaniesServiceController(GetData, _) {
             }
         ],
         _processResponse: function(res) {
-            if (res.status == 200) {
-                this.companies = res.companies;
-                this.errors.companies = false;
-            } else {
-                this.errors.companies = true;
+            switch (res.status) {
+                case 200: {
+                    this.companies = res.companies;
+                    this.errors.companies = false;
+                }; break;
+                case 500: {
+                    this.companies = [];
+                    this.errors.companies = true;
+                }
             }
         },
         has: function(name) {
