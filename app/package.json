@@ -23,10 +23,12 @@
     "gulp-inject": "^4.2.0",
     "gulp-notify": "^3.0.0",
     "gulp-order": "^1.1.1",
+    "gulp-sass": "^3.1.0",
     "gulp-scss": "^1.4.0",
     "gulp-sequence": "^0.4.6",
     "gulp-sourcemaps": "^2.4.1",
     "multipipe": "^1.0.2",
+    "npm-sass": "^2.0.0",
     "through2": "^2.0.3"
   }
 }
