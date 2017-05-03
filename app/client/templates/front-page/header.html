@@ -1,5 +1,7 @@
-<div class="header">
-    <span class="header-logo-name">
+<div class="header container">
+    <div class="row">
+        
+    <div class="header-logo-name col-lg-7 col-sm-4">
         <span class="header-logo-container">
             <img class="alarm-logo" src="assets/orologio_clock_alarm.png">
         </span>    
@@ -7,13 +9,15 @@
             <div class="logo-name-time">Time</div>
             <div class="logo-name-tracker">TRACKER</div>
         </span>
-    </span>
-    <span class="header-register-sign">
-        <span id="register-company" class="logo-register-company" ng-click="onClick('registerCompany')">Register your company</span>
-        <span class="sign-user">
+    </div>
+
+        <div id="register-company" class="logo-register-company col-lg-3 col-sm-4" ng-click="onClick('registerCompany')">Register your company</div>
+        <div class="sign-user col-lg-2 col-sm-4">
             <span id="sign-in" ng-click="onClick('signIn')">Sign in</span>
             <span class="slash">/</span> 
             <span id="sign-up" ng-click="onClick('signUp')">Sign up</span>
-        </span>
-    </span>    
+        </div>
+   
+    </div>
+   
 </div>

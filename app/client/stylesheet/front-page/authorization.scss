@@ -1,4 +1,18 @@
 .authorization-form {
+    .from-input-group-button {
+        display: flex;
+        align-items: center;
+        //justify-content: space-between;
+    }
+
+    .from-input-group {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+}
+
+/*.authorization-form {
     width: 40vw; 
     height: 70%;
     margin-left: 7vw;
@@ -87,3 +101,4 @@
             width: 40vw;
         }
   }
+*/

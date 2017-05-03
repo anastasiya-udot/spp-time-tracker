@@ -1,4 +1,37 @@
-.registration-authorization-area-container {
+.registration-authorization-area-container{
+
+     #inscription {
+        text-transform: uppercase;
+        color: white;
+        text-align: center;
+        font-size: 30px;
+        text-shadow: 3px 2px 1px rgba(0,0,0,0.5);
+     }
+
+      .description-container {
+          #description {
+            color: white;
+            font-size: 20px;
+            line-height: 2.5vw;
+            word-spacing: 0.7vw;
+        }
+      }
+
+      .upper-pink-container {
+        background-color: $pink-light;
+        width: 100%;
+        min-height: 50%;
+        margin-bottom: 0.5%;
+        position: absolute;
+        background-size: cover;
+        bottom: 0;
+
+        @import './authorization';
+    }
+}
+
+
+/*.registration-authorization-area-container {
     height: 80vh;
     display: flex;
     align-items: flex-end;
@@ -8,7 +41,7 @@
     #inscription {
         position: relative;
         text-transform: uppercase;
-        color: white;
+       
         z-index: 10;
         border: none;
         text-align: center;
@@ -68,25 +101,26 @@
  }
 
 
-   /*@media (min-width: 320px) and (max-width: 378px){
+   
+   @media (min-width: 320px) and (max-width: 378px){
         #inscription {
           padding: 6px;
         }
-   }*/
+   }
    @media (max-width: 425px)  {
         .upper-pink-container {
             height: 46%;
         }
-       /* .lower-pink-container {
+        .lower-pink-container {
             height: 70%;
-        }*/
-     /*   #inscription {
+        }
+       #inscription {
            margin-top: 0px;
            font-size: 9vw;
         }
-       */ 
+        
     }
-/*
+
     @media  (max-width: 767px) {
          #inscription {
            font-size: 8vw;
@@ -110,5 +144,6 @@
         #inscription {    
              margin-top: 17px;
          }
-    }*/
+    }
 }
+*/
