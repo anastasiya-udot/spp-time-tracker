@@ -1,0 +1,46 @@
+<form
+    class="authorization-form"
+    name="signInForm"
+    ng-submit="signInForm.$valid && sendSignInForm()">
+    <div class="from-input-group-button">
+        <span class="from-input-group">
+            <input
+                name="email"
+                ng-model="signInEmail"
+                class="wrap-dd-select form-input"
+                placeholder="Your email..."
+                email-validation="emailInvalid"
+                no-user="noUser"
+                required>
+            <input
+                name="password"
+                type="password"
+                ng-model="signInPassword"
+                class="wrap-dd-select form-input"
+                placeholder="Password..."
+                password-validation="passwordInvalid"
+                wrong-password="wrongPassword"
+                required>
+        </span>
+        <span class="button-container">
+            <button
+                id="confirm-button"
+                class="authorization-button"
+                ng-disabled="disableSave"></button>
+        </span>
+    </div>
+    <ng-messages for="signInForm.$error" class="warnings">   
+        <ng-message when="noUser">
+            There is no user with such email.
+        </ng-message>
+        <ng-message when="wrongPassword">
+            Password is wrong.
+        </ng-message>
+        <ng-message when="emailInvalid">
+            Email is invalid.
+        </ng-message>
+        <ng-message when="passwordInvalid">
+            Password should contain 8-15 letters or digits.
+        </ng-message>
+    </ng-messages>
+</form>

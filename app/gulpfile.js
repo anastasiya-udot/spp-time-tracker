@@ -1,7 +1,7 @@
 'use strict';
 
 const gulp = require('gulp');
-const scss = require('gulp-scss');
+const sass = require('gulp-sass');
 const sourcemaps = require('gulp-sourcemaps');
 const del = require('del')
 const sequence = require('gulp-sequence');
@@ -22,18 +22,9 @@ gulp.task('serve', function() {
 });
 
 gulp.task('styles', function() {
-    return multipipe(
-        gulp.src('client/stylesheet/main.scss'),
-        sourcemaps.init(),
-        scss(),
-        sourcemaps.write('.'),
-        gulp.dest('public/stylesheet')
-    ).on('error', notify.onError(function(err){
-            return {
-                title: "Styles",
-                message: err.message
-            };
-    }));       
+    return gulp.src('client/stylesheet/main.scss')
+        .pipe(sass())
+        .pipe(gulp.dest('public/stylesheet'));
 });
 
 gulp.task('assets', function() {
@@ -63,11 +54,11 @@ gulp.task('clean', function() {
 gulp.task('build', sequence('clean', ['styles', 'assets', 'index', 'js', 'templates']));
 
 gulp.task('watch', function() {
-    gulp.watch('client/stylesheet/**.*', ['styles']);
-    gulp.watch('client/assets/**.*', ['assets']);
+    gulp.watch('client/stylesheet/**/*.*', ['styles']);
+    gulp.watch('client/assets/**/*.*', ['assets']);
     gulp.watch('client/index.html', ['index']);
     gulp.watch('client/templates/**/*.html', ['templates']);
-    gulp.watch('client/js/**.*', ['js']);
+    gulp.watch('client/js/**/*.*', ['js']);
 });
 
 gulp.task('default', sequence('build', ['watch', 'serve']));
