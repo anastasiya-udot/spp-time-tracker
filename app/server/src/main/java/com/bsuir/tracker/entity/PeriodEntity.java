@@ -2,6 +2,8 @@ package com.bsuir.tracker.entity;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.Set;
+import java.util.HashSet;
 
 /**
  * Created by Pavel on 25.04.2017.
@@ -13,6 +15,7 @@ public class PeriodEntity {
     private Timestamp start;
     private Timestamp finish;
     private int employeeIdemployee;
+    private Set<TaskEntity> taskEntities = new HashSet<TaskEntity>(0);
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -53,6 +56,15 @@ public class PeriodEntity {
 
     public void setEmployeeIdemployee(int employeeIdemployee) {
         this.employeeIdemployee = employeeIdemployee;
+    }
+
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "periodEntities")
+    public Set<TaskEntity> getTaskEntities() {
+        return taskEntities;
+    }
+
+    public void setTaskEntities(Set<TaskEntity> taskEntities) {
+        this.taskEntities = taskEntities;
     }
 
     @Override

@@ -34,6 +34,22 @@
             <td>5</td>
             <td><a href="/Roles">Role</a></td>
         </tr>
+        <tr>
+            <td>6</td>
+            <td><a href="/Requests">Request</a></td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td><a href="/WorkdayTypes">Workday Type</a></td>
+        </tr>
+        <tr>
+            <td>8</td>
+            <td><a href="/Periods">Period</a></td>
+        </tr>
+        <tr>
+            <td>9</td>
+            <td><a href="/Tasks">Task</a></td>
+        </tr>
     </table>
 </div>
 </body>

@@ -1,6 +1,8 @@
 package com.bsuir.tracker.entity;
 
 import javax.persistence.*;
+import java.util.Set;
+import java.util.HashSet;
 
 /**
  * Created by Pavel on 25.04.2017.
@@ -12,6 +14,7 @@ public class TaskEntity {
     private String code;
     private String description;
     private int projectIdproject;
+    private Set<PeriodEntity> periodEntities = new HashSet<PeriodEntity>(0);
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -58,6 +61,18 @@ public class TaskEntity {
             throw new IllegalArgumentException();
         }
         this.projectIdproject = projectIdproject;
+    }
+
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "task_period", joinColumns = {
+            @JoinColumn(name = "task_idtask", nullable = false, updatable = false) },
+            inverseJoinColumns = {@JoinColumn(name = "period_idperiod", nullable = false, updatable = false) })
+    public Set<PeriodEntity> getPeriodEntities() {
+        return periodEntities;
+    }
+
+    public void setPeriodEntities(Set<PeriodEntity> periodEntities) {
+        this.periodEntities = periodEntities;
     }
 
     @Override
