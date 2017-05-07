@@ -2,8 +2,12 @@ package com.bsuir.tracker.controller;
 
 import com.bsuir.tracker.Service.ProjectService;
 import com.bsuir.tracker.entity.ProjectEntity;
+import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -44,11 +48,28 @@ public class ProjectController {
     }
 
     @RequestMapping(value = "/saveProject", method = RequestMethod.POST)
-    public ModelAndView saveProject(@ModelAttribute ProjectEntity project) {
-        if (project.getIdproject() == 0) {
-            projectService.addProject(project);
-        } else {
-            projectService.updateProject(project);
+    public ModelAndView saveProject(@ModelAttribute("project") @Validated ProjectEntity project, BindingResult bindingResult) {
+        if(bindingResult.hasErrors()){
+            ModelAndView modelAndView = new ModelAndView("redirect:/errorView");
+            modelAndView.addObject("message", "Whoops, something gone wrong with your input!");
+            return modelAndView;
+        }
+        try {
+            if (project.getIdproject() == 0) {
+                projectService.addProject(project);
+            } else {
+                projectService.updateProject(project);
+            }
+        }
+        catch (ConstraintViolationException e) {
+            ModelAndView modelAndView = new ModelAndView("redirect:/errorView");
+            modelAndView.addObject("message", "Whoops, something gone wrong with ID-s!");
+            return modelAndView;
+        }
+        catch (DataIntegrityViolationException e) {
+            ModelAndView modelAndView = new ModelAndView("redirect:/errorView");
+            modelAndView.addObject("message", "Whoops, something gone wrong with SQL data integrity!");
+            return modelAndView;
         }
         return new ModelAndView("redirect:/Projects");
     }

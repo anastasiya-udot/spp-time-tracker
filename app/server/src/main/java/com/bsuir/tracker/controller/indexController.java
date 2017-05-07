@@ -26,4 +26,10 @@ public class indexController {
         model.setViewName("index");
         return model;
     }
+
+    @RequestMapping(value = "/errorView")
+    public ModelAndView errorView(ModelAndView model) throws IOException {
+        model.setViewName("ErrorView");
+        return model;
+    }
 }

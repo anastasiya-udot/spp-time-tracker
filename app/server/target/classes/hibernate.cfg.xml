@@ -19,5 +19,8 @@
         <mapping class="com.bsuir.tracker.entity.ProjectEntity"/>
         <mapping class="com.bsuir.tracker.entity.RoleEntity"/>
         <mapping class="com.bsuir.tracker.entity.TaskEntity"/>
+        <mapping class="com.bsuir.tracker.entity.WorkdayTypeEntity"/>
+        <mapping class="com.bsuir.tracker.entity.PeriodEntity"/>
+        <mapping class="com.bsuir.tracker.entity.RequestEntity"/>
     </session-factory>
 </hibernate-configuration>
