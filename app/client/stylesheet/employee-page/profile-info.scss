@@ -1,0 +1,95 @@
+.profile-info-container {
+    width: 100%;
+    margin-top: 30px;
+
+    .profile-info-header {
+        background-color: white;
+    }
+
+    .profile-info {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        background-color: white;
+        padding-bottom: 30px;
+        
+        .profile-info-photo {
+            background-image: url('../../assets/boy-512.png');
+            background-size: cover;
+            width: 150px;
+            height: 150px;
+            margin: auto;
+        }
+
+        .profile-info-card {
+            margin: auto;
+            width: 300px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+
+            .info {
+                width: 100%;
+                padding: 20px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                .name {
+                    font-size: 13px;
+                    font-weight: bold;
+                    text-transform: uppercase;
+                }
+
+                .mail {
+                    font-style: italic;
+                }
+            }
+            .profile-buttons {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                width: 100%;
+                padding: 20px;
+
+                @mixin buttonSet($url) {
+                    width: 35px;
+                    height: 35px;
+                    background-image: url($url);
+                    background-size: cover;
+                    margin: auto;
+                    margin-top: 7px;
+                }
+
+                .profile-button {
+                    width: 50px;
+                    height: 50px;
+                    opacity: 0.8;
+                    
+                    .explanatary {
+                        @include buttonSet('../../assets/Document-50.png');
+                    }
+
+                    .calendar {
+                        @include buttonSet('../../assets/Calendar-50.png');
+                    }
+
+                    .orders {
+                        @include buttonSet('../../assets/Print-50.png');
+                    }
+
+                    &:hover {
+                        cursor: pointer;
+                        border-radius: 50%;
+                        border: 2px solid #666;
+                        opacity: 1;
+
+                    }
+                }
+            }
+        }
+    }
+
+}

@@ -4,14 +4,12 @@ html {
     height: 100%;
     width: 100%;
     min-width: 320px;
-    overflow: hidden;
 }
 
 body {
     margin: 0;
     height: 100%;
     width: 100%;
-    overflow: hidden;
     position: relative;
 
     .time-tracker-background {
@@ -19,6 +17,7 @@ body {
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center center;
+        position: fixed;
         height: 100%;
         width: 100%;
     
@@ -42,5 +41,6 @@ body {
 
        @import './color';
        @import './front-page/main'; 
+       @import './employee-page/main'; 
    }
 } 

@@ -1,0 +1,135 @@
+.profile-tasks-area{
+    width: 100%;
+
+     .profile-tasks-header-container {
+
+        .profile-tasks-header {
+            background-color: white;
+        }
+
+        .projects-list {
+            background-color: white;
+            position: relative;
+            padding-left: 40px;
+            display: flex;
+            align-items: center;
+    
+            .project-name-number {
+                .number {
+                    font-size: 90px;
+                    font-weight: bold;
+                    color: gray;
+                    opacity: 0.3;
+                    padding-left: 40px; 
+                }
+
+                .name {
+                    font-size: 30px;
+                    font-weight: bold;
+                    color: dimgray;
+                    margin-right: 40px;
+                    position: absolute;
+                    bottom: 25px;
+                    left: 180px;
+                }
+            }
+
+            @mixin setArrow() {
+                background-image: url('../../assets/lightbox_controls_next.png');
+                background-size: cover;
+                width: 40px;
+                height: 80px;
+            }
+
+            @mixin hoverArrow() {
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+
+            .button-left {
+                transform: rotate(180deg);
+                @include setArrow();
+                @include hoverArrow();
+                margin-right: 10px;
+            }
+            .button-right {
+                @include setArrow();
+                @include hoverArrow();
+                position: absolute;
+                right: 35px;
+            }
+        }
+    }
+
+    .tasks-list {
+        $height: 110px; 
+
+        @mixin commonItem() {
+            background-color: white;
+            height: $height;
+            display: flex;
+            align-items: center;
+            padding-left: 70px;
+            opacity: 0.9;
+            margin-top: 2px;
+
+            &:hover {
+                opacity: 1;
+            }
+        }
+
+        .tasks-list-item-add {
+            @include commonItem();
+            margin-top: 3px;
+
+            .text {
+                font-size: 20px;
+                color: gray;
+                padding-left: 50px;
+            }
+
+            .add-sign {
+                background-image: url('../../assets/Plus-50.png');
+                background-size: cover;
+                width: 60px;
+                height: 60px;
+
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+        }
+
+        .tasks-list-item {
+            @include commonItem();
+            padding-left: 60px;
+
+            .tasks-list-item-remove {
+                background-image: url('../../assets/delete.png');
+                background-size: cover;
+                width: 80px;
+                height: 80px;
+
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+
+            .task-info {
+                font-size: 20px;
+                color: gray;
+                padding-left: 40px;
+                
+                .name {
+                    color: darkred;
+                    text-transform: uppercase; 
+                }
+
+                .date {
+                    color: dodgerblue;
+                }
+            }
+        }
+    }
+}
