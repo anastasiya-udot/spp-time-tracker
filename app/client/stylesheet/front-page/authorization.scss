@@ -1,24 +1,16 @@
 .authorization-form {
-    width: 40vw; 
-    height: 70%;
-    margin-left: 7vw;
 
     .from-input-group-button {
+        margin-top: 10px;
         display: flex;
         align-items: center;
-        justify-content: space-between;
     }
+
     .from-input-group {
-        height: 65%;
         display: flex;
-        display: -webkit-flex;
-        display: -ms-flex;
-        display: -moz-flex;
         flex-direction: column;
         justify-content: space-around;
-
-
-        .input-line {
+     .input-line {
             display: flex;
         }
 
@@ -27,30 +19,25 @@
             &.dropdown, a{
                 color: black;
                 margin: 0px;
-                padding: 0.7vw;
+                border-radius: 20px;
                
             }
             .wrap-dd-select .dropdown {
                 max-height: 350px;
             }
-            padding: 0.5vw;
-            border-radius: 2vw;
-            line-height: 0.5vw;
-           // width: 40vw;
-            font-size: 1vw;
+            border-radius: 100px;
         }
 
         .ng-dirty.ng-invalid {
             background-color: wheat;
         }
-
     }
 
     .authorization-button {
         background-image: url('../assets/lightbox_controls_next.png');
         background-size: contain;
-        width: 5vw;
-        height: 10vw;
+        width: 45px;
+        height: 70px;
         background-repeat: no-repeat;
         background-position: center;
         outline: none;
@@ -75,15 +62,36 @@
 }
 
 
-  @media (min-width: 300px) and (max-width: 740px){
-        .form-input {
-            width: 75vw;
-            margin: 0 auto;
-        }
-  }
+@media (max-width:426px)
+{
+    .form-input{
+        font-size: 10px;
+        height: 15px;
+    }
+}
 
-  @media (min-width: 741px) and (max-width: 1250px){
-      .form-input {
-            width: 40vw;
-        }
-  }
+@media (min-width:426px) and (max-width:767px)
+{
+    .form-input{
+        width: 70vw;
+        font-size: 12px;
+        height: 20px;
+    }
+}
+
+@media (min-width:768px) and (max-width:1200px)
+{
+    .form-input{
+        width: 40vw;
+        font-size: 13px;
+        height: 25px;
+    }
+}
+
+@media (min-width:1201px) and (max-width:1708px)
+{
+    .form-input{
+        width: 40vw;
+    }
+}
+
