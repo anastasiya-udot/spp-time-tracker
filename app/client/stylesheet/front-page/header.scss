@@ -1,20 +1,11 @@
 .header {
-   // width: 100%;
-    //height: 18vh;
     color: white;
     font-size: 20px;
-
-    /*.header-register-sign {
-        color: white;
-        font-size: 20px;
-        margin: auto;
-        display: flex;
-        display: -webkit-flex;
-        display: -ms-flex;
-        display: -moz-flex;
-        flex-wrap: wrap;
-        width: 450px;
-        z-index: 50;*/
+     .header-full-top-menu{
+         display: flex;
+         align-items: center;
+         flex-wrap: wrap;
+     }
 
         @mixin hoverEffect {
             cursor: pointer;
@@ -27,8 +18,6 @@
         }
 
         #register-company {
-           // margin: auto;
-           // width: 245px;
             &:hover {
                 @include hoverEffect;
             }
@@ -38,7 +27,6 @@
         }
         
         .sign-user {
-          //  margin: auto;
             #sign-in:hover, #sign-up:hover {
                 @include hoverEffect;
             }
@@ -49,10 +37,8 @@
     }
 
     .header-logo-name {
-      //  margin: auto;
         display: flex;
         align-items: center;
-      //  z-index: 50;
 
         .alarm-logo {
             width: 60px;
@@ -60,8 +46,6 @@
         }
 
         .header-name-container {
-            //width: 140px;
-            //color: white;
             margin-left: 10px;
             
             .logo-name-time {
@@ -74,3 +58,8 @@
         }
     }
 
+@media (max-width: 767px) {
+      .header-full-top-menu{
+          justify-content: center;
+      }
+}

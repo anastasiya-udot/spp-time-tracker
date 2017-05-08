@@ -1,10 +1,11 @@
+
 .registration-authorization-area-container{
 
      #inscription {
         text-transform: uppercase;
         color: white;
         text-align: center;
-        font-size: 30px;
+        font-size: 40px;
         text-shadow: 3px 2px 1px rgba(0,0,0,0.5);
      }
 
@@ -20,16 +21,30 @@
       .upper-pink-container {
         background-color: $pink-light;
         width: 100%;
-        min-height: 50%;
-        margin-bottom: 0.5%;
+        height: 50%;
+        margin-bottom: 1%;
         position: absolute;
         background-size: cover;
         bottom: 0;
 
         @import './authorization';
+
+        .full-upper-pink-content{
+            display: flex;
+            align-items: center;
+            height: 70%;
+        }
     }
 }
-
+@media (max-width:767px)
+{
+    .full-upper-pink-content{
+        justify-content: center;
+    }
+     .description-container {
+         display: none;
+     }
+}
 
 /*.registration-authorization-area-container {
     height: 80vh;

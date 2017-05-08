@@ -1,16 +1,100 @@
 .authorization-form {
+
     .from-input-group-button {
+        margin-top: 10px;
         display: flex;
         align-items: center;
-        //justify-content: space-between;
     }
 
     .from-input-group {
         display: flex;
         flex-direction: column;
         justify-content: space-around;
+     .input-line {
+            display: flex;
+        }
+
+        .form-input {
+           
+            &.dropdown, a{
+                color: black;
+                margin: 0px;
+                border-radius: 20px;
+               
+            }
+            .wrap-dd-select .dropdown {
+                max-height: 350px;
+            }
+            border-radius: 100px;
+        }
+
+        .ng-dirty.ng-invalid {
+            background-color: wheat;
+        }
+    }
+
+    .authorization-button {
+        background-image: url('../assets/lightbox_controls_next.png');
+        background-size: contain;
+        width: 45px;
+        height: 70px;
+        background-repeat: no-repeat;
+        background-position: center;
+        outline: none;
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+        margin-left: 15px;
+
+        &.back {
+            transform: rotate(180deg);
+            margin-left: 0;
+            margin-right: 15px;
+        }
+    }
+
+    .warnings {
+        padding-top: 10px;
+        font-size: 20px;
+        color: white;
+        text-align: center;
     }
 }
+
+
+@media (max-width:426px)
+{
+    .form-input{
+        font-size: 10px;
+        height: 15px;
+    }
+}
+
+@media (min-width:426px) and (max-width:767px)
+{
+    .form-input{
+        width: 70vw;
+        font-size: 12px;
+        height: 20px;
+    }
+}
+
+@media (min-width:768px) and (max-width:1200px)
+{
+    .form-input{
+        width: 40vw;
+        font-size: 13px;
+        height: 25px;
+    }
+}
+
+@media (min-width:1201px) and (max-width:1708px)
+{
+    .form-input{
+        width: 40vw;
+    }
+}
+
 
 /*.authorization-form {
     width: 40vw; 
