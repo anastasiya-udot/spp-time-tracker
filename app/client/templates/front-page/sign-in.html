@@ -29,18 +29,4 @@
                 ng-disabled="disableSave"></button>
         </span>
     </div>
-    <ng-messages for="signInForm.$error" class="warnings">   
-        <ng-message when="noUser">
-            There is no user with such email.
-        </ng-message>
-        <ng-message when="wrongPassword">
-            Password is wrong.
-        </ng-message>
-        <ng-message when="emailInvalid">
-            Email is invalid.
-        </ng-message>
-        <ng-message when="passwordInvalid">
-            Password should contain 8-15 letters or digits.
-        </ng-message>
-    </ng-messages>
 </form>
