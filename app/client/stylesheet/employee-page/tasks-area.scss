@@ -20,17 +20,16 @@
                     font-weight: bold;
                     color: gray;
                     opacity: 0.3;
-                    padding-left: 40px; 
+                    padding-left: 12px; 
                 }
 
                 .name {
-                    font-size: 30px;
+                    font-size: 25px;
                     font-weight: bold;
                     color: dimgray;
-                    margin-right: 40px;
                     position: absolute;
                     bottom: 25px;
-                    left: 180px;
+                    left: 125px;
                 }
             }
 
@@ -63,7 +62,7 @@
     }
 
     .tasks-list {
-        $height: 110px; 
+        $height: 70px; 
 
         @mixin commonItem() {
             background-color: white;
@@ -92,8 +91,8 @@
             .add-sign {
                 background-image: url('../../assets/Plus-50.png');
                 background-size: cover;
-                width: 60px;
-                height: 60px;
+                width: 40px;
+                height: 40px;
 
                 &:hover {
                     cursor: pointer;
@@ -108,8 +107,9 @@
             .tasks-list-item-remove {
                 background-image: url('../../assets/delete.png');
                 background-size: cover;
-                width: 80px;
-                height: 80px;
+                width: 45px;
+                height: 53px;
+                margin-left: 5px;
 
                 &:hover {
                     cursor: pointer;
@@ -117,13 +117,20 @@
             }
 
             .task-info {
-                font-size: 20px;
+                font-size: 14px;
                 color: gray;
                 padding-left: 40px;
                 
-                .name {
+                .code {
                     color: darkred;
                     text-transform: uppercase; 
+                }
+
+                .description {
+                    max-width: 400px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    max-height: 20px;
                 }
 
                 .date {

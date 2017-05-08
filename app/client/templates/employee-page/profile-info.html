@@ -1,4 +1,5 @@
 <div class="profile-info-container">
+    <open-list></open-list>
     <div class="profile-info-header">
         <span class="block-name">
             Company:
@@ -14,9 +15,16 @@
                 <div class="mail">anastasiya.udot@gmail.com</div>
             </div>
             <div class="profile-buttons">
-                <span class="profile-button"><div class="calendar"></div></span>
+                <div class="profile-button dropdown">
+                    <span id="openCalendar" data-toggle="dropdown" data-target=".dropdown" class="dropdown-toggle">
+                        <div class="calendar"></div>
+                    </span>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="openCalendar">
+                        <datetimepicker data-ng-model="data.date" data-datetimepicker-config="{ dropdownSelector: '.dropdown-toggle' }"></datetimepicker>
+                    </ul>
+                </div>
                 <span class="profile-button"><div class="orders"></div></span>
-                <span class="profile-button"><div class="explanatary"></div></span>
+                <span class="profile-button" ng-click="openExplanataryDialog()"><div class="explanatary"></div></span>
             </div>
         </span>
     </div> 

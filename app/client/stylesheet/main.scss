@@ -4,6 +4,7 @@ html {
     height: 100%;
     width: 100%;
     min-width: 320px;
+    zoom: 125%;
 }
 
 body {
@@ -11,6 +12,12 @@ body {
     height: 100%;
     width: 100%;
     position: relative;
+
+    .ngdialog-close {
+        border-radius: 0;
+        border-width: 0;
+        padding: 0;
+    }
 
     .time-tracker-background {
         background-image: url('../assets/49525930_ml-1080x675.jpg');

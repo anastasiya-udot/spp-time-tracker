@@ -9,8 +9,15 @@ function ProfileInfoDirective() {
     }
 }
 
-function profileInfoDirectiveController($scope) {
-
+function profileInfoDirectiveController($scope, ngDialog) {
+    $scope.openExplanataryDialog = function() {
+        ngDialog.open({
+            template: '../../templates/employee-page/dialog-explanatary.html',
+            className: 'ngdialog-theme-default',
+            scope: $scope,
+            height: 200
+        });
+    }
 }
 
-profileInfoDirectiveController.$inject = ['$scope'];
+profileInfoDirectiveController.$inject = ['$scope', 'ngDialog'];
