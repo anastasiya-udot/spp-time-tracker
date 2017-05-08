@@ -1,7 +1,8 @@
 .authorization-form {
+    margin-top: 15px;
 
     .from-input-group-button {
-        margin-top: 10px;
+        margin: 10px 0;
         display: flex;
         align-items: center;
     }
@@ -9,27 +10,36 @@
     .from-input-group {
         display: flex;
         flex-direction: column;
-        justify-content: space-around;
-     .input-line {
-            display: flex;
-        }
 
         .form-input {
-           
-            &.dropdown, a{
-                color: black;
-                margin: 0px;
-                border-radius: 20px;
-               
+            margin-top: 5px;
+            &.wrap-dd-select {
+                width: 45vw;
+            
+                &.dropdown {
+                    max-height: 350px;
+
+                    li {
+                        background-color: #ecd6d6;
+
+                        a {
+                            color: gray;
+                            margin: 0px;    
+                        }
+                    }
+                }
+                &.ng-dirty.ng-invalid {
+                    background-color: wheat;
+                }
             }
-            .wrap-dd-select .dropdown {
-                max-height: 350px;
-            }
-            border-radius: 100px;
         }
 
-        .ng-dirty.ng-invalid {
-            background-color: wheat;
+        @media (max-width:767px) {
+             .form-input {
+                 &.wrap-dd-select {
+                    width: 70vw;
+                 }
+             }
         }
     }
 
@@ -52,46 +62,6 @@
             margin-right: 15px;
         }
     }
-
-    .warnings {
-        padding-top: 10px;
-        font-size: 20px;
-        color: white;
-        text-align: center;
-    }
 }
 
-
-@media (max-width:426px)
-{
-    .form-input{
-        font-size: 10px;
-        height: 15px;
-    }
-}
-
-@media (min-width:426px) and (max-width:767px)
-{
-    .form-input{
-        width: 70vw;
-        font-size: 12px;
-        height: 20px;
-    }
-}
-
-@media (min-width:768px) and (max-width:1200px)
-{
-    .form-input{
-        width: 40vw;
-        font-size: 13px;
-        height: 25px;
-    }
-}
-
-@media (min-width:1201px) and (max-width:1708px)
-{
-    .form-input{
-        width: 40vw;
-    }
-}
 
