@@ -1,0 +1,55 @@
+.dialog-content {
+
+    &.form {
+        height: 345px;
+        margin-top: 15px;
+
+        .header {
+            padding-left: 8px;
+            font-size: 13px;
+        }
+        
+        .input-explanatory {
+            display: flex;
+            flex-direction: column;
+            
+            .explanatory {
+
+                background-color: #beafaf;
+                margin-top: 15px;
+                outline-color: #721c1c;
+            }
+        }
+
+        .buttons-area {
+            margin-top: 22px;
+            display: flex;
+            justify-content: center;
+
+            .button {
+                padding-left: 5px;
+
+                &:hover {
+                    cursor: pointer;
+                    color: #721c1c;
+                    text-decoration: underline;
+                }
+
+                &.save-button, &.accept-button{
+                    margin-left: 10px;
+                }
+            }
+        }
+    }
+}
+
+.add-new-request {
+    margin-top: 15px;
+    text-align: center;
+
+    &:hover {
+        cursor: pointer;
+        color: #721c1c;
+        text-decoration: underline;
+    }
+}

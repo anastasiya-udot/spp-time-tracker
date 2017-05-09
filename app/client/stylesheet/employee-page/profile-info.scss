@@ -72,7 +72,7 @@
                         margin-left: -29px;
                     }
                     
-                    .explanatary {
+                    .explanatory {
                         @include buttonSet('../../assets/Document-50.png');
                     }
 
@@ -95,5 +95,4 @@
             }
         }
     }
-    @import "./dialog-explanatary";
 }

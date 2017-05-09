@@ -10,12 +10,13 @@ function ProfileInfoDirective() {
 }
 
 function profileInfoDirectiveController($scope, ngDialog) {
-    $scope.openExplanataryDialog = function() {
+    $scope.openExplanatoryDialog = function() {
         ngDialog.open({
-            template: '../../templates/employee-page/dialog-explanatary.html',
+            template: '../../templates/dialogs/dialog-list-explanatory.html',
             className: 'ngdialog-theme-default',
-            scope: $scope,
-            height: 200
+            height: 300,
+            name: "explanatory_list",
+            controller: ExplanatoryListDialogController
         });
     }
 }

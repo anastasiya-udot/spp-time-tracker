@@ -15,16 +15,23 @@
                 <div class="mail">anastasiya.udot@gmail.com</div>
             </div>
             <div class="profile-buttons">
-                <div class="profile-button dropdown">
+                <div class="profile-button dropdown tooltip">
                     <span id="openCalendar" data-toggle="dropdown" data-target=".dropdown" class="dropdown-toggle">
                         <div class="calendar"></div>
                     </span>
                     <ul class="dropdown-menu" role="menu" aria-labelledby="openCalendar">
                         <datetimepicker data-ng-model="data.date" data-datetimepicker-config="{ dropdownSelector: '.dropdown-toggle' }"></datetimepicker>
                     </ul>
+                    <span class="tooltiptext">Calendar</span>
                 </div>
-                <span class="profile-button"><div class="orders"></div></span>
-                <span class="profile-button" ng-click="openExplanataryDialog()"><div class="explanatary"></div></span>
+                <span class="profile-button tooltip">
+                    <div class="orders"></div>
+                    <span class="tooltiptext">Orders</span>
+                </span>
+                <span class="profile-button tooltip" ng-click="openExplanatoryDialog()">
+                    <div class="explanatory"></div>
+                    <span class="tooltiptext">Explanatory</span>
+                </span>
             </div>
         </span>
     </div> 
