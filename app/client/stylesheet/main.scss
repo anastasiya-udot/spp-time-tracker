@@ -9,9 +9,11 @@ html {
 
 body {
     margin: 0;
+    padding: 0;
     height: 100%;
     width: 100%;
     position: relative;
+    font-family: "Helvetica Neue",Helvetica,Arial;
 
     .ngdialog-close {
         border-radius: 0;

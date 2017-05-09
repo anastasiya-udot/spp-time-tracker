@@ -1,4 +1,5 @@
 .header {
+<<<<<<< HEAD
     min-width: 320px;
     width: 100%;
     height: 18vh;
@@ -19,6 +20,15 @@
         display: -moz-flex;
         flex-wrap: wrap;
         z-index: 50;
+=======
+    color: white;
+    font-size: 20px;
+     .header-full-top-menu{
+         display: flex;
+         align-items: center;
+         flex-wrap: wrap;
+     }
+>>>>>>> feature-client-side
 
         @mixin hoverEffect {
             cursor: pointer;
@@ -31,8 +41,6 @@
         }
 
         #register-company {
-            margin: auto;
-            width: 245px;
             &:hover {
                 @include hoverEffect;
             }
@@ -49,6 +57,7 @@
         
         .sign-user, #sign-out {
             margin: auto;
+
             #sign-in:hover, #sign-up:hover {
                 @include hoverEffect;
             }
@@ -59,10 +68,8 @@
     }
 
     .header-logo-name {
-        margin: auto;
         display: flex;
         align-items: center;
-        z-index: 50;
 
         .alarm-logo {
             width: 60px;
@@ -70,8 +77,6 @@
         }
 
         .header-name-container {
-            width: 140px;
-            color: white;
             margin-left: 10px;
             
             .logo-name-time {
@@ -83,4 +88,9 @@
             }
         }
     }
+
+@media (max-width: 767px) {
+      .header-full-top-menu{
+          justify-content: center;
+      }
 }
