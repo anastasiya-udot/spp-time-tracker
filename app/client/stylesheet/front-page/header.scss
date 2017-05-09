@@ -1,22 +1,13 @@
 .header {
-    min-width: 320px;
-    width: 100%;
-    height: 18vh;
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
+    color: white;
+    font-size: 20px;
 
-    .header-register-sign, .header-sign-out {
-        color: white;
-        font-size: 20px;
-        margin: auto;
+    .header-full-top-menu{
         display: flex;
-        display: -webkit-flex;
-        display: -ms-flex;
-        display: -moz-flex;
+        align-items: center;
         flex-wrap: wrap;
-        z-index: 50;
-
+        justify-content: space-between;
+        
         @mixin hoverEffect {
             cursor: pointer;
             text-shadow: 3px 2px 1px rgba(0,0,0,0.5);
@@ -27,51 +18,59 @@
             text-shadow: 3px 2px 1px rgba(0,0,0,0.5);
         }
 
-        #register-company {
-            &:hover {
-                @include hoverEffect;
-            }
-            &.active {
-                 @include activeEffect;
-            }
-        }
-        #sign-out:hover, #sign-out:hover {
-            @include hoverEffect;
-        }
-        #sign-out.active, #sign-out.active {
-            @include activeEffect;
-        }
-        
-        .sign-user, #sign-out {
-            margin: auto;
+        .header-authorization-navigation {
+            width: 500px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin:auto;
 
-            #sign-in:hover, #sign-up:hover {
-                @include hoverEffect;
+            #register-company {
+                margin:auto;
+
+                &:hover {
+                    @include hoverEffect;
+                }
+                &.active {
+                    @include activeEffect;
+                }
             }
-            #sign-in.active, #sign-up.active {
-                 @include activeEffect;
-            }
-        }
-    }
-
-    .header-logo-name {
-        display: flex;
-        align-items: center;
-
-        .alarm-logo {
-            width: 60px;
-            height: 65px;
-        }
-
-        .header-name-container {
-            margin-left: 10px;
             
-            .logo-name-time {
-                font-size: 25px;
+            .sign-user {
+                 margin:auto;
+
+                #sign-in:hover, #sign-up:hover {
+                    @include hoverEffect;
+                }
+                #sign-in.active, #sign-up.active {
+                    @include activeEffect;
+                }
             }
-            .logo-name-tracker {
-                font-size: 30px;
-                margin-top: 3px;
+        }
+
+        .header-logo-name {
+            display: flex;
+            align-items: center;
+            margin:auto;
+            margin-bottom: 20px;
+            margin-top: 20px;
+
+            .alarm-logo {
+                width: 60px;
+                height: 65px;
+            }
+
+            .header-name-container {
+                margin-left: 10px;
+                
+                .logo-name-time {
+                    font-size: 25px;
+                }
+                .logo-name-tracker {
+                    font-size: 30px;
+                    margin-top: 3px;
+                }
             }
         }
     }
+}
