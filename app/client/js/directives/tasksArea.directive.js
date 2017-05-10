@@ -5,22 +5,22 @@ function TasksAreaDirective() {
     return {
         restrict: "E",
         templateUrl: '../../templates/employee-page/tasks-area.html',
-        cotroller: TasksAreaDirectiveController
+        controller: TasksAreaDirectiveController
     }
 }
 
-function TasksAreaDirectiveController($scope,  ngDialog) {
+function TasksAreaDirectiveController($scope, ngDialog) {
     $scope.openAddNewTaskForm = function() {
         ngDialog.open({
             template: '../../templates/dialogs/dialog-form-task.html',
             className: 'ngdialog-theme-default',
             scope: $scope,
-            height: 440,// (!!!!! здесь будешь регулировать высоту и ширину выпадающего окна)
-            width: 500,
+            height: 270,
+            width: 420,
             name: "new_task_form",
             controller: NewTaskFormController
         });
     }
 }
 
-TasksAreaDirectiveController.$inject = ["$scope", " ngDialog"];
+TasksAreaDirectiveController.$inject = ["$scope", "ngDialog"];

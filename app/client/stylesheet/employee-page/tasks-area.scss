@@ -37,7 +37,7 @@
                 background-image: url('../../assets/lightbox_controls_next.png');
                 background-size: cover;
                 width: 40px;
-                height: 80px;
+                height: 85px;
             }
 
             @mixin hoverArrow() {
@@ -104,10 +104,8 @@
             @include commonItem();
            // padding-left: 60px;
                 padding-left: 0;
-                display: flex;
                 flex-wrap: wrap;
                 justify-content: space-around;
-                align-items: baseline;
 
            /* .tasks-list-item-remove {
                 background-image: url('../../assets/delete.png');

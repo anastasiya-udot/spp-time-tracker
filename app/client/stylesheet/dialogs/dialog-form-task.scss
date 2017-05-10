@@ -1,0 +1,45 @@
+.dialog-content{
+    &.task {
+        .input-add-task{
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                font-size: 13px;
+
+            .task-code{
+                background-color: #beafaf;
+                margin-top: 0;
+                outline-color: #721c1c;
+                width: 390px;
+            }
+            .task-code-lable{
+                padding-left: 8px;
+            }
+            .task-description-lable{
+                margin-top: 15px;
+                padding-left: 8px;
+            }
+            .task-description{
+                        background-color: #beafaf;
+                        margin-top: 0;
+                        outline-color: #721c1c;
+                        width: 390px;
+            }
+        }
+    }
+}
+
+.add-new-task{
+     margin-top: 15px;
+    text-align: center;
+
+    &:hover {
+        cursor: pointer;
+        color: #721c1c;
+        text-decoration: underline;
+    }
+}
+
+
+
+
