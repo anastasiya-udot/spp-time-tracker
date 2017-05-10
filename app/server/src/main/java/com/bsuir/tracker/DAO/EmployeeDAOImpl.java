@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import com.bsuir.tracker.entity.CompanyEntity;
 
+import org.hibernate.query.Query;
 import java.util.List;
 
 /**
@@ -32,6 +33,21 @@ public class EmployeeDAOImpl implements EmployeeDAO {
         EmployeeEntity result;
         try {
             result = (EmployeeEntity) sessionFactory.getCurrentSession().get(EmployeeEntity.class, idEmployee);
+        }
+        catch (Exception e){
+            System.out.println(e);
+            throw new IllegalArgumentException();
+        }
+        return result;
+    }
+
+    @Override
+    public EmployeeEntity getEmployeeByMail(String  email) {
+        EmployeeEntity result;
+        try {
+            Query query = sessionFactory.getCurrentSession().createQuery("from EmployeeEntity where email=:email");
+            query.setParameter("email", email);
+            result = (EmployeeEntity) query.uniqueResult();
         }
         catch (Exception e){
             System.out.println(e);

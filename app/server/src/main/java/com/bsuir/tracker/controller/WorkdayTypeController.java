@@ -22,6 +22,7 @@ import com.bsuir.tracker.Service.WorkdayTypeService;
  * Created by Pavel on 25.04.2017.
  */
 @Controller
+@RequestMapping(value = "/Backdoor")
 public class WorkdayTypeController {
     private static  final Logger logger = Logger.getLogger(ImageController.class);
 
@@ -72,14 +73,14 @@ public class WorkdayTypeController {
             modelAndView.addObject("message", "Whoops, something gone wrong with SQL data integrity!");
             return modelAndView;
         }
-        return new ModelAndView("redirect:/WorkdayTypes");
+        return new ModelAndView("redirect:/Backdoor/WorkdayTypes");
     }
 
     @RequestMapping(value = "/deleteWorkdayType", method = RequestMethod.GET)
     public ModelAndView deleteWorkdayType(HttpServletRequest request) {
         int id = Integer.parseInt(request.getParameter("id"));
         workdayTypeService.deleteWorkdayType(id);
-        return new ModelAndView("redirect:/WorkdayTypes");
+        return new ModelAndView("redirect:/Backdoor/WorkdayTypes");
     }
 
     @RequestMapping(value = "/editWorkdayType", method = RequestMethod.GET)

@@ -6,24 +6,24 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>New/Edit Image</title>
+    <title>New/Edit Company</title>
 </head>
 <body>
 <div align="center">
-    <h1>New/Edit Image</h1>
-    <form:form action="/Backdoor/saveImage" method="post" modelAttribute="image">
+    <h1>Authorisation</h1>
+    <h3><a href="/Registration">Registration</a><h3/>
+    <form:form action="Authorize" method="post">
         <table>
-            <form:hidden path="idimage"/>
             <tr>
-                <td>URL:</td>
-                <td><form:input path="url" /></td>
+                <td>Email:</td>
+                <td><input type="text" name="email"/></td>
             </tr>
             <tr>
-                <td>Public ID:</td>
-                <td><form:input path="publicId" /></td>
+                <td>Password:</td>
+                <td><input type="text" name="password"/></td>
             </tr>
             <tr>
-                <td colspan="2" align="center"><input type="submit" value="Save"></td>
+                <td colspan="2" align="center"><input type="submit" value="Authorize"></td>
             </tr>
         </table>
     </form:form>

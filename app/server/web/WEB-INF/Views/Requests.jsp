@@ -12,7 +12,7 @@
 <div align="center">
     <h1>Projects List</h1>
     <h3>
-        <a href="/newRequest">New Request</a>
+        <a href="/Backdoor/newRequest">New Request</a>
     </h3>
     <table border="1">
         <th>ID</th>
@@ -26,12 +26,13 @@
                 <td>${request.sourceIdemployee}</td>
                 <td>${request.destinationIdemployee}</td>
                 <td>${request.date}</td>
-                <td><a href="/editRequest?id=${request.idrequest}">Edit</a>
-                    <a href="/deleteRequest?id=${request.idrequest}">Delete</a></td>
+                <td><a href="/Backdoor/editRequest?id=${request.idrequest}">Edit</a>
+                    <a href="/Backdoor/deleteRequest?id=${request.idrequest}">Delete</a></td>
 
             </tr>
         </c:forEach>
     </table>
+    <h3><a href="/Backdoor/List">Go To List</a><h3/>
 </div>
 </body>
 </html>

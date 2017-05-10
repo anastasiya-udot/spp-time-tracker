@@ -11,7 +11,7 @@
 <body>
 <div align="center">
     <h1>New/Edit Workday Type</h1>
-    <form:form action="saveWorkdayType" method="post" modelAttribute="workdayType">
+    <form:form action="/Backdoor/saveWorkdayType" method="post" modelAttribute="workdayType">
         <table>
             <form:hidden path="idworkdayType"/>
             <tr>

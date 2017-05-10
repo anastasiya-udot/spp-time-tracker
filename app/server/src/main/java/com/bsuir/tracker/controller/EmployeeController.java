@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
+import com.bsuir.tracker.controller.security.GetTokenService;
 import org.hibernate.exception.ConstraintViolationException;
 import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,7 @@ import com.bsuir.tracker.entity.EmployeeEntity;
 import com.bsuir.tracker.Service.EmployeeService;
 
 @Controller
+@RequestMapping(value = "/Backdoor")
 public class EmployeeController {
 
     private static  final Logger logger = Logger.getLogger(ImageController.class);
@@ -29,6 +31,8 @@ public class EmployeeController {
 
     @Autowired
     private  EmployeeService employeeService;
+    @Autowired
+    private GetTokenService getTokenService;
 
     @RequestMapping(value = "/Employees")
     public ModelAndView listEmployee(ModelAndView model) throws IOException {
@@ -70,14 +74,18 @@ public class EmployeeController {
             modelAndView.addObject("message", "Whoops, something gone wrong with SQL data integrity!");
             return modelAndView;
         }
-        return new ModelAndView("redirect:/Employees");
+        return new ModelAndView("redirect:/Backdoor/Employees");
     }
 
     @RequestMapping(value = "/deleteEmployee", method = RequestMethod.GET)
     public ModelAndView deleteEmployee(HttpServletRequest request) {
         int idEmployee = Integer.parseInt(request.getParameter("id"));
+        if (idEmployee == getTokenService.getIdFromToken((String) request.getSession().getAttribute("token")))
+        {
+            return new ModelAndView("redirect:/errorView?message=Cannot delete yourself");
+        }
         employeeService.deleteEmployee(idEmployee);
-        return new ModelAndView("redirect:/Employees");
+        return new ModelAndView("redirect:/Backdoor/Employees");
     }
 
     @RequestMapping(value = "/editEmployee", method = RequestMethod.GET)

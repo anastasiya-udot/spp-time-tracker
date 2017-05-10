@@ -40,7 +40,7 @@ public class CompanyServiceImpl implements CompanyService {
         companyDAO.deleteCompany(idCompany);
     }
 
-    public void setCompanyDAODAO(CompanyDAO companyDAO){
+    public void setCompanyDAO(CompanyDAO companyDAO){
         this.companyDAO = companyDAO;
     }
 }

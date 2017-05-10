@@ -12,7 +12,7 @@
 <div align="center">
     <h1>Images List</h1>
     <h3>
-        <a href="newImage">New Image</a>
+        <a href="/Backdoor/newImage">New Image</a>
     </h3>
     <table border="1">
 
@@ -25,12 +25,13 @@
                 <td>${image.idimage}</td>
                 <td>${image.url}</td>
                 <td>${image.publicId}</td>
-                <td><a href="editImage?id=${image.idimage}">Edit</a>
-                    <a href="deleteImage?id=${image.idimage}">Delete</a></td>
+                <td><a href="/Backdoor/editImage?id=${image.idimage}">Edit</a>
+                    <a href="/Backdoor/deleteImage?id=${image.idimage}">Delete</a></td>
 
             </tr>
         </c:forEach>
     </table>
+    <h3><a href="/Backdoor/List">Go To List</a><h3/>
 </div>
 </body>
 </html>

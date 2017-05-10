@@ -12,7 +12,7 @@
 <div align="center">
     <h1>Employees List</h1>
     <h3>
-        <a href="/newEmployee">New Employee</a>
+        <a href="/Backdoor/newEmployee">New Employee</a>
     </h3>
     <table border="1">
         <th>ID</th>
@@ -46,12 +46,13 @@
                 <td>${employee.tempEmail}</td>
                 <td>${employee.patronymic}</td>
                 <td>${employee.workdayIdworkdayType}</td>
-                <td><a href="editEmployee?id=${employee.idemployee}">Edit</a>
-                    <a href="deleteEmployee?id=${employee.idemployee}">Delete</a></td>
+                <td><a href="/Backdoor/editEmployee?id=${employee.idemployee}">Edit</a>
+                    <a href="/Backdoor/deleteEmployee?id=${employee.idemployee}">Delete</a></td>
 
             </tr>
         </c:forEach>
     </table>
+    <h3><a href="/Backdoor/List">Go To List</a><h3/>
 </div>
 </body>
 </html>

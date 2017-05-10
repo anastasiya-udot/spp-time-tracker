@@ -12,7 +12,7 @@
 <div align="center">
     <h1>Periods List</h1>
     <h3>
-        <a href="/newPeriod">New Period</a>
+        <a href="/Backdoor/newPeriod">New Period</a>
     </h3>
     <table border="1">
         <th>ID</th>
@@ -26,12 +26,13 @@
                 <td>${period.start}</td>
                 <td>${period.finish}</td>
                 <td>${period.employeeIdemployee}</td>
-                <td><a href="/editPeriod?id=${period.idperiod}">Edit</a>
-                    <a href="/deletePeriod?id=${period.idperiod}">Delete</a></td>
+                <td><a href="/Backdoor/editPeriod?id=${period.idperiod}">Edit</a>
+                    <a href="/Backdoor/deletePeriod?id=${period.idperiod}">Delete</a></td>
 
             </tr>
         </c:forEach>
     </table>
+    <h3><a href="/Backdoor/List">Go To List</a><h3/>
 </div>
 </body>
 </html>

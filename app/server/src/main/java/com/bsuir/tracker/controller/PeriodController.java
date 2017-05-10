@@ -22,6 +22,7 @@ import java.util.List;
  */
 
 @Controller
+@RequestMapping(value = "/Backdoor")
 public class PeriodController {
 
     public PeriodController(){
@@ -71,7 +72,7 @@ public class PeriodController {
             modelAndView.addObject("message", "Whoops, something gone wrong with SQL data integrity!");
             return modelAndView;
         }
-        return new ModelAndView("redirect:/Periods");
+        return new ModelAndView("redirect:/Backdoor/Periods");
 
     }
 
@@ -79,7 +80,7 @@ public class PeriodController {
     public ModelAndView deletePeriod(HttpServletRequest request) {
         int id = Integer.parseInt(request.getParameter("id"));
         periodService.deletePeriod(id);
-        return new ModelAndView("redirect:/Periods");
+        return new ModelAndView("redirect:/Backdoor/Periods");
     }
 
     @RequestMapping(value = "/editPeriod", method = RequestMethod.GET)

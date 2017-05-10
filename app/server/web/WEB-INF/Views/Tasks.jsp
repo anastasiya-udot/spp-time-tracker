@@ -12,7 +12,7 @@
 <div align="center">
     <h1>Tasks List</h1>
     <h3>
-        <a href="/newTask">New Task</a>
+        <a href="/Backdoor/newTask">New Task</a>
     </h3>
     <table border="1">
         <th>ID</th>
@@ -26,12 +26,13 @@
                 <td>${task.code}</td>
                 <td>${task.description}</td>
                 <td>${task.projectIdproject}</td>
-                <td><a href="/editTask?id=${task.idtask}">Edit</a>
-                    <a href="/deleteTask?id=${task.idtask}">Delete</a></td>
+                <td><a href="/Backdoor/editTask?id=${task.idtask}">Edit</a>
+                    <a href="/Backdoor/deleteTask?id=${task.idtask}">Delete</a></td>
 
             </tr>
         </c:forEach>
     </table>
+    <h3><a href="/Backdoor/List">Go To List</a><h3/>
 </div>
 </body>
 </html>

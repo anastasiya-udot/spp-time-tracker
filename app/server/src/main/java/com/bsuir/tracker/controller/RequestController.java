@@ -22,6 +22,7 @@ import java.util.List;
  */
 
 @Controller
+@RequestMapping(value = "/Backdoor")
 public class RequestController {
 
     public RequestController(){
@@ -72,7 +73,7 @@ public class RequestController {
             modelAndView.addObject("message", "Whoops, something gone wrong with SQL data integrity!");
             return modelAndView;
         }
-        return new ModelAndView("redirect:/Requests");
+        return new ModelAndView("redirect:/Backdoor/Requests");
 
     }
 
@@ -80,7 +81,7 @@ public class RequestController {
     public ModelAndView deleteRequest(HttpServletRequest request) {
         int id = Integer.parseInt(request.getParameter("id"));
         requestService.deleteRequest(id);
-        return new ModelAndView("redirect:/Requests");
+        return new ModelAndView("redirect:/Backdoor/Requests");
     }
 
     @RequestMapping(value = "/editRequest", method = RequestMethod.GET)

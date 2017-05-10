@@ -23,6 +23,7 @@ import com.bsuir.tracker.Service.ImageService;
  */
 
 @Controller
+@RequestMapping(value = "/Backdoor")
 public class ImageController {
     private static  final Logger logger = Logger.getLogger(ImageController.class);
 
@@ -74,14 +75,14 @@ public class ImageController {
             modelAndView.addObject("message", "Whoops, something gone wrong with SQL data integrity!");
             return modelAndView;
         }
-        return new ModelAndView("redirect:/Images");
+        return new ModelAndView("redirect:/Backdoor/Images");
     }
 
     @RequestMapping(value = "/deleteImage", method = RequestMethod.GET)
     public ModelAndView deleteImage(HttpServletRequest request) {
         int idImage = Integer.parseInt(request.getParameter("id"));
         imageService.deleteImage(idImage);
-        return new ModelAndView("redirect:/Images");
+        return new ModelAndView("redirect:/Backdoor/Images");
     }
 
     @RequestMapping(value = "/editImage", method = RequestMethod.GET)

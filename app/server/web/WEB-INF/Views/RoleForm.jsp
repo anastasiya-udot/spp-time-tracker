@@ -6,12 +6,12 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>New/Edit Image</title>
+    <title>New/Edit Role</title>
 </head>
 <body>
 <div align="center">
-    <h1>New/Edit Image</h1>
-    <form:form action="saveRole" method="post" modelAttribute="role">
+    <h1>New/Edit Role</h1>
+    <form:form action="/Backdoor/saveRole" method="post" modelAttribute="role">
         <table>
             <form:hidden path="idrole"/>
             <tr>

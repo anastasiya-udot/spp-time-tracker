@@ -12,6 +12,8 @@ public interface EmployeeService {
 
     public EmployeeEntity getEmployee(int idEmployee);
 
+    public EmployeeEntity getEmployeeByMail(String name);
+
     public List<EmployeeEntity> getAllEmployees();
 
     public EmployeeEntity updateEmployee(EmployeeEntity employee);

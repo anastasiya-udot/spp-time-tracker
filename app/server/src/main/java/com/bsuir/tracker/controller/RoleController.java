@@ -22,6 +22,7 @@ import com.bsuir.tracker.Service.RoleService;
  * Created by Pavel on 25.04.2017.
  */
 @Controller
+@RequestMapping(value = "/Backdoor")
 public class RoleController {
     private static  final Logger logger = Logger.getLogger(ImageController.class);
 
@@ -72,14 +73,14 @@ public class RoleController {
             modelAndView.addObject("message", "Whoops, something gone wrong with SQL data integrity!");
             return modelAndView;
         }
-        return new ModelAndView("redirect:/Roles");
+        return new ModelAndView("redirect:/Backdoor/Roles");
     }
 
     @RequestMapping(value = "/deleteRole", method = RequestMethod.GET)
     public ModelAndView deleteRole(HttpServletRequest request) {
         int idRole = Integer.parseInt(request.getParameter("id"));
         roleService.deleteRole(idRole);
-        return new ModelAndView("redirect:/Roles");
+        return new ModelAndView("redirect:/Backdoor/Roles");
     }
 
     @RequestMapping(value = "/editRole", method = RequestMethod.GET)
