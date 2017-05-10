@@ -5,7 +5,8 @@
         color: gray;
         padding: 10px 0;
     }
-
+    
+    @import './dialog-form-task';
     @import './dialog-list-explanatory';
     @import './dialog-form-explanatory';
     @import './dialog-new-request-form';

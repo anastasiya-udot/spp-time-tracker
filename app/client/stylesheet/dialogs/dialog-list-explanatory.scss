@@ -27,3 +27,15 @@
         }
     }
 }
+
+
+.add-new-request {
+    margin-top: 15px;
+    text-align: center;
+
+    &:hover {
+        cursor: pointer;
+        color: #721c1c;
+        text-decoration: underline;
+    }
+}

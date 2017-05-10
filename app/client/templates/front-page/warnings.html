@@ -1,16 +1,17 @@
 <ng-messages for="registerCompanyForm.$error" class="warnings">   
     <ng-message when="companyInvalid">
+        
         Invalid company's name.
     </ng-message>
     <ng-message when="companyExists">
         Company with such name already exists.
     </ng-message>    
 </ng-messages>
-<ng-messages for="signUpForm.$error" class="warnings">
+<ng-messages for="signUpForm.$error" class="warnings" >
     <ng-message when="emptyCompanies">
         No companies registered.
     </ng-message>    
-    <ng-message when="nameInvalid">
+    <ng-message when="nameInvalid" >
         Name should contain 3-20 letters or digits.
     </ng-message>
     <ng-message when="surnameInvalid">
@@ -32,7 +33,7 @@
         Passwords are different.
     </ng-message>
 </ng-messages>
-<ng-messages for="signInForm.$error" class="warnings">   
+<ng-messages for="signInForm.$error" class="warnings" ng-hide="!signInForm.$error">   
     <ng-message when="noUser">
         There is no user with such email.
     </ng-message>
