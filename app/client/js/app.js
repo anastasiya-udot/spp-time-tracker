@@ -1,12 +1,19 @@
 let TimeTrackerApplication = angular.module('time-tracker', [
-        'ngRoute'
+        'ngRoute',
+        'underscore',
+        'ngDropdowns',
+        'ngMessages'
     ])
     .config(setApplicationConfig);
 
 function setApplicationConfig($routeProvider) {
     $routeProvider
         .when('/', {
-            controller: 'InitialController',
-            templateUrl: '../templates/application-body.html'
+            controller: 'InitialPageController',
+            templateUrl: '../templates/front-page/index.html'
+        })
+        .when('/employee/:id', {
+            controller: 'EmployeePageController',
+            templateUrl: '../templates/employee-page/index.html'
         });
 }
