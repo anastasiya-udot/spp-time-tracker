@@ -1,0 +1,22 @@
+.dialog-content {
+
+    &.order {
+        margin-top: 5px;
+        
+        .section-name {
+            padding-left: 10px;
+            font-size: 16px;
+        }
+
+        .save-button {
+            margin-top: 15px;
+            text-align: center;
+
+            &:hover {
+                text-decoration: underline;
+                color: #721c1c;
+                cursor: pointer;
+            }
+        }
+    }
+}

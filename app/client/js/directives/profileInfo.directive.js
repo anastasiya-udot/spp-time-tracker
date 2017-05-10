@@ -19,6 +19,16 @@ function profileInfoDirectiveController($scope, ngDialog) {
             controller: ExplanatoryListDialogController
         });
     }
+
+    $scope.openOrdersDialog = function() {
+        ngDialog.open({
+            template: '../../templates/dialogs/dialog-orders.html',
+            className: 'ngdialog-theme-default',
+            height: 150,
+            name: "orders",
+            controller: OrdersDialogController
+        });
+    }
 }
 
 profileInfoDirectiveController.$inject = ['$scope', 'ngDialog'];
