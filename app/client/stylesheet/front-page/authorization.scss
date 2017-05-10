@@ -1,0 +1,67 @@
+.authorization-form {
+    margin-top: 15px;
+
+    .from-input-group-button {
+        margin: 10px 0;
+        display: flex;
+        align-items: center;
+    }
+
+    .from-input-group {
+        display: flex;
+        flex-direction: column;
+
+        .form-input {
+            margin-top: 5px;
+            &.wrap-dd-select {
+                width: 45vw;
+            
+                &.dropdown {
+                    max-height: 350px;
+
+                    li {
+                        background-color: #ecd6d6;
+
+                        a {
+                            color: gray;
+                            margin: 0px;    
+                        }
+                    }
+                }
+                &.ng-dirty.ng-invalid {
+                    background-color: wheat;
+                }
+            }
+        }
+
+        @media (max-width:767px) {
+             .form-input {
+                 &.wrap-dd-select {
+                    width: 70vw;
+                 }
+             }
+        }
+    }
+
+    .authorization-button {
+        background-image: url('../assets/lightbox_controls_next.png');
+        background-size: contain;
+        width: 45px;
+        height: 70px;
+        background-repeat: no-repeat;
+        background-position: center;
+        outline: none;
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+        margin-left: 15px;
+
+        &.back {
+            transform: rotate(180deg);
+            margin-left: 0;
+            margin-right: 15px;
+        }
+    }
+}
+
+

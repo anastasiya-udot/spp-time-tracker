@@ -1,0 +1,50 @@
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    min-width: 320px;
+    overflow: hidden;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    min-width: 320px;
+    min-height: 565px;
+    overflow: hidden;
+    position: relative;
+    font-family: "Helvetica Neue",Helvetica,Arial;
+
+    .time-tracker-background {
+        background-image: url('../assets/49525930_ml-1080x675.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        height: 100%;
+        width: 100%;
+    
+        &:after {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            opacity: 1;
+            content: "";
+            background:rgba(0, 0, 0, .75);
+        }
+    }
+
+   .time-tracker-content {
+       position: absolute;
+       top: 0px;
+       left: 0px;
+       width: 100%;
+       height: 100%;
+       flex-wrap: wrap;
+
+       @import './color';
+       @import './front-page/main'; 
+   }
+} 

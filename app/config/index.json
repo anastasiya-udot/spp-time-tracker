@@ -1,0 +1,8 @@
+{
+    "order" : [
+        "client/js/app.js",
+        "client/js/app.controller.js",
+        "client/js/services/initialPageLoader.factory.js",
+        "client/js/directives/applicationContent.directive.js"
+    ]
+}

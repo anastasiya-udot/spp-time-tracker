@@ -1,0 +1,9 @@
+# Intellij
+.idea/
+out/
+spring-server.iml
+node_modules/
+.gulp-scss-cache
+.sass-cache
+public/
+bower_components/
