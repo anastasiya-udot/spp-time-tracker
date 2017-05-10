@@ -28,6 +28,7 @@
     "angular-bootstrap-datetimepicker": "^1.1.4",
     "moment": "^2.18.1",
     "ng-dialog": "^1.1.0",
-    "angular-datetime-range": "^0.2.13"
+    "angular-datetime-range": "^0.2.13",
+    "jquery-circle-progress": "^1.2.2"
   }
 }

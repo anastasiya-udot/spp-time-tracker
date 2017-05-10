@@ -62,7 +62,7 @@
     }
 
     .tasks-list {
-        $height: 70px; 
+        $height: 80px; 
 
         @mixin commonItem() {
             background-color: white;
@@ -102,9 +102,14 @@
 
         .tasks-list-item {
             @include commonItem();
-            padding-left: 60px;
+           // padding-left: 60px;
+                padding-left: 0;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-around;
+                align-items: baseline;
 
-            .tasks-list-item-remove {
+           /* .tasks-list-item-remove {
                 background-image: url('../../assets/delete.png');
                 background-size: cover;
                 width: 45px;
@@ -113,7 +118,15 @@
 
                 &:hover {
                     cursor: pointer;
-                }
+                }*/
+                 .remove-button {
+                    
+                     &:hover {
+                      text-decoration: underline;
+                      color: #721c1c;
+                      cursor: pointer;
+                     }
+                 }
             }
 
             .task-info {
@@ -139,4 +152,3 @@
             }
         }
     }
-}
