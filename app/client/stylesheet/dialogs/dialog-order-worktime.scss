@@ -1,13 +1,12 @@
 .dialog-content {
 
-    &.request {
-
+    &.order {
+        margin-top: 5px;
+        
         .section-name {
             padding-left: 10px;
-            margin-top: 20px;
             font-size: 16px;
         }
-
         .datetime-range {
             margin-top: 20px;
             min-width: 320px;
@@ -30,47 +29,19 @@
            .end-datetime:before{
                 left: -0.89em;
            }
-        }
-            
-        
-        .result {
-            margin-top: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background-color: #beafaf;
-            padding: 7px;
-
-            .in-fact, .expected {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                margin: auto;
-
-                .result-label {
-                    font-weight: bold;
-                    color: #721c1c;
-                }
-                
-                .value {
-                    margin-top: 20px;
-                }
-            }
-        }
-
-        /*.send-request {
+        }   
+       /* .save-button {
+            margin-top: 15px;
             text-align: center;
-            padding-top: 22px;
 
             &:hover {
-                cursor: pointer;
-                color: #721c1c;
                 text-decoration: underline;
+                color: #721c1c;
+                cursor: pointer;
             }
         }*/
     }
 }
-
 @media(max-width: 330px){
      .datetime-range {
          .edit-popover{
