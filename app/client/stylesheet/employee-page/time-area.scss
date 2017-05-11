@@ -82,6 +82,10 @@
 
     .time-control-buttons-cotainer {
         width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        min-width: 320px;
 
         .buttons {
             width: 360px;
