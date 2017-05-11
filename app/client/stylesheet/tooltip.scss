@@ -3,21 +3,19 @@
     display: inline-block;
 
     .tooltiptext {
-        visibility: hidden;
-        width: 120px;
-        background-color: black;
-        color: #fff;
+        width: 65px;
+        color: black;
         text-align: center;
-        border-radius: 6px;
-        padding: 5px 0;
+        padding: 3px 0;
 
         position: absolute;
-        left: -33px;
+        left: -6px;
         top: 52px;
         z-index: 1;
     }
 
     &:hover .tooltiptext {
-        visibility: visible;
+        border: 1px solid black;
+        border-radius: 6px;
     }
 }
