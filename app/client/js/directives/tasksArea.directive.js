@@ -15,7 +15,7 @@ function TasksAreaDirectiveController($scope, ngDialog) {
             template: '../../templates/dialogs/dialog-form-task.html',
             className: 'ngdialog-theme-default',
             scope: $scope,
-            height: 270,
+            height: 280,
             width: 420,
             name: "new_task_form",
             controller: NewTaskFormController
