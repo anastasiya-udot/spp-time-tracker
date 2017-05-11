@@ -10,7 +10,28 @@
 
         .datetime-range {
             margin-top: 20px;
+            min-width: 320px;
+
+            .start-datetime {
+                position: absolute;
+                width: calc(100%/2 - 32px);
+            }
+
+            .start-datetime:after{
+                right: -0.987em;
+            }
+
+            .end-datetime {
+                position: absolute;
+                left: 49%;
+                width: calc(100%/2 - 32px);
+            }
+
+           .end-datetime:before{
+                left: -0.89em;
+           }
         }
+            
         
         .result {
             margin-top: 20px;
@@ -48,4 +69,13 @@
             }
         }
     }
+}
+
+@media(max-width: 330px){
+     .datetime-range {
+         .edit-popover{
+             width:91%;
+         }
+     }
+
 }
