@@ -11,9 +11,9 @@ function DrawTimerContoller() {
             }
             return color;
         },
-        initCircle: function(elementId, animation, startValue, value) {
+        initActiveCircle: function(elementId, animation, startValue) {
             $(elementId).circleProgress({
-                value: value,
+                value: 1,
                 size: 250,
                 startAngle: -Math.PI / 2,
                 fill: {
@@ -22,6 +22,17 @@ function DrawTimerContoller() {
                 animation: animation,
                 animationStartValue: startValue
             });
+        },
+        initStaticCircle: function(elementId, value) {
+             $(elementId).circleProgress({
+                value: value,
+                size: 250,
+                startAngle: -Math.PI / 2,
+                fill: {
+                    gradient: [this.getRandomColor(), this.getRandomColor()],
+                },
+                animation: false
+             });
         }
     }
 } 

@@ -9,17 +9,26 @@ function PieChartWeekDirective() {
     }
 }
 
-function PieChartWeekDirectiveController($scope, DrawTimer) {
-    var elementId = "#circle-week";
-    var animation = { duration: 6000 };
-    var startValue = 0.0;
-    var value = 1;
+function PieChartWeekDirectiveController($scope, DrawTimer, WeekService) {
 
-    DrawTimer.initCircle(elementId, animation, startValue, value);
+    $scope.weekDisplay = moment().startOf('week').format('MMMM Do') +
+        " - " + moment().endOf('week').format('MMMM Do');
 
-    $(elementId).on("circle-animation-end", function() {
-        DrawTimer.initCircle(elementId, { duration: 10000 }, startValue, value);
+    $(WeekService.elementId).on("circle-animation-end", function() {
+        DrawTimer.initActiveCircle(WeekService.elementId, { duration: WeekService.requiredWorktime }, 0.0);
     });
+
+    $scope.prevWeekClicked = function() {
+        WeekService.setPreviousWeekDates(function() {});
+        $scope.weekDisplay = WeekService.generateDisplay();
+        WeekService.drawTimer();
+    };
+    
+    $scope.nextWeekClicked = function() {
+        WeekService.setNextWeekDates(function() {});
+        $scope.weekDisplay = WeekService.generateDisplay();
+        WeekService.drawTimer();
+    };
 }
 
-PieChartWeekDirectiveController.$inject = ["$scope", "DrawTimer"];
+PieChartWeekDirectiveController.$inject = ["$scope", "DrawTimer", "WeekService"];

@@ -1,6 +1,6 @@
 .dialog-content {
 
-    &.form {
+    &.form {    
         height: 345px;
         margin-top: 15px;
 
@@ -24,7 +24,12 @@
         .buttons-area {
             display: flex;
             justify-content: center;
+
+            .dialog-button {
+                margin-left: 2px;
+                margin-right: 2px;
             }
         }
     }
+}
 
