@@ -3,9 +3,9 @@ TimeTrackerApplication
 
 function PatternServiceController() {
     return {
-        name: "^[\\da-zA-Z]{3,20}$",
+        name: "^[\\dа-яА-ЯёЁa-zA-Z]{3,20}$",
         email: "^[\\da-zA-Z]+([\\.\\-\\_][\\da-zA-Z]+)*@[\\da-zA-Z]+\\.[a-zA-Z]+$",
         password: "^[\\da-zA-Z]{8,15}$",
-        company: "^([\\da-zA-Z]+[-., ])+[\\da-zA-Z]+[.]{,1};"
+        company: "^([\\dа-яА-ЯёЁa-zA-Z]+[-., ])+[\\dа-яА-ЯёЁa-zA-Z]+[.]{,1};"
     }
 }
