@@ -18,5 +18,9 @@ function setApplicationConfig($routeProvider) {
         .when('/employee/:id', {
             controller: 'EmployeePageController',
             templateUrl: '../public/templates/employee-page/index.html'
-        });
+        })
+        /*.when('/tables/:id', {
+            controller: 'TablesPageController',
+            templateUrl: '../public/templates/tables-page/index.html'
+        })*/;
 }
