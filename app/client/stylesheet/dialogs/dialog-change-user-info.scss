@@ -1,0 +1,45 @@
+.dialog-content {
+
+    &.info {
+        margin-top: 15px;
+        display: flex;
+        flex-direction: column;
+
+        .section-name {
+            padding-left: 10px;
+            margin-top: 10px;
+        }
+
+        .workday-input {
+            margin: auto;
+            margin-top: 20px;
+            margin-bottom: 17px;
+            width: 96%;
+            height: 35px;
+            background-color: #beafaf;
+            border-radius: 0px;
+            border-color: #721c1c; 
+
+            &.wrap-dd-select{
+                color: black;
+
+                .selected {
+                    text-align: center;
+                    font-weight: normal; 
+                }
+
+                &:after {
+                    border-color: black transparent;
+                }
+            }   
+        }
+
+        ul.dropdown {
+            height: 88px;
+            
+            .dropdown-item {
+                color: black; 
+            }
+        }
+    }
+}

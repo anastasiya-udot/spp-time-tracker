@@ -5,13 +5,13 @@ function ApplicationHeaderDirective() {
     return {
         restrict: 'E',
         templateUrl: '../../templates/front-page/header.html',
-        controller: applicationHeaderDirectiveController
+        controller: ApplicationHeaderDirectiveController
     }
 }
 
 
 
-function applicationHeaderDirectiveController($scope, InitialPageLoader, _) {
+function ApplicationHeaderDirectiveController($scope, InitialPageLoader, ngDialog, _) {
     $scope.tabs = {};
 
     function resetTabs() {
@@ -28,6 +28,19 @@ function applicationHeaderDirectiveController($scope, InitialPageLoader, _) {
         $scope.tabs[tab] = true;
         InitialPageLoader.setTab(tab);
     };
+
+
+    $scope.openChangeUserInfoDialog = function() {
+        ngDialog.open({
+            template: '../../templates/dialogs/dialog-change-user-info.html',
+            className: 'ngdialog-theme-default',
+            scope: $scope,
+            height: 230,
+            width: 500,
+            name: "user_info",
+            controller: ChangeUserInfoDialogController
+        });
+    }
 }
 
-applicationHeaderDirectiveController.$inject = ['$scope', 'InitialPageLoader', '_'];
+ApplicationHeaderDirectiveController.$inject = ['$scope', 'InitialPageLoader', 'ngDialog', '_'];

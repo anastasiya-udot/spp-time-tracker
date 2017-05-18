@@ -2,7 +2,10 @@ let TimeTrackerApplication = angular.module('time-tracker', [
         'ngRoute',
         'underscore',
         'ngDropdowns',
-        'ngMessages'
+        'ngMessages',
+        'g1b.datetime-range',
+        'ui.bootstrap.datetimepicker',
+        'ngDialog'
     ])
     .config(setApplicationConfig);
 
