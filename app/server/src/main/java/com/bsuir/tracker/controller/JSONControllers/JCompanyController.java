@@ -32,27 +32,38 @@ import java.util.HashMap;
  * Created by Pavel on 18.05.2017.
  */
 @Controller
-@RequestMapping(value = "/authorization")
-public class JRegisterController {
+public class JCompanyController {
     private static  final Logger logger = Logger.getLogger(ImageController.class);
-    public JRegisterController(){
-        System.out.println("JRegisterController Initializer");
+    public JCompanyController(){
+        System.out.println("JCompanyController Initializer");
     }
 
     @Autowired
-    private EmployeeService employeeService;
-    @Autowired
-    private ImageService imageService;
-    @Autowired
     private CompanyService companyService;
-    @Autowired
-    private RoleService roleService;
     @Autowired
     private GetTokenService getTokenService;
 
-    @RequestMapping(value = "/new-user", method = RequestMethod.POST)
+    @RequestMapping(value = "/companies/get", method = RequestMethod.GET)
     @ResponseBody
-    public ResponseEntity new_user(@RequestBody @Validated EmployeeEntity employee, BindingResult bindingResult) throws IOException {
+    public ResponseEntity index_angular() throws Exception{
+        Map<String, Map<String, List<Object>>> response = new HashMap<>();
+        try {
+            List<Object> listCompanyObjects = companyService.getAllCompaniesNameId();
+            Map<String, List<Object>> resultMap = new HashMap<>();
+            resultMap.put("companies", listCompanyObjects);
+            response.put("data", resultMap);
+            return ResponseEntity.status(HttpStatus.OK).body(response);
+        }
+        catch (Exception e)
+        {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        }
+    }
+
+    /*
+    @RequestMapping(value = "/companies/get", method = RequestMethod.GET)
+    @ResponseBody
+    public ResponseEntity companies_get(@RequestBody @Validated EmployeeEntity employee, BindingResult bindingResult) throws IOException {
         Map<String, Object> response = new HashMap<>();
         if(bindingResult.hasErrors()){
             response.put("error", "Data Binding Error");
@@ -129,5 +140,5 @@ public class JRegisterController {
         {
             return false;
         }
-    }
+    }*/
 }
