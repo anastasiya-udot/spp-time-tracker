@@ -14,6 +14,8 @@ public interface CompanyService {
 
     public List<CompanyEntity> getAllCompanies();
 
+    public List<Object> getAllCompaniesNameId();
+
     public CompanyEntity updateCompany(CompanyEntity company);                                                  //U
 
     public void deleteCompany(int idCompany);                                                   //D

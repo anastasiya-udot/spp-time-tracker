@@ -55,6 +55,19 @@ public class CompanyDAOImpl implements CompanyDAO {
     }
 
     @Override
+    public List<Object> getAllCompaniesNamesId()
+    {
+        List<Object> result = null;
+        try {
+            result = sessionFactory.getCurrentSession().createQuery("select CompanyEntity .id, CompanyEntity.name from CompanyEntity").list();
+        }
+        catch (Exception e){
+            System.out.println(e);
+        }
+        return result;
+    }
+
+    @Override
     public CompanyEntity updateCompany(CompanyEntity company) {
         if (company == null){
             throw new IllegalArgumentException();

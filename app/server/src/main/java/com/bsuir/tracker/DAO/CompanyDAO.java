@@ -15,6 +15,8 @@ public interface CompanyDAO {
 
     public List<CompanyEntity> getAllCompanies();
 
+    public List<Object> getAllCompaniesNamesId();
+
     public CompanyEntity updateCompany(CompanyEntity company);                                                  //U
 
     public void deleteCompany(int idCompany);                                                   //D

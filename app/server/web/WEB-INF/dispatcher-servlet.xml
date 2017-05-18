@@ -6,7 +6,8 @@
 
 
 
-    <mvc:resources mapping="/resources/**" location="/" />
+    <!--<mvc:resources mapping="/resources/**" location="/" />-->
+    <mvc:resources mapping="/public/**" location="/public/" />
     <bean id="dataSource" class="org.apache.tomcat.jdbc.pool.DataSource" destroy-method="close">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
         <property name="url" value="jdbc:mysql://localhost:3306/spp-time-tracker?serverTimezone=UTC"/>
@@ -34,8 +35,10 @@
     </bean>
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix" value="/WEB-INF/Views/" />
-        <property name="suffix" value=".jsp" />
+        <!--<property name="prefix" value="/WEB-INF/Views/" />
+        <property name="suffix" value=".jsp" />-->
+        <property name="prefix" value="/public/" />
+        <property name="suffix" value=".html" />
     </bean>
 
     <mvc:interceptors>
