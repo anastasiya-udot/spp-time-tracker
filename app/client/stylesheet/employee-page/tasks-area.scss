@@ -1,5 +1,6 @@
 .profile-tasks-area{
     width: 100%;
+    margin-bottom: 60px;
 
      .profile-tasks-header-container {
 
@@ -30,6 +31,7 @@
                     position: absolute;
                     bottom: 25px;
                     left: 125px;
+                    max-width: 40vw;
                 }
             }
 
@@ -79,14 +81,21 @@
         }
 
         .tasks-list-item-add {
+
             @include commonItem();
             margin-top: 3px;
+            padding-left: 0px;
+            opacity: 1;
 
             .text {
                 font-size: 20px;
                 color: gray;
-                padding-left: 50px;
+                margin: auto;
             }
+
+             &:hover {
+                cursor: pointer;
+             }
 
             .add-sign {
                 background-image: url('../../assets/Plus-50.png');
@@ -102,27 +111,16 @@
 
         .tasks-list-item {
             @include commonItem();
-           // padding-left: 60px;
                 padding-left: 0;
                 flex-wrap: wrap;
                 justify-content: space-around;
 
-           /* .tasks-list-item-remove {
-                background-image: url('../../assets/delete.png');
-                background-size: cover;
-                width: 45px;
-                height: 53px;
-                margin-left: 5px;
-
-                &:hover {
-                    cursor: pointer;
-                }*/
                  .remove-button {
                     
                      &:hover {
-                      text-decoration: underline;
-                      color: #721c1c;
-                      cursor: pointer;
+                        font-weight: bold;
+                        color: #721c1c;
+                        cursor: pointer;
                      }
                  }
             }
@@ -138,10 +136,12 @@
                 }
 
                 .description {
-                    max-width: 400px;
+                    max-width: 60vw;
+                    width: 60vw;
                     overflow: hidden;
                     text-overflow: ellipsis;
                     max-height: 20px;
+                    white-space: nowrap;
                 }
 
                 .date {

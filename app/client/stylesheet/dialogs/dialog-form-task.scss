@@ -1,5 +1,7 @@
 .dialog-content{
     &.task {
+        margin-bottom: 20px;
+        
         .input-add-task{
                 display: flex;
                 flex-direction: column;
@@ -9,6 +11,7 @@
             .task-code{
                 background-color: #beafaf;
                 margin-top: 0;
+                border-width: 0;
                 outline-color: #721c1c;
                 width: 100%;
             }
@@ -20,10 +23,10 @@
                 padding-left: 8px;
             }
             .task-description{
-                        background-color: #beafaf;
-                        margin-top: 0;
-                        outline-color: #721c1c;
-                        width: 100%;
+                    background-color: #beafaf;
+                    margin-top: 0;
+                    outline-color: #721c1c;
+                    width: 100%;
             }
         }
     }

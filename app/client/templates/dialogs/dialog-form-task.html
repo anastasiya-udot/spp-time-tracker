@@ -3,11 +3,11 @@
     <div class="dialog-content task">
         <div class="input-add-task">
             <span class="task-code-lable">Enter code</span>
-            <input type="text" class="task-code">
+            <input type="text" class="task-code" ng-model="newTaskCode" ng-change="newTaskCodeChanged()">
             <span class="task-description-lable">Enter description</span>
             <textarea cols="50" rows="3" class="task-description"></textarea>
         </div>
     </div>
-    <div class="add-new-task dialog-button" ng-click="openNewRequestForm()">Save</div>
+    <div class="add-new-task dialog-button" ng-click="addNewTask()" ng-hide="!newTaskCode">Save</div>
 </div>
 

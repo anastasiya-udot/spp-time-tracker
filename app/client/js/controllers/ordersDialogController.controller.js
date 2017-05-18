@@ -7,7 +7,7 @@ function OrdersDialogController($scope, ngDialog) {
             template: '../../templates/dialogs/dialog-order-tasks.html',
             className: 'ngdialog-theme-default',
             scope: $scope,
-            height: 220,
+            height: 230,
             width: 500,
             name: "order_tasks",
             controller: OrderTasksDialogController
@@ -19,7 +19,7 @@ function OrdersDialogController($scope, ngDialog) {
             template: '../../templates/dialogs/dialog-order-worktime.html',
             className: 'ngdialog-theme-default',
             scope: $scope,
-            height: 220,
+            height: 230,
             width: 500,
             name: "order_worktime",
             controller: OrderWorktimeDialogController
