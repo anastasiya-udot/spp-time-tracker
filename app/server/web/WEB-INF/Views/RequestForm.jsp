@@ -27,6 +27,18 @@
                 <td><form:input path="date" /></td>
             </tr>
             <tr>
+                <td>Date Start:</td>
+                <td><form:input path="start_period" /></td>
+            </tr>
+            <tr>
+                <td>Date End:</td>
+                <td><form:input path="end_period" /></td>
+            </tr>
+            <tr>
+                <td>Content:</td>
+                <td><form:input path="content" /></td>
+            </tr>
+            <tr>
                 <td colspan="2" align="center"><input type="submit" value="Save"></td>
             </tr>
         </table>
