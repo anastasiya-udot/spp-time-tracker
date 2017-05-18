@@ -43,7 +43,14 @@
                     </form:select>
                 </td>
             </tr>
-            <form:hidden path="roleIdrole"/>
+            <tr>
+                <td>Role ID:</td>
+                <td>
+                    <form:select path="roleIdrole">
+                        <form:options items="${roles}" itemValue="idrole" itemLabel="name" />
+                    </form:select>
+                </td>
+            </tr>
             <tr>
                 <td>Company ID:</td>
                 <td>

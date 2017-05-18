@@ -92,6 +92,10 @@ public class CompanyController {
             modelAndView.addObject("message", "Whoops, you're trying to delete entity that is still in use!");
             return modelAndView;
         }
+        catch (DataIntegrityViolationException e)
+        {
+            return GetErrorView("Whoops, something gone wrong with SQL data integrity!");
+        }
 }
 
     @RequestMapping(value = "/editCompany", method = RequestMethod.GET)
@@ -101,5 +105,11 @@ public class CompanyController {
         ModelAndView model = new ModelAndView("CompanyForm");
         model.addObject("company", company);
         return model;
+    }
+
+    private ModelAndView GetErrorView(String message)
+    {
+        ModelAndView modelAndView = new ModelAndView("redirect:/errorView?message=" + message);
+        return modelAndView;
     }
 }

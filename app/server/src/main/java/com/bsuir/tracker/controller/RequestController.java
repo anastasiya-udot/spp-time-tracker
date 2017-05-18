@@ -80,8 +80,20 @@ public class RequestController {
     @RequestMapping(value = "/deleteRequest", method = RequestMethod.GET)
     public ModelAndView deleteRequest(HttpServletRequest request) {
         int id = Integer.parseInt(request.getParameter("id"));
-        requestService.deleteRequest(id);
-        return new ModelAndView("redirect:/Backdoor/Requests");
+        try {
+            requestService.deleteRequest(id);
+            return new ModelAndView("redirect:/Backdoor/Requests");
+        }
+        catch (ConstraintViolationException e)
+        {
+            ModelAndView modelAndView = new ModelAndView("redirect:/errorView");
+            modelAndView.addObject("message", "Whoops, you're trying to delete entity that is still in use!");
+            return modelAndView;
+        }
+        catch (DataIntegrityViolationException e)
+        {
+            return GetErrorView("Whoops, something gone wrong with SQL data integrity!");
+        }
     }
 
     @RequestMapping(value = "/editRequest", method = RequestMethod.GET)
@@ -94,4 +106,9 @@ public class RequestController {
         return model;
     }
 
+    private ModelAndView GetErrorView(String message)
+    {
+        ModelAndView modelAndView = new ModelAndView("redirect:/errorView?message=" + message);
+        return modelAndView;
+    }
 }

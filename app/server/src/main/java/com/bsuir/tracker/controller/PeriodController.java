@@ -79,8 +79,20 @@ public class PeriodController {
     @RequestMapping(value = "/deletePeriod", method = RequestMethod.GET)
     public ModelAndView deletePeriod(HttpServletRequest request) {
         int id = Integer.parseInt(request.getParameter("id"));
-        periodService.deletePeriod(id);
-        return new ModelAndView("redirect:/Backdoor/Periods");
+        try {
+            periodService.deletePeriod(id);
+            return new ModelAndView("redirect:/Backdoor/Periods");
+        }
+        catch (ConstraintViolationException e)
+        {
+            ModelAndView modelAndView = new ModelAndView("redirect:/errorView");
+            modelAndView.addObject("message", "Whoops, you're trying to delete entity that is still in use!");
+            return modelAndView;
+        }
+        catch (DataIntegrityViolationException e)
+        {
+            return GetErrorView("Whoops, something gone wrong with SQL data integrity!");
+        }
     }
 
     @RequestMapping(value = "/editPeriod", method = RequestMethod.GET)
@@ -93,4 +105,9 @@ public class PeriodController {
         return model;
     }
 
+    private ModelAndView GetErrorView(String message)
+    {
+        ModelAndView modelAndView = new ModelAndView("redirect:/errorView?message=" + message);
+        return modelAndView;
+    }
 }

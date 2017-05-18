@@ -78,8 +78,20 @@ public class TaskController {
     @RequestMapping(value = "/deleteTask", method = RequestMethod.GET)
     public ModelAndView deleteTask(HttpServletRequest request) {
         int id = Integer.parseInt(request.getParameter("id"));
-        taskService.deleteTask(id);
-        return new ModelAndView("redirect:/Backdoor/Tasks");
+        try {
+            taskService.deleteTask(id);
+            return new ModelAndView("redirect:/Backdoor/Tasks");
+        }
+        catch (ConstraintViolationException e)
+        {
+            ModelAndView modelAndView = new ModelAndView("redirect:/errorView");
+            modelAndView.addObject("message", "Whoops, you're trying to delete entity that is still in use!");
+            return modelAndView;
+        }
+        catch (DataIntegrityViolationException e)
+        {
+            return GetErrorView("Whoops, something gone wrong with SQL data integrity!");
+        }
     }
 
     @RequestMapping(value = "/editTask", method = RequestMethod.GET)
@@ -92,4 +104,9 @@ public class TaskController {
         return model;
     }
 
+    private ModelAndView GetErrorView(String message)
+    {
+        ModelAndView modelAndView = new ModelAndView("redirect:/errorView?message=" + message);
+        return modelAndView;
+    }
 }

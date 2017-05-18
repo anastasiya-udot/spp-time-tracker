@@ -81,8 +81,20 @@ public class ImageController {
     @RequestMapping(value = "/deleteImage", method = RequestMethod.GET)
     public ModelAndView deleteImage(HttpServletRequest request) {
         int idImage = Integer.parseInt(request.getParameter("id"));
-        imageService.deleteImage(idImage);
-        return new ModelAndView("redirect:/Backdoor/Images");
+        try {
+            imageService.deleteImage(idImage);
+            return new ModelAndView("redirect:/Backdoor/Images");
+        }
+        catch (ConstraintViolationException e)
+        {
+            ModelAndView modelAndView = new ModelAndView("redirect:/errorView");
+            modelAndView.addObject("message", "Whoops, you're trying to delete entity that is still in use!");
+            return modelAndView;
+        }
+        catch (DataIntegrityViolationException e)
+        {
+            return GetErrorView("Whoops, something gone wrong with SQL data integrity!");
+        }
     }
 
     @RequestMapping(value = "/editImage", method = RequestMethod.GET)
@@ -93,6 +105,12 @@ public class ImageController {
         model.addObject("image", image);
 
         return model;
+    }
+
+    private ModelAndView GetErrorView(String message)
+    {
+        ModelAndView modelAndView = new ModelAndView("redirect:/errorView?message=" + message);
+        return modelAndView;
     }
 }
 

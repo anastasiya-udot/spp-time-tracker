@@ -3,6 +3,7 @@ package com.bsuir.tracker.controller;
 import java.io.IOException;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
+import javax.xml.crypto.Data;
 
 import com.bsuir.tracker.controller.security.GetTokenService;
 import org.hibernate.exception.ConstraintViolationException;
@@ -53,26 +54,23 @@ public class EmployeeController {
     @RequestMapping(value = "/saveEmployee", method = RequestMethod.POST)
     public ModelAndView saveEmployee(@ModelAttribute("employee") @Validated EmployeeEntity employee, BindingResult bindingResult) {
         if(bindingResult.hasErrors()){
-            ModelAndView modelAndView = new ModelAndView("redirect:/errorView");
-            modelAndView.addObject("message", "Whoops, something gone wrong with your input!");
-            return modelAndView;
+            return GetErrorView("Whoops, something gone wrong with your input!");
         }
         try {
             if (employee.getIdemployee() == 0) {
                 employeeService.addEmployee(employee);
             } else {
-                employeeService.updateEmployee(employee);
+                if(employeeService.updateEmployee(employee) == null)
+                {
+                    return GetErrorView("Whoops, cannot change last admin!");
+                }
             }
         }
         catch (ConstraintViolationException e) {
-            ModelAndView modelAndView = new ModelAndView("redirect:/errorView");
-            modelAndView.addObject("message", "Whoops, something gone wrong with ID-s!");
-            return modelAndView;
+            return GetErrorView("Whoops, something gone wrong with ID-s!");
         }
         catch (DataIntegrityViolationException e) {
-            ModelAndView modelAndView = new ModelAndView("redirect:/errorView");
-            modelAndView.addObject("message", "Whoops, something gone wrong with SQL data integrity!");
-            return modelAndView;
+            return GetErrorView("Whoops, something can gone wrong with SQL data integrity!");
         }
         return new ModelAndView("redirect:/Backdoor/Employees");
     }
@@ -80,11 +78,17 @@ public class EmployeeController {
     @RequestMapping(value = "/deleteEmployee", method = RequestMethod.GET)
     public ModelAndView deleteEmployee(HttpServletRequest request) {
         int idEmployee = Integer.parseInt(request.getParameter("id"));
-        if (idEmployee == getTokenService.getIdFromToken((String) request.getSession().getAttribute("token")))
+        try
         {
-            return new ModelAndView("redirect:/errorView?message=Cannot delete yourself");
+            if (idEmployee == getTokenService.getIdFromToken((String) request.getSession().getAttribute("token"))) {
+                return GetErrorView("Cannot delete yourself!");
+            }
+            employeeService.deleteEmployee(idEmployee);
         }
-        employeeService.deleteEmployee(idEmployee);
+        catch (DataIntegrityViolationException e)
+        {
+            return GetErrorView("Whoops, something gone wrong with SQL data integrity!");
+        }
         return new ModelAndView("redirect:/Backdoor/Employees");
     }
 
@@ -97,4 +101,9 @@ public class EmployeeController {
         return model;
     }
 
+    private ModelAndView GetErrorView(String message)
+    {
+        ModelAndView modelAndView = new ModelAndView("redirect:/errorView?message=" + message);
+        return modelAndView;
+    }
 }

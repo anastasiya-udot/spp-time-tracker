@@ -73,7 +73,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
         if (employee == null){
             throw new IllegalArgumentException();
         }
-        sessionFactory.getCurrentSession().update(employee);
+        sessionFactory.getCurrentSession().merge(employee); //Update
         return employee;
     }
 

@@ -175,9 +175,9 @@ public class EmployeeEntity {
     }
 
     public void setWorkdayIdworkdayType(Integer workdayIdworkdayType) {
-        if (workdayIdworkdayType < 0){
-            throw new IllegalArgumentException();
-        }
+        //if (workdayIdworkdayType < 0){
+        //    throw new IllegalArgumentException();
+        //}
         this.workdayIdworkdayType = workdayIdworkdayType;
     }
 

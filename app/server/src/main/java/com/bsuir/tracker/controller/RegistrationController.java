@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
+import com.bsuir.tracker.Service.RoleService;
+import com.bsuir.tracker.entity.RoleEntity;
 import org.hibernate.exception.ConstraintViolationException;
 import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +39,8 @@ public class RegistrationController {
     private ImageService imageService;
     @Autowired
     private CompanyService companyService;
+    @Autowired
+    private RoleService roleService;
 
     @RequestMapping(value = "/Registration")
     public ModelAndView Registration(ModelAndView model) throws IOException {
@@ -49,6 +53,9 @@ public class RegistrationController {
         List<CompanyEntity> companyEntityList = companyService.getAllCompanies();
         model.addObject("companies", companyEntityList);
 
+        List<RoleEntity> roleEntityList = roleService.getAllRoles();
+        model.addObject("roles", roleEntityList);
+
         model.setViewName("Registration");
         return model;
     }
@@ -59,7 +66,7 @@ public class RegistrationController {
             return GetErrorView("Whoops, something gone wrong with your input!");
         }
         try {
-            if ((employee.getIdemployee() == 0) && (repeat_password == employee.getPassword()) && (CheckNoSuchUser(employee)))
+            if ((employee.getIdemployee() == 0) && (repeat_password.equals(employee.getPassword())) && (CheckNoSuchUser(employee)))
             {
                 employeeService.addEmployee(employee);
             } else {

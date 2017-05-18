@@ -79,8 +79,20 @@ public class RoleController {
     @RequestMapping(value = "/deleteRole", method = RequestMethod.GET)
     public ModelAndView deleteRole(HttpServletRequest request) {
         int idRole = Integer.parseInt(request.getParameter("id"));
-        roleService.deleteRole(idRole);
-        return new ModelAndView("redirect:/Backdoor/Roles");
+        try {
+            roleService.deleteRole(idRole);
+            return new ModelAndView("redirect:/Backdoor/Roles");
+        }
+        catch (ConstraintViolationException e)
+        {
+            ModelAndView modelAndView = new ModelAndView("redirect:/errorView");
+            modelAndView.addObject("message", "Whoops, you're trying to delete entity that is still in use!");
+            return modelAndView;
+        }
+        catch (DataIntegrityViolationException e)
+        {
+            return GetErrorView("Whoops, something gone wrong with SQL data integrity!");
+        }
     }
 
     @RequestMapping(value = "/editRole", method = RequestMethod.GET)
@@ -90,5 +102,11 @@ public class RoleController {
         ModelAndView model = new ModelAndView("RoleForm");
         model.addObject("role", role);
         return model;
+    }
+
+    private ModelAndView GetErrorView(String message)
+    {
+        ModelAndView modelAndView = new ModelAndView("redirect:/errorView?message=" + message);
+        return modelAndView;
     }
 }
