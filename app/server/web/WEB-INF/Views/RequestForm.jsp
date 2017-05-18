@@ -11,7 +11,7 @@
 <body>
 <div align="center">
     <h1>New/Edit Image</h1>
-    <form:form action="saveRequest" method="post" modelAttribute="request">
+    <form:form action="/Backdoor/saveRequest" method="post" modelAttribute="request">
         <table>
             <form:hidden path="idrequest"/>
             <tr>
@@ -25,6 +25,18 @@
             <tr>
                 <td>Date:</td>
                 <td><form:input path="date" /></td>
+            </tr>
+            <tr>
+                <td>Date Start:</td>
+                <td><form:input path="start_period" /></td>
+            </tr>
+            <tr>
+                <td>Date End:</td>
+                <td><form:input path="end_period" /></td>
+            </tr>
+            <tr>
+                <td>Content:</td>
+                <td><form:input path="content" /></td>
             </tr>
             <tr>
                 <td colspan="2" align="center"><input type="submit" value="Save"></td>

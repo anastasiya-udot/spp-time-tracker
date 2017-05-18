@@ -12,7 +12,7 @@
 <div align="center">
     <h1>Roles List</h1>
     <h3>
-        <a href="/newRole">New Role</a>
+        <a href="/Backdoor/newRole">New Role</a>
     </h3>
     <table border="1">
         <th>ID</th>
@@ -24,11 +24,12 @@
                 <td>${role.idrole}</td>
                 <td>${role.name}</td>
                 <td>${role.code}</td>
-                <td><a href="editRole?id=${role.idrole}">Edit</a>
-                    <a href="deleteRole?id=${role.idrole}">Delete</a></td>
+                <td><a href="/Backdoor/editRole?id=${role.idrole}">Edit</a>
+                    <a href="/Backdoor/deleteRole?id=${role.idrole}">Delete</a></td>
             </tr>
         </c:forEach>
     </table>
+    <h3><a href="/Backdoor/List">Go To List</a><h3/>
 </div>
 </body>
 </html>

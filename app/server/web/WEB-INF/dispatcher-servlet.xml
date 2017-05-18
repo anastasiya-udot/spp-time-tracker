@@ -37,4 +37,11 @@
         <property name="prefix" value="/WEB-INF/Views/" />
         <property name="suffix" value=".jsp" />
     </bean>
+
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/Backdoor/*"/>
+            <bean class="com.bsuir.tracker.controller.security.AuthentificationInterceptor" />
+        </mvc:interceptor>
+    </mvc:interceptors>
 </beans>

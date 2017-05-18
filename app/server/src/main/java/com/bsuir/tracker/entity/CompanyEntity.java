@@ -22,7 +22,7 @@ public class CompanyEntity {
     }
 
     public void setIdcompany(int idcompany) {
-        if (idcompany < 0){
+        if (idcompany < 0) {
             throw new IllegalArgumentException();
         }
         this.idcompany = idcompany;
@@ -45,8 +45,11 @@ public class CompanyEntity {
     }
 
     public void setLogoIdimage(Integer logoIdimage) {
-        if (logoIdimage < 0){
-            throw new IllegalArgumentException();
+        if (null != logoIdimage)
+        {
+            if (logoIdimage < 0) {
+                throw new IllegalArgumentException();
+            }
         }
         this.logoIdimage = logoIdimage;
     }

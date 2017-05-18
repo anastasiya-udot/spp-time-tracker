@@ -21,7 +21,7 @@ public class indexController {
         System.out.println("ImageController Initializer");
     }
 
-    @RequestMapping(value = "/")
+    @RequestMapping(value = "/Backdoor/List")
     public ModelAndView listCompany(ModelAndView model) throws IOException {
         model.setViewName("index");
         return model;
@@ -30,6 +30,12 @@ public class indexController {
     @RequestMapping(value = "/errorView")
     public ModelAndView errorView(ModelAndView model) throws IOException {
         model.setViewName("ErrorView");
+        return model;
+    }
+
+    @RequestMapping(value = "/noPermission")
+    public ModelAndView noPermission(ModelAndView model) throws IOException {
+        model.setViewName("Unpermissioned");
         return model;
     }
 }

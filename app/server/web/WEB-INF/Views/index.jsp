@@ -16,41 +16,42 @@
         <th>Name</th>
         <tr>
             <td>1</td>
-            <td><a href="/Images">Image</a></td>
+            <td><a href="/Backdoor/Images">Image</a></td>
         </tr>
         <tr>
             <td>2</td>
-            <td><a href="/Companies">Company</a></td>
+            <td><a href="/Backdoor/Companies">Company</a></td>
         </tr>
         <tr>
             <td>3</td>
-            <td><a href="/Employees">Employe</a></td>
+            <td><a href="/Backdoor/Employees">Employe</a></td>
         </tr>
         <tr>
             <td>4</td>
-            <td><a href="/Projects">Project</a></td>
+            <td><a href="/Backdoor/Projects">Project</a></td>
         </tr>
         <tr>
             <td>5</td>
-            <td><a href="/Roles">Role</a></td>
+            <td><a href="/Backdoor/Roles">Role</a></td>
         </tr>
         <tr>
             <td>6</td>
-            <td><a href="/Requests">Request</a></td>
+            <td><a href="/Backdoor/Requests">Request</a></td>
         </tr>
         <tr>
             <td>7</td>
-            <td><a href="/WorkdayTypes">Workday Type</a></td>
+            <td><a href="/Backdoor//WorkdayTypes">Workday Type</a></td>
         </tr>
         <tr>
             <td>8</td>
-            <td><a href="/Periods">Period</a></td>
+            <td><a href="/Backdoor/Periods">Period</a></td>
         </tr>
         <tr>
             <td>9</td>
-            <td><a href="/Tasks">Task</a></td>
+            <td><a href="/Backdoor/Tasks">Task</a></td>
         </tr>
     </table>
+    <h3><a href="/LogOut">LogOut</a><h3/>
 </div>
 </body>
 </html>

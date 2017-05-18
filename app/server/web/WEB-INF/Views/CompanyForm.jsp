@@ -11,7 +11,7 @@
 <body>
 <div align="center">
     <h1>New/Edit Image</h1>
-    <form:form action="saveCompany" method="post" modelAttribute="company">
+    <form:form action="/Backdoor/saveCompany" method="post" modelAttribute="company">
         <table>
             <form:hidden path="idcompany"/>
             <tr>

@@ -12,7 +12,7 @@
 <div align="center">
     <h1>Projects List</h1>
     <h3>
-        <a href="/newWorkdayType">New Workday Type</a>
+        <a href="/Backdoor/newWorkdayType">New Workday Type</a>
     </h3>
     <table border="1">
         <th>ID</th>
@@ -24,12 +24,13 @@
                 <td>${workdayType.idworkdayType}</td>
                 <td>${workdayType.typename}</td>
                 <td>${workdayType.time}</td>
-                <td><a href="/editWorkdayType?id=${workdayType.idworkdayType}">Edit</a>
-                    <a href="/deleteWorkdayType?id=${workdayType.idworkdayType}">Delete</a></td>
+                <td><a href="/Backdoor/editWorkdayType?id=${workdayType.idworkdayType}">Edit</a>
+                    <a href="/Backdoor/deleteWorkdayType?id=${workdayType.idworkdayType}">Delete</a></td>
 
             </tr>
         </c:forEach>
     </table>
+    <h3><a href="/Backdoor/List">Go To List</a><h3/>
 </div>
 </body>
 </html>

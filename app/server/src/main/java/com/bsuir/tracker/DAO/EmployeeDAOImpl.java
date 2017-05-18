@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import com.bsuir.tracker.entity.CompanyEntity;
 
+import org.hibernate.query.Query;
 import java.util.List;
 
 /**
@@ -41,6 +42,21 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     }
 
     @Override
+    public EmployeeEntity getEmployeeByMail(String  email) {
+        EmployeeEntity result;
+        try {
+            Query query = sessionFactory.getCurrentSession().createQuery("from EmployeeEntity where email=:email");
+            query.setParameter("email", email);
+            result = (EmployeeEntity) query.uniqueResult();
+        }
+        catch (Exception e){
+            System.out.println(e);
+            throw new IllegalArgumentException();
+        }
+        return result;
+    }
+
+    @Override
     public List<EmployeeEntity> getAllEmployees() {
         List<EmployeeEntity> result = null;
         try {
@@ -57,7 +73,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
         if (employee == null){
             throw new IllegalArgumentException();
         }
-        sessionFactory.getCurrentSession().update(employee);
+        sessionFactory.getCurrentSession().merge(employee); //Update
         return employee;
     }
 

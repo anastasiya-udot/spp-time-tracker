@@ -12,7 +12,7 @@
 <div align="center">
     <h1>Projects List</h1>
     <h3>
-        <a href="/newProject">New Project</a>
+        <a href="/Backdoor/newProject">New Project</a>
     </h3>
     <table border="1">
         <th>ID</th>
@@ -26,12 +26,13 @@
                 <td>${project.name}</td>
                 <td>${project.description}</td>
                 <td>${project.companyIdcompany}</td>
-                <td><a href="editProject?id=${project.idproject}">Edit</a>
-                <a href="deleteProject?id=${project.idproject}">Delete</a></td>
+                <td><a href="/Backdoor/editProject?id=${project.idproject}">Edit</a>
+                <a href="/Backdoor/deleteProject?id=${project.idproject}">Delete</a></td>
 
             </tr>
         </c:forEach>
     </table>
+    <h3><a href="/Backdoor/List">Go To List</a><h3/>
 </div>
 </body>
 </html>

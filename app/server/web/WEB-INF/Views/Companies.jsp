@@ -12,7 +12,7 @@
 <div align="center">
     <h1>Company List</h1>
     <h3>
-        <a href="newCompany">New Company</a>
+        <a href="/Backdoor/newCompany">New Company</a>
     </h3>
     <table border="1">
 
@@ -29,12 +29,13 @@
                 <td>${company.logoIdimage}</td>
                 <td>${company.description}</td>
                 <td>${company.legalNumber}</td>
-                <td><a href="editCompany?id=${company.idcompany}">Edit</a>
-                    <a href="deleteCompany?id=${company.idcompany}">Delete</a></td>
+                <td><a href="/Backdoor/editCompany?id=${company.idcompany}">Edit</a>
+                    <a href="/Backdoor/deleteCompany?id=${company.idcompany}">Delete</a></td>
 
             </tr>
         </c:forEach>
     </table>
+    <h3><a href="/Backdoor/List">Go To List</a><h3/>
 </div>
 </body>
 </html>

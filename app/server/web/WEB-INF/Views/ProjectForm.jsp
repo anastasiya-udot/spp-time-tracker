@@ -6,12 +6,12 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>New/Edit Image</title>
+    <title>New/Edit Project</title>
 </head>
 <body>
 <div align="center">
-    <h1>New/Edit Image</h1>
-    <form:form action="saveProject" method="post" modelAttribute="project">
+    <h1>New/Edit Project</h1>
+    <form:form action="/Backdoor/saveProject" method="post" modelAttribute="project">
         <table>
             <form:hidden path="idproject"/>
             <tr>

@@ -11,8 +11,8 @@
 <body>
 <div align="center">
     <h1>Woops!</h1>
-    <h1>${message}</h1>
-    <h3><a href="/">Go Back</a></h3>
+    <h4><b><%= request.getParameter("message") %></b></h4>
+    <h3><a href="/Backdoor/List">Go Back</a></h3>
 </div>
 </body>
 </html>

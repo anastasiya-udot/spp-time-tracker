@@ -22,6 +22,7 @@ import com.bsuir.tracker.Service.WorkdayTypeService;
  * Created by Pavel on 25.04.2017.
  */
 @Controller
+@RequestMapping(value = "/Backdoor")
 public class WorkdayTypeController {
     private static  final Logger logger = Logger.getLogger(ImageController.class);
 
@@ -72,14 +73,26 @@ public class WorkdayTypeController {
             modelAndView.addObject("message", "Whoops, something gone wrong with SQL data integrity!");
             return modelAndView;
         }
-        return new ModelAndView("redirect:/WorkdayTypes");
+        return new ModelAndView("redirect:/Backdoor/WorkdayTypes");
     }
 
     @RequestMapping(value = "/deleteWorkdayType", method = RequestMethod.GET)
     public ModelAndView deleteWorkdayType(HttpServletRequest request) {
         int id = Integer.parseInt(request.getParameter("id"));
-        workdayTypeService.deleteWorkdayType(id);
-        return new ModelAndView("redirect:/WorkdayTypes");
+        try {
+            workdayTypeService.deleteWorkdayType(id);
+            return new ModelAndView("redirect:/Backdoor/WorkdayTypes");
+        }
+        catch (ConstraintViolationException e)
+        {
+            ModelAndView modelAndView = new ModelAndView("redirect:/errorView");
+            modelAndView.addObject("message", "Whoops, you're trying to delete entity that is still in use!");
+            return modelAndView;
+        }
+        catch (DataIntegrityViolationException e)
+        {
+            return GetErrorView("Whoops, something gone wrong with SQL data integrity!");
+        }
     }
 
     @RequestMapping(value = "/editWorkdayType", method = RequestMethod.GET)
@@ -89,5 +102,11 @@ public class WorkdayTypeController {
         ModelAndView model = new ModelAndView("WorkdayTypeForm");
         model.addObject("workday", workdayTypeEntity);
         return model;
+    }
+
+    private ModelAndView GetErrorView(String message)
+    {
+        ModelAndView modelAndView = new ModelAndView("redirect:/errorView?message=" + message);
+        return modelAndView;
     }
 }

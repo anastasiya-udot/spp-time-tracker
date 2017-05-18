@@ -11,7 +11,7 @@
 <body>
 <div align="center">
     <h1>New/Edit Period</h1>
-    <form:form action="savePeriod" method="post" modelAttribute="period">
+    <form:form action="/Backdoor/savePeriod" method="post" modelAttribute="period">
         <table>
             <form:hidden path="idperiod"/>
             <tr>

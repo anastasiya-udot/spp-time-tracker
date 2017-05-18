@@ -11,7 +11,7 @@ import java.sql.Time;
 public class WorkdayTypeEntity {
     private int idworkdayType;
     private String typename;
-    private Time time;
+    private int time;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,11 +36,11 @@ public class WorkdayTypeEntity {
 
     @Basic
     @Column(name = "time", nullable = true)
-    public Time getTime() {
+    public int getTime() {
         return time;
     }
 
-    public void setTime(Time time) {
+    public void setTime(int time) {
         this.time = time;
     }
 
@@ -53,7 +53,7 @@ public class WorkdayTypeEntity {
 
         if (idworkdayType != that.idworkdayType) return false;
         if (typename != null ? !typename.equals(that.typename) : that.typename != null) return false;
-        if (time != null ? !time.equals(that.time) : that.time != null) return false;
+        if (time != that.time) return false;
 
         return true;
     }
@@ -62,7 +62,7 @@ public class WorkdayTypeEntity {
     public int hashCode() {
         int result = idworkdayType;
         result = 31 * result + (typename != null ? typename.hashCode() : 0);
-        result = 31 * result + (time != null ? time.hashCode() : 0);
+        result = 31 * result + time;
         return result;
     }
 }
