@@ -12,7 +12,7 @@
             },
             getCurrentPageUserId: function(){
                 let url = $location.absUrl();
-                return url.split('/').splice(-1,1);
+                return url.split('/').splice(-1,1)[0];
             },
             startSession: function(token){
                 $window.sessionStorage.token = token;
