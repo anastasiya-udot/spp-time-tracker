@@ -2,11 +2,9 @@ TimeTrackerApplication
     .directive('emailValidation', EmailValidationDirective)
     .directive('passwordValidation', PasswordValidationDirective)
     .directive('nameValidation', NameValidationDirective)
-    .directive('companiesValidation', CompaniesValidationDirective)
     .directive('companyValidation', CompanyValidationDirective)
     .directive('confirmPasswordValidation', ConfirmPasswordValidationDirective)
     .directive('userExists', UserExistsDirective)
-    .directive('companyExists', CompanyExistsDirective)
     .directive('wrongPassword', WrongPasswordDirective)
     .directive('noUser', NoUserDirective);
 
@@ -25,7 +23,7 @@ function EmailValidationDirective(PatternService, InitialPageLoader) {
                 
 
                 form[input].$setValidity(errorType, result);
-                return result;
+                return value;
             });
         }
     }
@@ -43,7 +41,7 @@ function UserExistsDirective(InitialPageLoader) {
                 let form = scope[InitialPageLoader.currentTab + "Form"];
 
                 form[input].$setValidity(errorType, true);
-                return true;
+                return value;
             });
 
         }
@@ -62,7 +60,7 @@ function NoUserDirective(InitialPageLoader) {
                 let form = scope[InitialPageLoader.currentTab + "Form"];
 
                 form[input].$setValidity(errorType, true);
-                return true;
+                return value;
             });
 
         }
@@ -95,7 +93,7 @@ function PasswordValidationDirective(PatternService, InitialPageLoader) {
                 }
 
                 form[input].$setValidity(errorType, result);
-                return result;
+                return value;
             });
 
         }
@@ -114,7 +112,7 @@ function WrongPasswordDirective(InitialPageLoader) {
                 let form = scope[InitialPageLoader.currentTab + "Form"];
 
                 form[input].$setValidity(errorType, true);
-                return true;
+                return value;
             });
 
         }
@@ -136,7 +134,7 @@ function NameValidationDirective(PatternService, InitialPageLoader) {
 
                 form[input].$setValidity(errorType, result);
 
-                return result;
+                return value;
             });
 
         }
@@ -159,45 +157,45 @@ function CompanyValidationDirective(PatternService, InitialPageLoader) {
 
                 form[input].$setValidity(errorType, result);
 
-                return result;
+                return value;
             });
 
         }
     }
 }
 
-function CompaniesValidationDirective(InitialPageLoader, CompaniesService) {
-    return {
-        restrict: 'A',
-        link: function(scope, element, attr) {
-            let form = scope["signUpForm"];
-            let errorType = attr.companiesValidation;
-            let newCompany = scope.newCompany;
+// function CompaniesValidationDirective(InitialPageLoader, CompaniesService) {
+//     return {
+//         restrict: 'A',
+//         link: function(scope, element, attr) {
+//             let form = scope["signUpForm"];
+//             let errorType = attr.companiesValidation;
+//             let newCompany = scope.newCompany;
+//
+//             !newCompany && form.$setValidity(errorType, !!CompaniesService.getCompanies().length);
+//         }
+//     }
+// }
 
-            !newCompany && form.$setValidity(errorType, !!CompaniesService.getCompanies().length);
-        }
-    }
-}
-/*
-function CompanyExistsDirective(InitialPageLoader, CompaniesService) {
-    return {
-        restrict: 'A',
-        require: 'ngModel',
-        link: function(scope, element, attr, ngModel) {
-            let errorType = attr.companyExists;
-            let input = attr.name;
-
-            ngModel.$parsers.unshift(function(value) {
-                let form = scope[InitialPageLoader.currentTab + "Form"];
-                let result = CompaniesService.has(value);
-
-                form[input].$setValidity(errorType, !result);
-                return !result;
-            });
-
-        }
-    }
-}*/
+// function CompanyExistsDirective(InitialPageLoader, CompaniesService) {
+//     return {
+//         restrict: 'A',
+//         require: 'ngModel',
+//         link: function(scope, element, attr, ngModel) {
+//             let errorType = attr.companyExists;
+//             let input = attr.name;
+//
+//             ngModel.$parsers.unshift(function(value) {
+//                 let form = scope[InitialPageLoader.currentTab + "Form"];
+//                 let result = CompaniesService.has(value);
+//
+//                 form[input].$setValidity(errorType, !result);
+//                 return !result;
+//             });
+//
+//         }
+//     }
+// }
 
 function ConfirmPasswordValidationDirective(InitialPageLoader) {
     return {
@@ -215,10 +213,9 @@ function ConfirmPasswordValidationDirective(InitialPageLoader) {
 
                 if (dirtyPass) {
                     form[input].$setValidity(errorType, result);
-                    return result;
                 }
 
-                return true;
+                return value;
             });
         }
     }
@@ -229,9 +226,7 @@ EmailValidationDirective.$inject = ["PatternService", "InitialPageLoader"];
 PasswordValidationDirective.$inject = ["PatternService", "InitialPageLoader"];
 NameValidationDirective.$inject = ["PatternService", "InitialPageLoader"];
 ConfirmPasswordValidationDirective.$inject = ["InitialPageLoader"];
-CompaniesValidationDirective.$inject = ["InitialPageLoader", "CompaniesService"];
 UserExistsDirective.$inject = ["InitialPageLoader"];
 WrongPasswordDirective.$inject = ["InitialPageLoader"];
 NoUserDirective.$inject = ["InitialPageLoader"];
-CompanyExistsDirective.$inject = ["InitialPageLoader", "CompaniesService"];
 CompanyValidationDirective.$inject = ["PatternService", "InitialPageLoader"]

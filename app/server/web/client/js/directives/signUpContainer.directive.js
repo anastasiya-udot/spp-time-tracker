@@ -78,7 +78,7 @@ function SignUpContainerDirectiveController($scope, InitialPageLoader, Companies
             surname: $scope.signUpSurname,
             patronymic: $scope.signUpPatronymic,
             email: $scope.signUpEmail,
-            password: $scope.signUpEmail
+            password: $scope.signUpPassword
         };
 
         $scope.disableSave = true;
@@ -87,7 +87,7 @@ function SignUpContainerDirectiveController($scope, InitialPageLoader, Companies
             url = '/authorization/new-company/post';
             _.extend(data, {
                 company: $scope.companyName,
-                legalNumber: $scope.legalNumber,
+                legalNumber: $scope.registrationLegalNumber,
             });
 
             PostData(url, data, processResponseRegisterCompany);
