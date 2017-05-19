@@ -2,7 +2,7 @@ TimeTrackerApplication
     .controller('InitialPageController', InitialPageController);
 
 function InitialPageController($scope, CompaniesService) {
-   //  CompaniesService.get();
+     CompaniesService.get();
    $scope.unAuth = true;
 }
 

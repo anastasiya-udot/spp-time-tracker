@@ -10,6 +10,7 @@ import com.bsuir.tracker.entity.CompanyEntity;
 import com.bsuir.tracker.entity.EmployeeEntity;
 import com.bsuir.tracker.entity.ImageEntity;
 import com.bsuir.tracker.entity.RoleEntity;
+import com.bsuir.tracker.model.CompanyNameIdModel;
 import com.bsuir.tracker.model.UserAuthorizationModel;
 import org.hibernate.exception.ConstraintViolationException;
 import org.jboss.logging.Logger;
@@ -46,99 +47,18 @@ public class JCompanyController {
     @RequestMapping(value = "/companies/get", method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity index_angular() throws Exception{
-        Map<String, Map<String, List<Object>>> response = new HashMap<>();
+        Map<String, Map<String, List<CompanyNameIdModel>>> response = new HashMap<>();
         try {
-            List<Object> listCompanyObjects = companyService.getAllCompaniesNameId();
-            Map<String, List<Object>> resultMap = new HashMap<>();
+            List<CompanyNameIdModel> listCompanyObjects = companyService.getAllCompaniesNameId();
+            Map<String, List<CompanyNameIdModel>> resultMap = new HashMap<>();
             resultMap.put("companies", listCompanyObjects);
             response.put("data", resultMap);
-            return ResponseEntity.status(HttpStatus.OK).body(response);
+            System.out.println("" + resultMap);
+            return ResponseEntity.status(HttpStatus.OK).body(/*response*/ resultMap);
         }
         catch (Exception e)
         {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
     }
-
-    /*
-    @RequestMapping(value = "/companies/get", method = RequestMethod.GET)
-    @ResponseBody
-    public ResponseEntity companies_get(@RequestBody @Validated EmployeeEntity employee, BindingResult bindingResult) throws IOException {
-        Map<String, Object> response = new HashMap<>();
-        if(bindingResult.hasErrors()){
-            response.put("error", "Data Binding Error");
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
-        }
-        try {
-            if ((employee.getIdemployee() == 0) && (CheckNoSuchUser(employee)))
-            {
-                employeeService.addEmployee(employee);
-                return ResponseEntity.status(HttpStatus.OK).body(null);
-            } else {
-                response.put("error", "Email");
-                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
-            }
-        }
-        catch (ConstraintViolationException e) {
-            response.put("error", "Constraint Violation Error");
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
-        }
-        catch (DataIntegrityViolationException e) {
-            response.put("error", "SQL Data Integrity Error");
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
-        }
-    }
-
-    @RequestMapping(value = "/sign-in", method = RequestMethod.POST)
-    @ResponseBody
-    public ResponseEntity sign_in(@RequestBody @Validated UserAuthorizationModel userData, BindingResult bindingResult) throws IOException, Exception {
-        Map<String, Object> response = new HashMap<>();
-        if(bindingResult.hasErrors()){
-            response.put("error", "Data Binding Error");
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
-        }
-        try {
-            EmployeeEntity user = employeeService.getEmployeeByMail(userData.getEmail());
-            if (user != null)
-            {
-                String token = null;
-                token = getTokenService.getToken(user.getEmail(), user.getPassword());
-                if(token != null)
-                {
-                    response.put("token", token);
-                    return ResponseEntity.status(HttpStatus.OK).body(response);
-                }
-                else
-                {
-                    response.put("error", "password");
-                    return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
-                }
-            }
-            else
-            {
-                response.put("error", "email");
-                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
-            }
-        }
-        catch (ConstraintViolationException e) {
-            response.put("error", "Constraint Violation Error");
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
-        }
-        catch (DataIntegrityViolationException e) {
-            response.put("error", "SQL Data Integrity Error");
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
-        }
-    }
-
-    private boolean CheckNoSuchUser(EmployeeEntity employeeEntity)
-    {
-        if (null == employeeService.getEmployeeByMail(employeeEntity.getEmail()))
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }*/
 }
