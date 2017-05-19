@@ -22,8 +22,8 @@ public class AuthentificationInterceptor extends HandlerInterceptorAdapter {
     @Autowired
     private GetTokenService getTokenService;
 
-    private  String ADMINISTRATOR_ROLE_IDENTIFIER = "26";
-    private  String DIRECTOR_ROLE_IDENTIFIER = "31";
+    private String ADMINISTRATOR_ROLE_IDENTIFIER = "26";
+    private String DIRECTOR_ROLE_IDENTIFIER = "31";
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {

@@ -34,7 +34,7 @@ import java.util.HashMap;
 @Controller
 @RequestMapping(value = "/authorization")
 public class JRegisterController {
-    private static  final Logger logger = Logger.getLogger(ImageController.class);
+    /*private static  final Logger logger = Logger.getLogger(ImageController.class);
     public JRegisterController(){
         System.out.println("JRegisterController Initializer");
     }
@@ -129,5 +129,5 @@ public class JRegisterController {
         {
             return false;
         }
-    }
+    }*/
 }

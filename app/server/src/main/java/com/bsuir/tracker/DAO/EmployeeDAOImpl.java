@@ -43,7 +43,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 
     @Override
     public EmployeeEntity getEmployeeByMail(String  email) {
-        EmployeeEntity result;
+        EmployeeEntity result = null;
         try {
             Query query = sessionFactory.getCurrentSession().createQuery("from EmployeeEntity where email=:email");
             query.setParameter("email", email);

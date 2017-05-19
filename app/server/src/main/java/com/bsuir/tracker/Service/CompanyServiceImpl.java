@@ -32,6 +32,10 @@ public class CompanyServiceImpl implements CompanyService {
         return companyDAO.getAllCompanies();
     }
 
+    public CompanyEntity getCompanyByName(String  name){
+        return companyDAO.getCompanyByName(name);
+    }
+
     public List<CompanyNameIdModel> getAllCompaniesNameId(){
         return  companyDAO.getAllCompaniesNamesId();
     }
