@@ -1,10 +1,12 @@
 package com.bsuir.tracker.DAO;
 
 import com.bsuir.tracker.entity.CompanyEntity;
+import com.bsuir.tracker.model.CompanyNameIdModel;
 import org.springframework.stereotype.Repository;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import java.util.List;
@@ -55,11 +57,20 @@ public class CompanyDAOImpl implements CompanyDAO {
     }
 
     @Override
-    public List<Object> getAllCompaniesNamesId()
+    public List<CompanyNameIdModel> getAllCompaniesNamesId()
     {
-        List<Object> result = null;
+        List<CompanyNameIdModel> result = new ArrayList<CompanyNameIdModel>();
         try {
-            result = sessionFactory.getCurrentSession().createQuery("select CompanyEntity .id, CompanyEntity.name from CompanyEntity").list();
+            List<Object[]> tempResult = sessionFactory.getCurrentSession().createQuery("select company.id, company.name from CompanyEntity company").list();
+            if (tempResult != null)
+            {
+                for (Object[] tempObject : tempResult) {
+                    CompanyNameIdModel tempCompany =  new CompanyNameIdModel();
+                    tempCompany.setId((int)tempObject[0]);
+                    tempCompany.setName((String)tempObject[1]);
+                    result.add(tempCompany);
+                }
+            }
         }
         catch (Exception e){
             System.out.println(e);
