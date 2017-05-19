@@ -1,7 +1,7 @@
 TimeTrackerApplication
     .controller('OrderTasksDialogController', OrderTasksDialogController);
 
-function OrderTasksDialogController($scope) {
+function OrderTasksDialogController($scope, fileDialog) {
     $scope.start = moment().subtract(1, 'days');
     $scope.end = moment();
 
@@ -17,6 +17,13 @@ function OrderTasksDialogController($scope) {
             'end': moment().endOf('day')
         }
     ];
+
+
+    $scope.saveFile = function(){
+        fileDialog.saveAs(function(filename) {
+            // your code
+        });
+    }
 }
 
-OrderTasksDialogController.$inject = ['$scope'];
+OrderTasksDialogController.$inject = ['$scope', 'fileDialog'];

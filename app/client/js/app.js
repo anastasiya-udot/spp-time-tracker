@@ -5,7 +5,10 @@ let TimeTrackerApplication = angular.module('time-tracker', [
         'ngMessages',
         'g1b.datetime-range',
         'ui.bootstrap.datetimepicker',
-        'ngDialog'
+        'ngDialog',
+        'DWand.nw-fileDialog',
+        'ngFileSaver'
+
     ])
     .config(setApplicationConfig);
 
@@ -18,5 +21,9 @@ function setApplicationConfig($routeProvider) {
         .when('/employee/:id', {
             controller: 'EmployeePageController',
             templateUrl: '../templates/employee-page/index.html'
+        }) 
+        .when('/tables/:id', {
+            controller: 'TablesPageController',
+            templateUrl: '../templates/tables-page/index.html'
         });
 }
