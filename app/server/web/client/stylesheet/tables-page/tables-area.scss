@@ -1,0 +1,51 @@
+.generate_button_area{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 20px;
+
+    .generate_button{
+        border: none;
+        background-color: lightslategray;
+        opacity: 1;
+        margin: 0 20px 10px 20px;
+    }
+    
+    .generate_button:hover{
+        opacity: 0.8;
+        cursor: pointer;
+    }
+    
+}
+
+.employee_table{
+    background: white;
+    .btn-group{
+        width: 100%;        
+        display: flex;
+        justify-content: center;
+        flex-wrap: nowrap;
+    }
+    .role_button{
+        border: none;
+        background-color: lightslategray;
+        opacity: 1;
+        width: 80%;
+    }
+    .role_button:focus{
+        outline: none;
+    }
+
+    .drop_role_button{
+        border: none;
+        background-color: lightslategray;
+        opacity: 1;
+    }
+
+    .dropdown-menu{
+        text-align: center;
+        margin-left: 10px;
+        width: 188px;
+    }
+
+}
