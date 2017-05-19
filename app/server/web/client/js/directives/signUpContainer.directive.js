@@ -52,14 +52,24 @@ function SignUpContainerDirectiveController($scope, InitialPageLoader, Companies
         this.newCompany = false;
     };
 
-    $scope.companies = _.map(CompaniesService.getCompanies(), function (model) {
-        return {
-            text: model.name,
-            value: model.id
-        };
+    function getCompanies() {
+        var deferred = $.Deferred();
+        CompaniesService.get(deferred.resolve);
+        return deferred.promise();
+    }
+
+   getCompanies().done(function(){
+        $scope.companies =  _.map(CompaniesService.getCompanies(), function (model) {
+            return {
+                text: model.name,
+                value: model.id
+            };
+        });
+       $scope.company = $scope.companies[0] || { text: "No companies"};
     });
 
-    $scope.company = $scope.companies[0] || { text: "No companies"};
+    $scope.companies = [];
+    $scope.company = { text: "No companies"};
     
     $scope.sendSignUpForm = function() {
         let url;

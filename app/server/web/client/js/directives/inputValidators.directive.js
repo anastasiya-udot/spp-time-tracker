@@ -178,7 +178,7 @@ function CompaniesValidationDirective(InitialPageLoader, CompaniesService) {
         }
     }
 }
-
+/*
 function CompanyExistsDirective(InitialPageLoader, CompaniesService) {
     return {
         restrict: 'A',
@@ -197,7 +197,7 @@ function CompanyExistsDirective(InitialPageLoader, CompaniesService) {
 
         }
     }
-}
+}*/
 
 function ConfirmPasswordValidationDirective(InitialPageLoader) {
     return {

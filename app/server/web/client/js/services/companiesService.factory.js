@@ -6,32 +6,12 @@ function CompaniesServiceController(GetData, _) {
         errors: {
             companies: false
         },
-        companies: [
-            {
-                id: 1,
-                name: "Happy Tree Friends"
-            },
-            {
-                id: 2,
-                name: "My Duck's vision"
-            },
-            {
-                id: 3,
-                name: "Abstergo Entertainment"
-            },
-            {
-                id: 4,
-                name: "Epam Global"
-            },
-            {
-                id: 5,
-                name: "Resilio Inc."
-            }
-        ],
+        companies: [],
         _processResponse: function(res) {
+            this.errors = {};
             switch (res.status) {
                 case 200: {
-                    this.companies = res.companies;
+                    this.companies = res.data.companies;
                     this.errors.companies = false;
                 }; break;
                 case 500: {
@@ -48,8 +28,11 @@ function CompaniesServiceController(GetData, _) {
         getCompanies: function() {
             return this.companies;
         },
-        get: function() {
-            GetData('/companies/get', this._processResponse);
+        get: function(callback) {
+            GetData('/companies/get', _.bind(function(res) {
+                this._processResponse(res);
+                callback();
+            }, this));
         }
     }
 }
