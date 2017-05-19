@@ -1,7 +1,9 @@
 TimeTrackerApplication
     .controller('ExplanatoryListDialogController', ExplanatoryListDialogController);
 
-function ExplanatoryListDialogController($scope, ngDialog) {
+function ExplanatoryListDialogController($scope, ngDialog, RequestsService) {
+
+    $scope.requests =  RequestsService.getRequests();
 
     $scope.openFormForExplanatory = function() {
         ngDialog.open({
@@ -26,6 +28,8 @@ function ExplanatoryListDialogController($scope, ngDialog) {
             controller: NewRequestFormController
         });
     }
+
+    $scope.requests =  RequestsService.getRequests();
 }
 
-ExplanatoryListDialogController.$inject = ['$scope', 'ngDialog'];
+ExplanatoryListDialogController.$inject = ['$scope', 'ngDialog', 'RequestsService'];

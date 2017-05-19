@@ -9,7 +9,10 @@ function TasksAreaDirective() {
     }
 }
 
-function TasksAreaDirectiveController($scope, ngDialog) {
+function TasksAreaDirectiveController($scope, ngDialog, TasksService) {
+
+    $scope.tasks = TasksService.getTasks();
+
     $scope.openAddNewTaskForm = function() {
         ngDialog.open({
             template: '../../public/templates/dialogs/dialog-form-task.html',
@@ -35,4 +38,4 @@ function TasksAreaDirectiveController($scope, ngDialog) {
     };
 }
 
-TasksAreaDirectiveController.$inject = ["$scope", "ngDialog"];
+TasksAreaDirectiveController.$inject = ["$scope", "ngDialog", "TasksService"];

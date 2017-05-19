@@ -1,39 +1,15 @@
-<div class="profile-tasks-area">
-    <div class="profile-tasks-header-container">
-        <div class="profile-tasks-header">
-            <span class="block-name">
-            Projects:
-            </span>
-            <span class="name"></span>
-        </div>
-        <div class="projects-list">
-            <div class="button-left"></div>
-            <div class="project-name-number">
-                <span class="number">01</span>
-                <span class="name">New Project Name</span>
-            </div>
-            <div class="button-right"></div>
-        </div>
-    </div>
+<div class="profile-tasks-area">    
     <div class="tasks-list">
         <div class="tasks-list-item-add" ng-click="openAddNewTaskForm()">
             <span class="text">Add new task</span>
         </div>
-        <div class="tasks-list-item">
+        <div class="tasks-list-item" ng-repeat="task in tasks">
             <div class="task-info">
-                <div class="code">SYS-1</div>
-                <div class="description">I've already crerated this funderful page fefsfgregegrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrg</div>
-                <div class="date">07.05.2017</div>
+                <div class="code">{{task.code}}</div>
+                <div class="description">{{task.description}}</div>
+                <div class="date">{{task.date}}</div>
             </div>
             <div class="remove-button" ng-click="openConfirmDeleteDialog()">Remove </div>
-        </div>
-         <div class="tasks-list-item">
-            <div class="task-info">
-                <div class="code">SYS-1</div>
-                <div class="description">I've already crerated this funderful page</div>
-                <div class="date">07.05.2017</div>
-            </div>
-            <div class="remove-button">Remove </div>
         </div>
     </div>
 </div>

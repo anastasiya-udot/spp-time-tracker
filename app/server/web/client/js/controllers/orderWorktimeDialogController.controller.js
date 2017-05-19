@@ -1,7 +1,7 @@
 TimeTrackerApplication
     .controller('OrderWorktimeController', OrderWorktimeDialogController);
 
-function OrderWorktimeDialogController($scope) {
+function OrderWorktimeDialogController($scope, fileDialog) {
    
     $scope.start = moment().subtract(1, 'days');
     $scope.end = moment();
@@ -18,6 +18,13 @@ function OrderWorktimeDialogController($scope) {
             'end': moment().endOf('day')
         }
     ];
+
+
+      $scope.saveFile = function(){
+        fileDialog.saveAs(function(filename) {
+            // your code
+        });
+    }
 }
 
-OrderWorktimeDialogController.$inject = ['$scope'];
+OrderWorktimeDialogController.$inject = ['$scope', 'fileDialog'];
