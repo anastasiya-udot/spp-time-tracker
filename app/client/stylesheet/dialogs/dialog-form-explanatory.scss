@@ -1,0 +1,35 @@
+.dialog-content {
+
+    &.form {    
+        height: 345px;
+        margin-top: 15px;
+
+        .header {
+            padding-left: 8px;
+            font-size: 13px;
+        }
+        
+        .input-explanatory {
+            display: flex;
+            flex-direction: column;
+            
+            .explanatory {
+
+                background-color: #beafaf;
+                margin-top: 15px;
+                outline-color: #721c1c;
+            }
+        }
+
+        .buttons-area {
+            display: flex;
+            justify-content: center;
+
+            .dialog-button {
+                margin-left: 2px;
+                margin-right: 2px;
+            }
+        }
+    }
+}
+
