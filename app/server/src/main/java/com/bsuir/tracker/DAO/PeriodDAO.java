@@ -15,6 +15,8 @@ public interface PeriodDAO {
 
     public List<PeriodEntity> getAllPeriods();
 
+    public List<PeriodEntity> getAllPeriodsByEmployeeId(int id);
+
     public PeriodEntity updatePeriod(PeriodEntity role);
 
     public void deletePeriod(int idPeriod);

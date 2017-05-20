@@ -11,6 +11,7 @@ public class EmployeeGetModel {
     private int worktype;
     private String email;
     private String roleCode;
+    private CompanyNameIdModel company;
 
     public int getId() {
         return id;
@@ -18,6 +19,14 @@ public class EmployeeGetModel {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public void setCompany(CompanyNameIdModel company) {
+        this.company = company;
+    }
+
+    public CompanyNameIdModel getCompany() {
+        return company;
     }
 
     public String getEmail() {

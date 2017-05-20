@@ -54,7 +54,7 @@ public class JCompanyController extends AbstractController {
             resultMap.put("companies", listCompanyObjects);
             response.put("data", resultMap);
             System.out.println("" + resultMap);
-            return ResponseEntity.status(HttpStatus.OK).body(/*response*/ resultMap);
+            return ResponseEntity.status(HttpStatus.OK).body(resultMap);
         }
         catch (Exception e)
         {
@@ -71,12 +71,14 @@ public class JCompanyController extends AbstractController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
         }
         try {
-            if(null == employeeService.getEmployeeByMail(companyRegisterModel.getEmail())){
-                if(null == companyService.getCompanyByName(companyRegisterModel.getCompany())){
-                    AddCompany(companyRegisterModel.getName(),
+            EmployeeEntity employeeToCheck = employeeService.getEmployeeByMail(companyRegisterModel.getEmail());
+            if(null == employeeToCheck){
+                CompanyEntity companyToCheck = companyService.getCompanyByName(companyRegisterModel.getCompany());
+                if(null == companyToCheck){
+                    AddCompany(companyRegisterModel.getCompany(),
                                 companyRegisterModel.getLegalNumber());
 
-                    CompanyEntity createdCompany = companyService.getCompanyByName(companyRegisterModel.getName());
+                    CompanyEntity createdCompany = companyService.getCompanyByName(companyRegisterModel.getCompany());
 
                     if(null != createdCompany)
                     {
@@ -90,6 +92,8 @@ public class JCompanyController extends AbstractController {
                                 );
 
                         if(null != employeeService.getEmployeeByMail(companyRegisterModel.getEmail())) {
+                            AddProject("Hello World Project!", createdCompany.getIdcompany());
+
                             response.put("id", createdCompany.getIdcompany());
                             response.put("name", createdCompany.getName());
                             return ResponseEntity.status(HttpStatus.OK).body(response);

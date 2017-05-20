@@ -1,9 +1,12 @@
 package com.bsuir.tracker.controller.JSONControllers;
 
+import com.bsuir.tracker.Service.CompanyService;
 import com.bsuir.tracker.Service.EmployeeService;
 import com.bsuir.tracker.Service.RoleService;
 import com.bsuir.tracker.Service.WorkdayTypeService;
+import com.bsuir.tracker.entity.CompanyEntity;
 import com.bsuir.tracker.entity.EmployeeEntity;
+import com.bsuir.tracker.model.CompanyNameIdModel;
 import com.bsuir.tracker.model.EmployeeGetModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -28,6 +31,8 @@ public class JEmployeeController {
     WorkdayTypeService workdayTypeService;
     @Autowired
     RoleService roleService;
+    @Autowired
+    CompanyService companyService;
 
     @RequestMapping(value = "/employee/get/{id}", method = RequestMethod.GET)
     @ResponseBody
@@ -46,6 +51,13 @@ public class JEmployeeController {
 
                 employeeGetModel.setWorktype(workdayTypeService.getWorkdayType(employeeEntity.getWorkdayIdworkdayType()).getTime());
                 employeeGetModel.setRoleCode(roleService.getRole(employeeEntity.getRoleIdrole()).getCode());
+
+                CompanyEntity companyEntity = companyService.getCompany(employeeEntity.getCompanyIdcompany());
+                CompanyNameIdModel companyNameIdModel = new CompanyNameIdModel();
+                companyNameIdModel.setId(companyEntity.getIdcompany());
+                companyNameIdModel.setName(companyEntity.getName());
+
+                employeeGetModel.setCompany(companyNameIdModel);
 
                 return ResponseEntity.status(HttpStatus.OK).body(employeeGetModel);
             }

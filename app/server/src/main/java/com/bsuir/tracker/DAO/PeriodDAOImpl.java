@@ -2,6 +2,7 @@ package com.bsuir.tracker.DAO;
 
 import com.bsuir.tracker.entity.PeriodEntity;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -44,6 +45,20 @@ public class PeriodDAOImpl implements PeriodDAO {
         List<PeriodEntity> result = null;
         try {
             result = sessionFactory.getCurrentSession().createQuery("from PeriodEntity ").list();
+        }
+        catch (Exception e){
+            System.out.println(e);
+        }
+        return result;
+    }
+
+    @Override
+    public List<PeriodEntity> getAllPeriodsByEmployeeId(int id) {
+        List<PeriodEntity> result = null;
+        try {
+            Query query = sessionFactory.getCurrentSession().createQuery("from PeriodEntity where employeeIdemployee=:id");
+            query.setParameter("id", id);
+            result = query.list();
         }
         catch (Exception e){
             System.out.println(e);
