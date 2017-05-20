@@ -43,7 +43,7 @@ public class JRequestsController {
 
         try {
             List<RequestEntity> requestEntities = null;
-            requestEntities = requestService.getAllRequestsByEmployeeId(id);
+            requestEntities = requestService.getAllRequestsByDestEmployeeId(id);
 
             for (RequestEntity requestEntity: requestEntities) {
                 RequestSenderModel requestSenderModel = new RequestSenderModel();
@@ -73,19 +73,5 @@ public class JRequestsController {
         {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
-
-        /*Map<String, Map<String, List<CompanyNameIdModel>>> response = new HashMap<>();
-        try {
-            List<CompanyNameIdModel> listCompanyObjects = companyService.getAllCompaniesNameId();
-            Map<String, List<CompanyNameIdModel>> resultMap = new HashMap<>();
-            resultMap.put("companies", listCompanyObjects);
-            response.put("data", resultMap);
-            System.out.println("" + resultMap);
-            return ResponseEntity.status(HttpStatus.OK).body(resultMap);
-        }
-        catch (Exception e)
-        {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
-        }*/
     }
 }

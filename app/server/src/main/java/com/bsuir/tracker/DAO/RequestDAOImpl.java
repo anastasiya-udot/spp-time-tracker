@@ -52,7 +52,7 @@ public class RequestDAOImpl implements RequestDAO {
         return result;
     }
 
-    public List<RequestEntity> getAllRequestsByEmployeeId(int id) {
+    public List<RequestEntity> getAllRequestsByDestEmployeeId(int id) {
         List<RequestEntity> result = null;
         try {
             Query query = sessionFactory.getCurrentSession().createQuery("from RequestEntity where destinationIdemployee=:id");

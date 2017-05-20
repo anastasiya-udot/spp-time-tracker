@@ -15,7 +15,7 @@ public interface RequestService {
 
     public List<RequestEntity> getAllRequests();
 
-    public List<RequestEntity> getAllRequestsByEmployeeId(int id);
+    public List<RequestEntity> getAllRequestsByDestEmployeeId(int id);
 
     public RequestEntity updateRequest(RequestEntity request);
 

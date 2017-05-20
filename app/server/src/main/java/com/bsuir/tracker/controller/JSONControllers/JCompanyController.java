@@ -42,13 +42,6 @@ public class JCompanyController extends AbstractController {
         System.out.println("JCompanyController Initializer");
     }
 
-    /*@Autowired
-    private CompanyService companyService;
-    @Autowired
-    private EmployeeService employeeService;
-    @Autowired
-    private GetTokenService getTokenService;*/
-
     private int DIRECTOR_ROLE_ID = 5;
 
     @RequestMapping(value = "/companies/get", method = RequestMethod.GET)

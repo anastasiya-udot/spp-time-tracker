@@ -32,8 +32,8 @@ public class RequestServiceImpl implements RequestService {
         return requestDAO.getAllRequests();
     }
 
-    public List<RequestEntity> getAllRequestsByEmployeeId(int id){
-        return requestDAO.getAllRequestsByEmployeeId(id);
+    public List<RequestEntity> getAllRequestsByDestEmployeeId(int id){
+        return requestDAO.getAllRequestsByDestEmployeeId(id);
     }
 
     @Override

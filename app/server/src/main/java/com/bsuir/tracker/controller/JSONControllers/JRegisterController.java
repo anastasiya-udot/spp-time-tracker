@@ -41,16 +41,10 @@ public class JRegisterController extends AbstractController {
         System.out.println("JRegisterController Initializer");
     }
 
-    //@Autowired
-    //private EmployeeService employeeService;
     @Autowired
     private ImageService imageService;
-    //@Autowired
-    //private CompanyService companyService;
     @Autowired
     private RoleService roleService;
-    //@Autowired
-    //private GetTokenService getTokenService;
 
     private int EMPLOYEE_ROLE_ID = 2;
 
