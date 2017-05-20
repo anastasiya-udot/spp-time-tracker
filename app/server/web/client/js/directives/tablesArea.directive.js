@@ -4,7 +4,7 @@ TimeTrackerApplication
 function TablesAreaDirective() {
     return {
         restrict: "E",
-        templateUrl: '../../templates/tables-page/tables-area.html',
+        templateUrl: '../../public/templates/tables-page/tables-area.html',
         controller: tablesAreaDirectiveController
     }
 }
