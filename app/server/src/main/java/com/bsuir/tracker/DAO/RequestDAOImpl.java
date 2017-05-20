@@ -2,6 +2,7 @@ package com.bsuir.tracker.DAO;
 
 import com.bsuir.tracker.entity.RequestEntity;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -44,6 +45,19 @@ public class RequestDAOImpl implements RequestDAO {
         List<RequestEntity> result = null;
         try {
             result = sessionFactory.getCurrentSession().createQuery("from RequestEntity ").list();
+        }
+        catch (Exception e){
+            System.out.println(e);
+        }
+        return result;
+    }
+
+    public List<RequestEntity> getAllRequestsByEmployeeId(int id) {
+        List<RequestEntity> result = null;
+        try {
+            Query query = sessionFactory.getCurrentSession().createQuery("from RequestEntity where destinationIdemployee=:id");
+            query.setParameter("id", id);
+            result = query.list();
         }
         catch (Exception e){
             System.out.println(e);
