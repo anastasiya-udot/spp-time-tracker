@@ -10,6 +10,9 @@ import com.bsuir.tracker.entity.CompanyEntity;
 import com.bsuir.tracker.entity.EmployeeEntity;
 import com.bsuir.tracker.entity.ImageEntity;
 import com.bsuir.tracker.entity.RoleEntity;
+import com.bsuir.tracker.model.CompanyRegisterModel;
+import com.bsuir.tracker.model.EmployeeAuthorizationResModel;
+import com.bsuir.tracker.model.EmployeeRegisterModel;
 import com.bsuir.tracker.model.UserAuthorizationModel;
 import org.hibernate.exception.ConstraintViolationException;
 import org.jboss.logging.Logger;
@@ -32,39 +35,52 @@ import java.util.HashMap;
  * Created by Pavel on 18.05.2017.
  */
 @Controller
-@RequestMapping(value = "/authorization")
-public class JRegisterController {
-    /*private static  final Logger logger = Logger.getLogger(ImageController.class);
+public class JRegisterController extends AbstractController {
+    private static  final Logger logger = Logger.getLogger(ImageController.class);
     public JRegisterController(){
         System.out.println("JRegisterController Initializer");
     }
 
-    @Autowired
-    private EmployeeService employeeService;
+    //@Autowired
+    //private EmployeeService employeeService;
     @Autowired
     private ImageService imageService;
-    @Autowired
-    private CompanyService companyService;
+    //@Autowired
+    //private CompanyService companyService;
     @Autowired
     private RoleService roleService;
-    @Autowired
-    private GetTokenService getTokenService;
+    //@Autowired
+    //private GetTokenService getTokenService;
 
-    @RequestMapping(value = "/new-user", method = RequestMethod.POST)
+    private int EMPLOYEE_ROLE_ID = 2;
+
+    @RequestMapping(value = "/authorization/new-user/post", method = RequestMethod.POST)
     @ResponseBody
-    public ResponseEntity new_user(@RequestBody @Validated EmployeeEntity employee, BindingResult bindingResult) throws IOException {
+    public ResponseEntity authorization_newUser_post(@RequestBody @Validated EmployeeRegisterModel employeeRegisterModel, BindingResult bindingResult) throws Exception {
         Map<String, Object> response = new HashMap<>();
         if(bindingResult.hasErrors()){
             response.put("error", "Data Binding Error");
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
         }
         try {
-            if ((employee.getIdemployee() == 0) && (CheckNoSuchUser(employee)))
+            if (CheckNoSuchUser(employeeRegisterModel.getEmail()))
             {
-                employeeService.addEmployee(employee);
+                System.out.println(employeeRegisterModel.getName());
+                System.out.println(employeeRegisterModel.getSurname());
+                System.out.println(employeeRegisterModel.getPatronymic());
+                System.out.println(employeeRegisterModel.getEmail());
+                System.out.println(employeeRegisterModel.getPassword());
+                System.out.println(employeeRegisterModel.getCompany());
+                AddEmployee(employeeRegisterModel.getName(),
+                                    employeeRegisterModel.getSurname(),
+                                    employeeRegisterModel.getPatronymic(),
+                                    employeeRegisterModel.getEmail(),
+                                    employeeRegisterModel.getPassword(),
+                                    employeeRegisterModel.getCompany(),
+                                    EMPLOYEE_ROLE_ID);
                 return ResponseEntity.status(HttpStatus.OK).body(null);
             } else {
-                response.put("error", "Email");
+                response.put("error", "email");
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
             }
         }
@@ -78,9 +94,9 @@ public class JRegisterController {
         }
     }
 
-    @RequestMapping(value = "/sign-in", method = RequestMethod.POST)
+    @RequestMapping(value = "/authorization/sign-in/post", method = RequestMethod.POST)
     @ResponseBody
-    public ResponseEntity sign_in(@RequestBody @Validated UserAuthorizationModel userData, BindingResult bindingResult) throws IOException, Exception {
+    public ResponseEntity authorization_signIn_post(@RequestBody @Validated UserAuthorizationModel userData, BindingResult bindingResult) throws Exception {
         Map<String, Object> response = new HashMap<>();
         if(bindingResult.hasErrors()){
             response.put("error", "Data Binding Error");
@@ -91,10 +107,19 @@ public class JRegisterController {
             if (user != null)
             {
                 String token = null;
-                token = getTokenService.getToken(user.getEmail(), user.getPassword());
+                token = getTokenService.getToken(userData.getEmail(), userData.getPassword());
                 if(token != null)
                 {
                     response.put("token", token);
+
+                    EmployeeAuthorizationResModel employeeAuthorizationResModel = new EmployeeAuthorizationResModel();
+                    employeeAuthorizationResModel.setName(user.getName());
+                    employeeAuthorizationResModel.setSurname(user.getSurname());
+                    employeeAuthorizationResModel.setPatronymic(user.getPatronymic());
+                    employeeAuthorizationResModel.setEmail(user.getEmail());
+
+                    response.put("user", employeeAuthorizationResModel);
+
                     return ResponseEntity.status(HttpStatus.OK).body(response);
                 }
                 else
@@ -118,16 +143,4 @@ public class JRegisterController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
         }
     }
-
-    private boolean CheckNoSuchUser(EmployeeEntity employeeEntity)
-    {
-        if (null == employeeService.getEmployeeByMail(employeeEntity.getEmail()))
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }*/
 }

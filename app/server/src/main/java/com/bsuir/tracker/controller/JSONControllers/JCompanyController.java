@@ -25,6 +25,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.persistence.MapKeyColumn;
 import java.awt.*;
 import java.io.IOException;
 import java.util.List;
@@ -35,18 +36,18 @@ import java.util.HashMap;
  * Created by Pavel on 18.05.2017.
  */
 @Controller
-public class JCompanyController {
+public class JCompanyController extends AbstractController {
     private static  final Logger logger = Logger.getLogger(ImageController.class);
     public JCompanyController(){
         System.out.println("JCompanyController Initializer");
     }
 
-    @Autowired
+    /*@Autowired
     private CompanyService companyService;
     @Autowired
     private EmployeeService employeeService;
     @Autowired
-    private GetTokenService getTokenService;
+    private GetTokenService getTokenService;*/
 
     private int DIRECTOR_ROLE_ID = 5;
 
@@ -86,12 +87,13 @@ public class JCompanyController {
 
                     if(null != createdCompany)
                     {
-                        AddDirectorEmployee(companyRegisterModel.getName(),
+                        AddEmployee(companyRegisterModel.getName(),
                                 companyRegisterModel.getSurname(),
                                 companyRegisterModel.getPatronymic(),
                                 companyRegisterModel.getEmail(),
                                 companyRegisterModel.getPassword(),
-                                createdCompany.getIdcompany()
+                                createdCompany.getIdcompany(),
+                                DIRECTOR_ROLE_ID
                                 );
 
                         if(null != employeeService.getEmployeeByMail(companyRegisterModel.getEmail())) {
@@ -100,6 +102,7 @@ public class JCompanyController {
                             return ResponseEntity.status(HttpStatus.OK).body(response);
                         }
                         else {
+                            companyService.deleteCompany(createdCompany.getIdcompany());
                             response.put("error", "Employee Creation Error");
                             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
                         }
@@ -128,24 +131,5 @@ public class JCompanyController {
             response.put("error", "SQL Data Integrity Error");
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
         }
-    }
-
-    private void AddCompany(String companyName, String companyLegalNumber) throws ConstraintViolationException, DataIntegrityViolationException {
-        CompanyEntity newCompany = new CompanyEntity();
-        newCompany.setName(companyName);
-        newCompany.setLegalNumber(companyLegalNumber);
-        companyService.addCompany(newCompany);
-    }
-
-    private void AddDirectorEmployee(String name, String surname, String patronymic, String email, String pass, int idCompany) throws ConstraintViolationException, DataIntegrityViolationException {
-        EmployeeEntity newEmployee = new EmployeeEntity();
-        newEmployee.setName(name);
-        newEmployee.setSurname(surname);
-        newEmployee.setPatronymic(patronymic);
-        newEmployee.setEmail(email);
-        newEmployee.setPassword(pass);
-        newEmployee.setRoleIdrole(DIRECTOR_ROLE_ID);
-        newEmployee.setCompanyIdcompany(idCompany);
-        employeeService.addEmployee(newEmployee);
     }
 }
