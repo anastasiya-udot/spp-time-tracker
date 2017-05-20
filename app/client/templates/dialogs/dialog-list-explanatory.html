@@ -1,0 +1,35 @@
+<!--<div class="explanatory-dialog">
+    <div class="dialog-name">Explanatory list</div>
+    <div class="dialog-content list">
+        <ul class="list">
+            <li class="list-item" ng-click="openFormForExplanatory()">
+                Request for explanatory from
+                <span class="sender-name">Nastya Udot</span>
+                <span class="date">07.04.2007</span>
+                <div class="remove-button">Remove</span>
+            </li>
+            <li class="list-item" ng-click="openFormForExplanatory()">
+                Request for explanatory from
+                <span class="sender-name">Nastya Udot</span>
+                <span class="date">07.04.2007</span>
+                <div class="remove-button">Remove</span>
+            </li>
+        </ul>
+    </div>
+    <div class="add-new-request dialog-button" ng-click="openNewRequestForm()">Add new request</div>
+</div>-->
+
+<div class="explanatory-dialog">
+    <div class="dialog-name">Explanatory list</div>
+    <div class="dialog-content list">
+        <ul class="list" ng-repeat="request in requests">
+            <li class="list-item" ng-click="openFormForExplanatory()">
+                Request for explanatory from
+                <span class="sender-name">{{request.sender.name}} {{request.sender.surname}}</span><br>
+                <span class="date">{{request.date}}</span><br>
+                <div class="remove-button">Remove</span><br>
+            </li>
+        </ul>
+    </div>
+    <div class="add-new-request dialog-button" ng-click="openNewRequestForm()">Add new request</div>
+</div>

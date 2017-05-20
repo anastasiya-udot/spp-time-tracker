@@ -1,0 +1,33 @@
+.explanatory-dialog {
+    
+    .dialog-name {
+        font-size: 20px;
+        color: gray;
+        padding: 10px 0;
+    }
+
+    .dialog-button{
+        width: calc(100%/2);
+        text-align: center;
+        margin: 13px auto;
+        background-color: lightslategray;
+        color: white;
+        border-radius: 7px;
+        padding: 4px;
+        opacity: 1;
+
+         &:hover {
+            opacity: 0.8;
+            cursor: pointer;
+         }
+    }
+   
+    @import './dialog-form-task';
+    @import './dialog-list-explanatory';
+    @import './dialog-form-explanatory';
+    @import './dialog-new-request-form';
+    @import './dialog-orders';
+    @import './dialog-order-worktime';
+    @import './dialog-change-user-info';
+    @import './dialog-confirm-delete';
+}

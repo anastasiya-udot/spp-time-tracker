@@ -1,0 +1,15 @@
+<div class="profile-tasks-area">    
+    <div class="tasks-list">
+        <div class="tasks-list-item-add" ng-click="openAddNewTaskForm()">
+            <span class="text">Add new task</span>
+        </div>
+        <div class="tasks-list-item" ng-repeat="task in tasks">
+            <div class="task-info">
+                <div class="code">{{task.code}}</div>
+                <div class="description">{{task.description}}</div>
+                <div class="date">{{task.date}}</div>
+            </div>
+            <div class="remove-button" ng-click="openConfirmDeleteDialog()">Remove </div>
+        </div>
+    </div>
+</div>

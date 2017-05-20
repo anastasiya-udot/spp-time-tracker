@@ -1,0 +1,42 @@
+<ng-messages for="registerCompanyForm.$error" class="warnings">   
+    <ng-message when="companyInvalid">
+        Invalid company's name.
+    </ng-message>
+</ng-messages>
+<ng-messages for="signUpForm.$error" class="warnings" >
+    <ng-message when="nameInvalid" >
+        Name should contain 3-20 letters or digits.
+    </ng-message>
+    <ng-message when="surnameInvalid">
+        Surname should contain 3-20 letters or digits.
+    </ng-message>
+    <ng-message when="patronymicInvalid">
+        Surname should contain 3-20 letters or digits.
+    </ng-message>
+    <ng-message when="emailInvalid">
+        Email is invalid.
+    </ng-message>
+    <ng-message when="userExists">
+        User with such email already exists in this company.
+    </ng-message>
+    <ng-message when="passwordInvalid">
+        Password should contain 8-15 letters or digits.
+    </ng-message>
+    <ng-message when="passwordsDifferent">
+        Passwords are different.
+    </ng-message>
+</ng-messages>
+<ng-messages for="signInForm.$error" class="warnings" ng-hide="!signInForm.$error">   
+    <ng-message when="noUser">
+        There is no user with such email.
+    </ng-message>
+    <ng-message when="wrongPassword">
+        Password is wrong.
+    </ng-message>
+    <ng-message when="emailInvalid">
+        Email is invalid.
+    </ng-message>
+    <ng-message when="passwordInvalid">
+        Password should contain 8-15 letters or digits.
+    </ng-message>
+</ng-messages>
