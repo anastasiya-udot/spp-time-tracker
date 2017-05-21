@@ -52,6 +52,7 @@ public class JRequestsController {
                 requestSenderModel.setStartPeriod(requestEntity.getStartPeriod().getTime());
                 requestSenderModel.setEndPeriod(requestEntity.getEndPeriod().getTime());
                 requestSenderModel.setContent(requestEntity.getContent());
+                requestSenderModel.setId(requestEntity.getIdrequest());
 
                 requestSenderModel.setWorktype(workdayTypeService.getWorkdayType(employeeService.getEmployee(requestEntity.getDestinationIdemployee()).getWorkdayIdworkdayType()).getTime());
 
@@ -72,6 +73,20 @@ public class JRequestsController {
         catch (Exception e)
         {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        }
+    }
+
+    @RequestMapping(value = "/request/delete/{id}", method = RequestMethod.DELETE)
+    @ResponseBody
+    public ResponseEntity request_delete_id(@PathVariable int id) throws Exception{
+        try {
+            requestService.deleteRequest(id);
+            return ResponseEntity.status(HttpStatus.OK).body(null);
+        }
+        catch (Exception e){
+            Map<String, String> response = new HashMap<>();
+            response.put("error", "invalid input");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
     }
 }

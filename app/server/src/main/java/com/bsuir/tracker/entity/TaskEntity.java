@@ -63,7 +63,7 @@ public class TaskEntity {
         this.projectIdproject = projectIdproject;
     }
 
-    @ManyToMany(fetch = FetchType.EAGER/*LAZY*/, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.EAGER/*LAZY*/, cascade = CascadeType.REMOVE/*ALL*/)
     @JoinTable(name = "task_period", joinColumns = {
             @JoinColumn(name = "task_idtask", nullable = false, updatable = false) },
             inverseJoinColumns = {@JoinColumn(name = "period_idperiod", nullable = false, updatable = false) })

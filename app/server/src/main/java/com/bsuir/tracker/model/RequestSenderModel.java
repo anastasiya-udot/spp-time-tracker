@@ -4,12 +4,21 @@ package com.bsuir.tracker.model;
  * Created by Pavel on 20.05.2017.
  */
 public class RequestSenderModel {
+    private int id;
     private SenderModel sender;
     private long date;
     private long startPeriod;
     private long endPeriod;
     private int worktype;
     private String content;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public int getWorktype() {
         return worktype;

@@ -12,15 +12,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by Pavel on 21.05.2017.
@@ -71,6 +65,45 @@ public class JTasksController {
         catch (Exception e)
         {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        }
+    }
+
+    @RequestMapping(value = "/task/delete/{idtask}/{iduser}", method = RequestMethod.DELETE)
+    @ResponseBody
+    public ResponseEntity request_delete_id(@PathVariable int idtask, @PathVariable int iduser) throws Exception{
+        try {
+                TaskEntity taskEntity = taskService.getTask(idtask);
+                if (null != taskEntity) {
+                    Set<PeriodEntity> periodEntities = taskEntity.getPeriodEntities();
+                    Set<PeriodEntity> periodEntitiesToRemove = new HashSet<>();
+                    for (PeriodEntity periodEntity : periodEntities) {
+                        if (periodEntity.getEmployeeIdemployee() == iduser) {
+                            periodEntitiesToRemove.add(periodEntity);
+                        }
+                    }
+                    if (periodEntitiesToRemove.size() > 0) {
+                        periodEntities.removeAll(periodEntitiesToRemove);
+                    }
+
+                    taskEntity.setPeriodEntities(periodEntities);
+                    taskService.updateTask(taskEntity);
+
+                    if (taskEntity.getPeriodEntities().size() <= 0) {
+                        taskService.deleteTask(taskEntity.getIdtask());
+                    }
+
+                    return ResponseEntity.status(HttpStatus.OK).body(null);
+                }
+                else{
+                    Map<String, String> response = new HashMap<>();
+                    response.put("error", "invalid input");
+                    return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
+                }
+        }
+        catch (Exception e){
+            Map<String, String> response = new HashMap<>();
+            response.put("error", "invalid input");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
     }
 }

@@ -64,7 +64,7 @@ public class RequestEntity {
     }
 
     @Basic
-    @Column(name = "content", nullable = false, length = 255)
+    @Column(name = "content", nullable = true, length = 255)
     public String getContent() {
         return content;
     }
