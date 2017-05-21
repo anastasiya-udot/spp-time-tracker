@@ -5,25 +5,24 @@
     <div class="dialog-content form">
         <div class="header">
             <div class="from-user">
-                FROM: Nastya Udot
+                FROM: {{currentExplanatory.sender.name}} {{currentExplanatory.sender.surname}}
             </div>
             <div class="date-request">
-                DATE: 07.04.2007
+                DATE: {{currentExplanatory.date}}
             </div>
-            <div class="not-worked">
-                NOT WORKED OUT: 2 hours 3 minutes
-            </div>
+           <!-- <div class="not-worked">
+                NOT WORKED OUT: {{notWorkedOut}}
+            </div> -->
             <div class="period">
-                PERIOD: 21.05.2016 - 22.05.2016
+                PERIOD: {{currentExplanatory.startPeriod.string}} - {{currentExplanatory.endPeriod.string}}
             </div>
         </div>
         <div class="input-explanatory">
-            <textarea cols="50" rows="9" class="explanatory"></textarea>
+            <textarea cols="50" rows="9" class="explanatory">{{currentExplanatory.content}}</textarea>
         </div>
         <div class="buttons-area">
-            <span class="button send-response-button dialog-button">Send</span>
             <span class="button save-button dialog-button">Save as...</span>
-            <span class="button accept-button dialog-button">Accept</span>
+            <span class="button accept-button dialog-button" ng-show="permission.REQUEST_FOR_EXPLANATION">Accept</span>
         </div>     
     </div>
 </div>

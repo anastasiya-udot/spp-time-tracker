@@ -1,22 +1,21 @@
  TimeTrackerApplication
-    .factory('EmplyeePageLoader', EmplyeePageLoaderController);
+    .factory('EmployeePageLoader', EmployeePageLoaderController);
 
-function EmplyeePageLoaderController($location, SessionService, RoleService) {
+function EmployeePageLoaderController($location, EmployeeService, _) {
     return {
-        load: function(token) {
-            let userId;
-            let roleId;
+        load: function(userId) {
 
-            SessionService.startSession(token);
+            function getUser() {
+                var deferred = $.Deferred();
+                EmployeeService.get(userId, deferred.resolve);
+                return deferred.promise();
+            }
 
-            userId = SessionService.getSessionUserId();
-            roleId = SessionService.getSessionRoleId();
-
-            RoleService.set(roleId, function() {
-                $location.path('/employee/' + userId);
+            getUser().done(function() {
+                $location.path('/employee/' + EmployeeService.employee.id);
             });
         }
     }
 }
 
-EmplyeePageLoaderController.$inject = ["$location", "SessionService", "RoleService"];
+EmployeePageLoaderController.$inject = ["$location", 'EmployeeService', '_'];

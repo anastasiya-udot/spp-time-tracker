@@ -1,7 +1,7 @@
  TimeTrackerApplication
     .factory('PermissionsService', PermissionsServiceController);
 
-function PermissionsServiceController(RoleService) {
+function PermissionsServiceController($rootScope, RoleService) {
     return {
         masks: [
             00001,
@@ -11,12 +11,12 @@ function PermissionsServiceController(RoleService) {
             10000
         ],
         _getBit: function(value, number) {
-            return value & masks[number];
+            return !!+value.toString(2)[4 - number];
         },
         get: function() {
             let code = RoleService.get();
 
-            return {
+            $rootScope.permission = {
                 REQUEST_FOR_EXPLANATION: this._getBit(code, 0),
                 WORKPROCESS_CONTROL: this._getBit(code, 1),
                 ADMIN_CONTROL: this._getBit(code, 2),
@@ -25,20 +25,21 @@ function PermissionsServiceController(RoleService) {
             }
         },
         checkPermission: function(currentPageUserId){
-            if(!currentPageUserId)
+             $rootScope.pageOwner = true;
+           /* if(!currentPageUserId)
                 currentPageUserId = this.getCurrentPageUserId();
 
             if (this.getSessionUserId()){
                 if(this.getSessionUserId() == currentPageUserId){
-                    $rootScope.role = "owner";
+                    $rootScope.pageOwner = true;
                 } else {
-                    $rootScope.role = "guest";
+                    $rootScope.pageOwner = false;
                 }
             } else {
-                $rootScope.role = "unauthorized";
-            }
+                $rootScope.pageOwner = false;
+            }*/
         },
     }
 }
 
-PermissionsServiceController.$inject = ['RoleService'];
+PermissionsServiceController.$inject = ['$rootScope', 'RoleService'];
