@@ -1,8 +1,8 @@
 TimeTrackerApplication
     .controller('ExplanatoryFormController', ExplanatoryFormController);
 
-function ExplanatoryFormController($scope) {
-
+function ExplanatoryFormController($scope, ExplanatoryService) {
+    $scope.currentExplanatory = ExplanatoryService.get();
 }
 
-ExplanatoryFormController.$inject = ['$scope'];
+ExplanatoryFormController.$inject = ['$scope', 'ExplanatoryService'];

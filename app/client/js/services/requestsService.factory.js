@@ -1,51 +1,70 @@
 TimeTrackerApplication
     .factory('RequestsService', RequestsServiceController);
 
-function RequestsServiceController(GetData, _) {
+function RequestsServiceController(GetData, SessionService, _) {
     return {
-        errors: {
-            requests: false
+        requests: [],
+        setRequests: function(requests) {
+            this.requests = _.map(requests, function(req) {
+                return {
+                    id: req.id,
+                    sender: {
+                        id: req.sender.id,
+                        name: req.sender.name,
+                        surname: req.sender.surname
+                    },
+                    date: (new Date(req.date)).format("yyyy-mm-dd"),
+                    startPeriod: {
+                        string: (new Date(req.startPeriod)).format("yyyy-mm-dd"),
+                        value: req.startPeriod
+                    },
+                    endPeriod: {
+                        string: (new Date(req.endPeriod)).format("yyyy-mm-dd"),
+                        value: req.endPeriod
+                    },
+                    content: req.content || 'null'
+                }
+            });
         },
-        requests: [
-            {
-                id: 1,
-                sender:{
-                    id: 1,
-                    name: "Zoya",
-                    surname: "Raxtenberg"
-                },
-                date: "10.02.2008"
-            },
-            {
-                id: 2,
-                sender:{
-                    id: 2,
-                    name: "Petr",
-                    surname: "Perviy"
-                },
-                date: "07.09.2016"
-            },
-            {
-                id: 3,
-                sender:{
-                    id: 3,
-                    name: "Artyr",
-                    surname: "Belyakov"
-                },
-                date: "15.09.2006"
-            },
-            {
-                id: 4,
-                sender:{
-                    id: 4,
-                    name: "Alexandr",
-                    surname: "Petkyn"
-                },
-                date: "21.10.2016"
-            }
-        ],
         getRequests: function() {
             return this.requests;
+        },
+        getById: function(id) {
+            return _.find(this.requests, function(req) {
+                return req.id === id;
+            });
+        },
+        addNewRequest: function(req) {
+            var newRequest = {
+                id: req.id,
+                sender: {
+                    id: req.sender.id,
+                    name: req.sender.name,
+                    surname: req.sender.surname
+                },
+                date: (new Date(req.date)).format("yyyy-mm-dd"),
+                startPeriod: {
+                    string: (new Date(req.startPeriod)).format("yyyy-mm-dd"),
+                    value: req.startPeriod
+                },
+                endPeriod: {
+                    string: (new Date(req.endPeriod)).format("yyyy-mm-dd"),
+                    value: req.endPeriod
+                },
+                content: req.content || null
+            }
+            this.requests.push(newRequest);
+        },
+        get: function(callback) {
+            var url = '/requests/get/' + SessionService.getCurrentPageUserId();
+            var processResponse = _.bind(function(res) {
+                this.setRequests(res.data);
+                callback();
+            }, this);
+
+            GetData(url, processResponse);
         }
     }
 }
+
+RequestsServiceController.$inject = ['GetData', 'SessionService', '_'];
