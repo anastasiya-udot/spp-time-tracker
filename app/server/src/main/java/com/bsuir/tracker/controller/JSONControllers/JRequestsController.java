@@ -100,7 +100,7 @@ public class JRequestsController {
         try {
             if((employeeService.getEmployee(requestPostModel.getIdSource()) == null) || (employeeService.getEmployee(requestPostModel.getIdDestination()) == null)){
                 response.put("error", "No such users!");
-                return ResponseEntity.status(HttpStatus.OK).body(response);
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
             }
 
             RequestEntity requestEntity = new RequestEntity();

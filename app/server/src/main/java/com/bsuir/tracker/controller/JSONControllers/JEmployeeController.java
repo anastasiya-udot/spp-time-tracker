@@ -1,23 +1,23 @@
 package com.bsuir.tracker.controller.JSONControllers;
 
-import com.bsuir.tracker.Service.CompanyService;
-import com.bsuir.tracker.Service.EmployeeService;
-import com.bsuir.tracker.Service.RoleService;
-import com.bsuir.tracker.Service.WorkdayTypeService;
+import com.bsuir.tracker.Service.*;
 import com.bsuir.tracker.entity.CompanyEntity;
 import com.bsuir.tracker.entity.EmployeeEntity;
-import com.bsuir.tracker.model.CompanyNameIdModel;
-import com.bsuir.tracker.model.EmployeeGetModel;
+import com.bsuir.tracker.entity.PeriodEntity;
+import com.bsuir.tracker.entity.RequestEntity;
+import com.bsuir.tracker.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 
+import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -33,6 +33,8 @@ public class JEmployeeController {
     RoleService roleService;
     @Autowired
     CompanyService companyService;
+    @Autowired
+    PeriodService periodService;
 
     @RequestMapping(value = "/employee/get/{id}", method = RequestMethod.GET)
     @ResponseBody
@@ -68,6 +70,58 @@ public class JEmployeeController {
 
                 return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
             }
+        }
+        catch (Exception e)
+        {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        }
+    }
+
+    @RequestMapping(value = "/get-all-employees/get", method = RequestMethod.POST)
+    @ResponseBody
+    public ResponseEntity getAllEmployees_get(@RequestBody @Validated EmployeesGetModel employeesGetModel, BindingResult bindingResult) throws Exception{
+        Map<String, Object> response = new HashMap<>();
+        if(bindingResult.hasErrors()){
+            response.put("error", "Data Binding Error");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
+        }
+
+        try {
+            List<EmployeesGetResModel> employeesGetResModelList = new ArrayList<>();
+
+            List<EmployeeEntity> employeeEntityList = employeeService.getEmployeeByCompany(employeesGetModel.getCompanyId());
+            for (EmployeeEntity employeeEntity: employeeEntityList)
+            {
+                List<PeriodEntity> periodEntities = periodService.getAllPeriodsByEmployeeId(employeeEntity.getIdemployee());
+                List<PeriodEntity> periodEntitiesInLimits = new ArrayList<>();
+                for (PeriodEntity periodEntity : periodEntities) {
+                    if (periodEntity.getStart().getTime() >= employeesGetModel.getStartPeriod()) {
+                        if ((periodEntity.getFinish() == null) || (periodEntity.getFinish().getTime() <= employeesGetModel.getFinishPeriod())) {
+                            periodEntitiesInLimits.add(periodEntity);
+                        }
+                    }
+                }
+
+                long resultSumm = 0;
+                for (PeriodEntity periodEntity : periodEntitiesInLimits) {
+                    if (periodEntity.getFinish() != null) {
+                        resultSumm += (periodEntity.getFinish().getTime() - periodEntity.getStart().getTime());
+                    }
+                }
+
+                EmployeesGetResModel employeesGetResModel = new EmployeesGetResModel();
+                employeesGetResModel.setId(employeeEntity.getIdemployee());
+                employeesGetResModel.setName(employeeEntity.getName());
+                employeesGetResModel.setSurname(employeeEntity.getSurname());
+                employeesGetResModel.setPatronymic(employeeEntity.getPatronymic());
+                employeesGetResModel.setWorktype(workdayTypeService.getWorkdayType(employeeEntity.getWorkdayIdworkdayType()).getTime());
+                employeesGetResModel.setInFact(resultSumm);
+
+                employeesGetResModelList.add(employeesGetResModel);
+            }
+
+            response.put("employees", employeesGetResModelList);
+            return ResponseEntity.status(HttpStatus.OK).body(response);
         }
         catch (Exception e)
         {

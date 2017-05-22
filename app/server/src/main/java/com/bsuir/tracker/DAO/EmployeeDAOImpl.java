@@ -1,5 +1,6 @@
 package com.bsuir.tracker.DAO;
 
+import com.bsuir.tracker.Service.EmployeeService;
 import com.bsuir.tracker.entity.EmployeeEntity;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,6 +53,20 @@ public class EmployeeDAOImpl implements EmployeeDAO {
         catch (Exception e){
             System.out.println(e);
             throw new IllegalArgumentException();
+        }
+        return result;
+    }
+
+    @Override
+    public List<EmployeeEntity> getEmployeeByCompany(int  id) {
+        List<EmployeeEntity> result = null;
+        try {
+            Query query = sessionFactory.getCurrentSession().createQuery("from EmployeeEntity where companyIdcompany=:companyIdcompany");
+            query.setParameter("companyIdcompany", id);
+            result = query.list();
+        }
+        catch (Exception e){
+            System.out.println(e);
         }
         return result;
     }
