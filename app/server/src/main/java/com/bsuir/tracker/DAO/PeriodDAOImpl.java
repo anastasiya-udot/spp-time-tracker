@@ -71,7 +71,7 @@ public class PeriodDAOImpl implements PeriodDAO {
         if (period == null){
             throw new IllegalArgumentException();
         }
-        sessionFactory.getCurrentSession().update(period);
+        sessionFactory.getCurrentSession().merge(period);  //update
         return period;
     }
 

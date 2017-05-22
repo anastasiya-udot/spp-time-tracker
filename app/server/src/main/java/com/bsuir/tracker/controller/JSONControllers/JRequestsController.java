@@ -6,18 +6,16 @@ import com.bsuir.tracker.Service.WorkdayTypeService;
 import com.bsuir.tracker.entity.EmployeeEntity;
 import com.bsuir.tracker.entity.RequestEntity;
 import com.bsuir.tracker.entity.WorkdayTypeEntity;
-import com.bsuir.tracker.model.CompanyNameIdModel;
-import com.bsuir.tracker.model.RequestSenderModel;
-import com.bsuir.tracker.model.SenderModel;
+import com.bsuir.tracker.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -87,6 +85,54 @@ public class JRequestsController {
             Map<String, String> response = new HashMap<>();
             response.put("error", "invalid input");
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
+        }
+    }
+
+    @RequestMapping(value = "/add-new-request/post", method = RequestMethod.POST)
+    @ResponseBody
+    public ResponseEntity addNewRequest_post(@RequestBody @Validated RequestPostModel requestPostModel, BindingResult bindingResult) throws Exception{
+        Map<String, Object> response = new HashMap<>();
+        if(bindingResult.hasErrors()){
+            response.put("error", "Data Binding Error");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
+        }
+
+        try {
+            if((employeeService.getEmployee(requestPostModel.getIdSource()) == null) || (employeeService.getEmployee(requestPostModel.getIdDestination()) == null)){
+                response.put("error", "No such users!");
+                return ResponseEntity.status(HttpStatus.OK).body(response);
+            }
+
+            RequestEntity requestEntity = new RequestEntity();
+            requestEntity.setSourceIdemployee(requestPostModel.getIdSource());
+            requestEntity.setDestinationIdemployee(requestPostModel.getIdDestination());
+            requestEntity.setStartPeriod(new Timestamp(requestPostModel.getStartPeriod()));
+            requestEntity.setEndPeriod(new Timestamp(requestPostModel.getEndPeriod()));
+            requestEntity.setDate(new Timestamp(requestPostModel.getDate()));
+
+            requestService.addRequest(requestEntity);
+
+            RequestSenderModel requestSenderModel = new RequestSenderModel();
+            requestSenderModel.setDate(requestEntity.getDate().getTime());
+            requestSenderModel.setStartPeriod(requestEntity.getStartPeriod().getTime());
+            requestSenderModel.setEndPeriod(requestEntity.getEndPeriod().getTime());
+            requestSenderModel.setContent(requestEntity.getContent());
+            requestSenderModel.setId(requestEntity.getIdrequest());
+
+            requestSenderModel.setWorktype(workdayTypeService.getWorkdayType(employeeService.getEmployee(requestEntity.getDestinationIdemployee()).getWorkdayIdworkdayType()).getTime());
+
+            SenderModel senderModel = new SenderModel();
+            EmployeeEntity senderEmployeeEntity = employeeService.getEmployee(requestEntity.getSourceIdemployee());
+            senderModel.setName(senderEmployeeEntity.getName());
+            senderModel.setSurname(senderEmployeeEntity.getSurname());
+
+            requestSenderModel.setSender(senderModel);
+
+            return ResponseEntity.status(HttpStatus.OK).body(requestSenderModel);
+        }
+        catch (Exception e)
+        {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
     }
 }
