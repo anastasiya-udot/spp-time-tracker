@@ -1,0 +1,49 @@
+.registration-authorization-area {
+    background-color: $pink-light;
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+    padding-bottom: 60px;
+    position: relative;
+    top: 120px;
+
+    .incription-area {
+        text-transform: uppercase;
+        color: white;
+        margin: auto;
+        font-size: 40px;
+        text-shadow: 3px 2px 1px rgba(0,0,0,0.5);
+    }
+
+    .content-area{
+        display: flex;
+        align-items: center;
+        padding-bottom: 20px;
+
+        .description-container {
+            margin: auto;
+
+            #description {
+                color: white;
+                font-size: 20px;
+                width: 250px;
+            }
+        }
+
+        @media (max-width:767px) {
+            .description-container {
+                display: none;
+            }
+        }
+
+        .content-froms-area {
+            display: flex;
+            align-items: center;
+            margin: auto;
+
+            @import './authorization';
+        }
+    }
+
+    @import './warnings';
+}

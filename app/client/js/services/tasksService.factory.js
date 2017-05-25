@@ -1,36 +1,36 @@
  TimeTrackerApplication
     .factory('TasksService', TasksService);
 
-function TasksService() {
+function TasksService(PostData, _) {
     return {
-        tasks: [
-            {
-                id: 1,
-                code: 'SYS-1',
-                description: 'add new page',
-                date: '02.03.2017'
-            },
-            {
-                id: 2,
-                code: 'SYS-2',
-                description: 'create table',
-                date: '10.02.2017'
-            },
-            {
-                id: 3,
-                code: 'SYS-3',
-                description: 'delete image',
-                date: '29.01.2017'
-            },
-            {
-                id: 4,
-                code: 'SYS-4',
-                description: 'fixed bags',
-                date: '05.01.2017'
-            },
-        ],
+        tasks: [],
         getTasks: function() {
             return this.tasks;
+        },
+        _processData: function(res) {
+            var _this = this;
+
+            if (res.status === 200) {
+                _.each(res.data, function(task) {
+                    _this.tasks.push(task);
+                });
+            }
+        },
+        get: function(id, start, finish, callback) {
+            var url = '/new-task/post';
+            var processData = _.bind(function(res) {
+                this._processData(res);
+                callback();
+            }, this);
+            var data = {
+                id: id,
+                startPeriod: start,
+                finishPeriod: finish
+            }
+
+            PostData(url, data, processData)
         }
     }
 }
+
+TasksService.$inject = ['PostData', '_'];

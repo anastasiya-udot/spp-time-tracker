@@ -5,9 +5,8 @@ let TimeTrackerApplication = angular.module('time-tracker', [
         'ngMessages',
         'g1b.datetime-range',
         'ui.bootstrap.datetimepicker',
-        'ngDialog'/*,
-        'DWand.nw-fileDialog',
-        'ngFileSaver'*/
+        'ngDialog',
+        'DWand.nw-fileDialog'
 
     ])
     .config(setApplicationConfig);

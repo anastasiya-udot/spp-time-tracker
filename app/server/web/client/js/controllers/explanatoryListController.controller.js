@@ -1,11 +1,17 @@
 TimeTrackerApplication
     .controller('ExplanatoryListDialogController', ExplanatoryListDialogController);
 
-function ExplanatoryListDialogController($scope, ngDialog, RequestsService) {
+function ExplanatoryListDialogController($scope, ngDialog, RequestsService,RequestService) {
 
-    $scope.requests =  RequestsService.getRequests();
+    function getRequests() {
+         var deferred = $.Deferred();
+         RequestsService.get(deferred.resolve);
+         return deferred.promise();
+     }
 
-    $scope.openFormForExplanatory = function() {
+    $scope.openFormForExplanatory = function(requestId) {
+        ExplanatoryService.set(RequestsService.getById(requestId));
+
         ngDialog.open({
             template: '../../templates/dialogs/dialog-form-explanatory.html',
             className: 'ngdialog-theme-default',
@@ -29,7 +35,9 @@ function ExplanatoryListDialogController($scope, ngDialog, RequestsService) {
         });
     }
 
-    $scope.requests =  RequestsService.getRequests();
+   getRequests().done(function() {
+         $scope.requests = RequestsService.getRequests();
+     });
 }
 
-ExplanatoryListDialogController.$inject = ['$scope', 'ngDialog', 'RequestsService'];
+ExplanatoryListDialogController.$inject = ['$scope', 'ngDialog', 'RequestsService', 'ExplanatoryService'];

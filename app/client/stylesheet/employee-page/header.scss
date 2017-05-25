@@ -1,0 +1,22 @@
+.profile-info-header, .profile-time-header, .profile-tasks-header {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+
+    .name {
+        height: 30px;
+        padding-top: 5px;
+        padding-left: 10px;
+    }
+
+    .block-name {
+        background-color: $pink-dark;
+        width: 92px;
+        height: 30px;
+        color: white;
+        display: block;
+        text-align: center;
+        padding-top: 5px;
+    }
+}

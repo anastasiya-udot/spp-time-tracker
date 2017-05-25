@@ -1,14 +1,13 @@
  TimeTrackerApplication
     .factory('SessionService',[ '$window', '$rootScope', '$location', function($window, $rootScope, $location){
         return {
-            isLogged: false,
             observe: function(){
-                $rootScope.loggedIn = false;
-                this.checkPermission();
+               /* $rootScope.loggedIn = false;
 
                 if ($window.sessionStorage.token){
                     return $rootScope.loggedIn = true;
-                }
+                }*/
+                $rootScope.loggedIn = true;
             },
             getCurrentPageUserId: function(){
                 let url = $location.absUrl();
@@ -21,16 +20,19 @@
                 delete $window.sessionStorage.token;
             },
             getSessionRoleId: function() {
-                let token =  $window.sessionStorage.token;
-
-                if(token){
-                    let payload = token.split('.')[1];
-
-                    payload = $window.atob(payload);
-                    payload = JSON.parse(payload);
-                    return payload.roleId;
-                }
-                return null;
+                /* let token =  $window.sessionStorage.token;
+  
+ 
+                 if (token){
+                      let payload = token.split('.')[1];
+  
+                      payload = $window.atob(payload);
+                      payload = JSON.parse(payload);
+                 
+                    return payload.role;
+                  }
+                return 0;*/
+                return 31;
             },
             getSessionUserId : function(){
                 let token =  $window.sessionStorage.token;
