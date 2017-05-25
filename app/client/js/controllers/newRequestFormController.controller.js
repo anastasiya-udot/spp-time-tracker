@@ -1,14 +1,15 @@
 TimeTrackerApplication
     .controller('NewRequestFormController', NewRequestFormController);
 
-function NewRequestFormController($scope, ExplanatoryService, RequestsService, SessionService, FactTime, _) {
+function NewRequestFormController($scope, EmployeeService, ExplanatoryService, RequestsService, SessionService, FactTime, _) {
 
     $scope.start = moment().subtract(1, 'days');
     $scope.end = moment();
+    
 
     function getWorktimeForPeriod () {
-        var deferred = $.Deferred();
-        var data = {
+        let deferred = $.Deferred();
+        let data = {
             id: SessionService.getCurrentPageUserId(),
             startPeriod: (new Date($scope.start._d)).getTime(),
             endPeriod: (new Date($scope.end._d)).getTime()
@@ -17,13 +18,24 @@ function NewRequestFormController($scope, ExplanatoryService, RequestsService, S
         return deferred.promise();
     }
 
+    function countExpected() {
+        let weekExpectedHours = EmployeeService.employee.worktype;
+        let timeDelta = (new Date($scope.end._d)).getTime() - (new Date($scope.start._d)).getTime();
+
+        return Math.trunc((timeDelta * weekExpectedHours / (7 * 24 * 60 * 60 * 1000)) / 1000 / 60 / 60);
+    }
+
     $scope.checkRangeChanged = function() {
+        $scope.expected = countExpected() + ' hours';
+        let processResponse = _.bind(function(data) {
+            $scope.inFact = Math.trunc(data.sum / 1000 / 60 / 60) + ' hours';
+        }, $scope);
         getWorktimeForPeriod().done(function(res) {
-            
+            processResponse(res.data)
         });
     };
 
-    $scope.checkRangeChanged
+    $scope.checkRangeChanged();
 
     $scope.presets = [
         {
@@ -62,4 +74,4 @@ function NewRequestFormController($scope, ExplanatoryService, RequestsService, S
     }
 }
 
-NewRequestFormController.$inject = ['$scope', 'ExplanatoryService', 'RequestsService', 'SessionService', 'FactTime', '_'];
+NewRequestFormController.$inject = ['$scope', 'EmployeeService', 'ExplanatoryService', 'RequestsService', 'SessionService', 'FactTime', '_'];

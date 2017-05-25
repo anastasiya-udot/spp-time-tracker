@@ -4,7 +4,7 @@ TimeTrackerApplication
 function NewTaskFormController($scope) {
 
 	$scope.addNewTask = function() {
-		console.log($scope.newTaskCode);
+		
 	};
 }
 
