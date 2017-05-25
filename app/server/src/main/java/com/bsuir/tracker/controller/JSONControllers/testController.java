@@ -13,10 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.bsuir.tracker.entity.ImageEntity;
@@ -40,5 +37,15 @@ public class testController {
         Map<String, Object> data = new HashMap<>();
         data.put("error", "error message");
         return ResponseEntity.status(HttpStatus.OK).body(/*imageService.getAllImages()*/ data);
+    }
+
+    @RequestMapping(value = "/test1", method = RequestMethod.GET)
+    @ResponseBody
+    public ResponseEntity test1 (){
+        Map<String, Object> result = new HashMap<>();
+        result.put("mame", "Paul");
+        result.put("images", imageService.getAllImages());
+
+        return ResponseEntity.status(HttpStatus.OK).body(result);
     }
 }

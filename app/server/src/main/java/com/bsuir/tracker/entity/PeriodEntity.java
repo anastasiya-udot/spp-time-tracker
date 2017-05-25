@@ -58,7 +58,7 @@ public class PeriodEntity {
         this.employeeIdemployee = employeeIdemployee;
     }
 
-    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "periodEntities")
+    @ManyToMany(fetch = FetchType.EAGER/*LAZY*/, mappedBy = "periodEntities")
     public Set<TaskEntity> getTaskEntities() {
         return taskEntities;
     }

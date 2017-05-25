@@ -14,6 +14,8 @@ public interface EmployeeDAO {
 
     public EmployeeEntity getEmployeeByMail(String  name);
 
+    public List<EmployeeEntity> getEmployeeByCompany(int  id);
+
     public List<EmployeeEntity> getAllEmployees();
 
     public EmployeeEntity updateEmployee(EmployeeEntity employee);

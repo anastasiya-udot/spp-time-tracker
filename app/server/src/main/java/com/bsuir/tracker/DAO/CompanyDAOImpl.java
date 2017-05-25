@@ -2,6 +2,7 @@ package com.bsuir.tracker.DAO;
 
 import com.bsuir.tracker.entity.CompanyEntity;
 import com.bsuir.tracker.model.CompanyNameIdModel;
+import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +37,21 @@ public class CompanyDAOImpl implements CompanyDAO {
         CompanyEntity result;
         try {
             result = (CompanyEntity) sessionFactory.getCurrentSession().get(CompanyEntity.class, idCompany);
+        }
+        catch (Exception e){
+            System.out.println(e);
+            throw new IllegalArgumentException();
+        }
+        return result;
+    }
+
+    @Override
+    public CompanyEntity getCompanyByName(String  name) {
+        CompanyEntity result = null;
+        try {
+            Query query = sessionFactory.getCurrentSession().createQuery("from CompanyEntity where name=:name");
+            query.setParameter("name", name);
+            result = (CompanyEntity) query.uniqueResult();
         }
         catch (Exception e){
             System.out.println(e);

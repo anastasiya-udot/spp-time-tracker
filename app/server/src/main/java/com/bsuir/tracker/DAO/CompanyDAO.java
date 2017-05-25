@@ -15,6 +15,8 @@ public interface CompanyDAO {
 
     public CompanyEntity getCompany(int idCompany);                                                     //R
 
+    public CompanyEntity getCompanyByName(String  name);
+
     public List<CompanyEntity> getAllCompanies();
 
     public List<CompanyNameIdModel> getAllCompaniesNamesId();

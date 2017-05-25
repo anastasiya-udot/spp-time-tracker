@@ -36,6 +36,11 @@ public class EmployeeServiceImpl implements EmployeeService {
     public EmployeeEntity getEmployeeByMail(String mail) {return employeeDAO.getEmployeeByMail(mail); }
 
     @Transactional
+    public List<EmployeeEntity> getEmployeeByCompany(int  id){
+        return employeeDAO.getEmployeeByCompany(id);
+    }
+
+    @Transactional
     public List<EmployeeEntity> getAllEmployees() {
         return employeeDAO.getAllEmployees();
     }
