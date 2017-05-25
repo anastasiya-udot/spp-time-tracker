@@ -10,15 +10,14 @@
             </span>
         </div>
         <div class="header-authorization-navigation">
-            <div id="register-company" ng-show="unAuth" ng-click="onClick('registerCompany')">Register your company</div>
-            <div class="sign-user"  ng-show="unAuth">
+           <div id="register-company" ng-hide="loggedIn" ng-click="onClick('registerCompany')">Register your company</div>
+           <div class="sign-user"  ng-hide="loggedIn">
                 <span id="sign-in" ng-click="onClick('signIn')">Sign in</span>
                 <span class="slash">/</span> 
                 <span id="sign-up" ng-click="onClick('signUp')">Sign up</span>
             </div>
-            <div id="sign-out" ng-hide="unAuth">Back to list</div>
-            <div id="sign-out" ng-hide="unAuth" ng-click="openChangeUserInfoDialog()">Change user</div>
-            <div id="sign-out" ng-hide="unAuth" ng-click="onClick('signOut')">Sign out</div>
+            <div id="sign-out" ng-show="loggedIn && permission.EMPLOYEE_CONTROL">Back to list</div>
+            <div id="sign-out" ng-show="loggedIn" ng-click="onClick('signOut')">Sign out</div>
         </div> 
     </div>
 </div>

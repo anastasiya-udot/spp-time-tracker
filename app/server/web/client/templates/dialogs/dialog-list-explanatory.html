@@ -23,13 +23,12 @@
     <div class="dialog-name">Explanatory list</div>
     <div class="dialog-content list">
         <ul class="list" ng-repeat="request in requests">
-            <li class="list-item" ng-click="openFormForExplanatory()">
+            <li class="list-item" ng-click="openFormForExplanatory(request.id)">
                 Request for explanatory from
                 <span class="sender-name">{{request.sender.name}} {{request.sender.surname}}</span><br>
                 <span class="date">{{request.date}}</span><br>
-                <div class="remove-button">Remove</span><br>
             </li>
         </ul>
     </div>
-    <div class="add-new-request dialog-button" ng-click="openNewRequestForm()">Add new request</div>
+    <div class="add-new-request dialog-button" ng-show="permission.REQUEST_FOR_EXPLANATION" ng-click="openNewRequestForm()">Add new request</div>
 </div>
