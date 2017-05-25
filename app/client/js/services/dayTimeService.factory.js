@@ -1,7 +1,7 @@
 TimeTrackerApplication
     .factory('DayService', DayServiceController);
 
-function DayServiceController(DrawTimer, StartStopService) {
+function DayServiceController(DrawTimer, StartStopService, FactTime) {
     return {
         elementId: "#circle-day",
         requiredWorktime: 0,
@@ -19,7 +19,7 @@ function DayServiceController(DrawTimer, StartStopService) {
             "startDate" : moment().startOf('day'),
             "endDate" : moment().endOf('day'),
         },
-        setRequiredWorktime: function(workDayHours) { //!!!
+        setRequiredWorktime: function(workDayHours) {
             this.requiredWorktime = workDayHours * 60 * 60 * 1000;
         },
         getStartValue: function() {
@@ -41,7 +41,7 @@ function DayServiceController(DrawTimer, StartStopService) {
                 "endDate" : this.dates.endDate.subtract(1, "day")
             };
 
-            //this.getStatisticsForDay(callback);
+            this.getStatisticsForDay(callback);
         },
         generateDisplay: function() {
             return this.dates.startDate.format('MMMM Do');
@@ -52,7 +52,7 @@ function DayServiceController(DrawTimer, StartStopService) {
                 "endDate" : this.dates.endDate.add(1, "day")
             };
 
-            //this.getStatisticsForDay(callback);
+            this.getStatisticsForDay(callback);
         },
         setActualWorktime: function(time) {
             this.actualWorktime = time;
@@ -70,10 +70,11 @@ function DayServiceController(DrawTimer, StartStopService) {
             //drawTimer as callback
             var _this = this;
 
-            setTimeout(function() {
-                _this.drawTimer();
-                callback();
-            }, 500);
+            function getDayTime() {
+                var deferrred = $.Deferred();
+            }
+            _this.drawTimer();
+
         },
         drawTimer: function() {
             if (this.checkCurrentMomentInPeriod() && StartStopService.isStarted) {

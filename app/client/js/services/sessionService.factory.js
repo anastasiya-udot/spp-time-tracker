@@ -19,6 +19,18 @@
             destroySession: function(){
                 delete $window.sessionStorage.token;
             },
+            getSessionCompanyId: function() {
+                let token =  $window.sessionStorage.token;
+
+                if(token){
+                    let payload = token.split('.')[1];
+
+                    payload = $window.atob(payload);
+                    payload = JSON.parse(payload);
+                    return payload.companyId;
+                }
+                return null;
+            },
             getSessionRoleCode: function() {
                /* let token =  $window.sessionStorage.token;
 
