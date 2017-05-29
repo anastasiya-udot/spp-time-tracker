@@ -18,7 +18,7 @@ public class Tasks_Blank implements IFactory<TasksInfo> {
         headers = new ArrayList<String>();
 
         headers.add("Имя");
-        headers.add("Кол-во выполнено");
+        headers.add("Кол-во заданий выполнено");
 
         mapper = (blank) -> {
             List<String> fields = new ArrayList<>();
