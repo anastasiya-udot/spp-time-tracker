@@ -109,6 +109,7 @@ public class JRequestsController {
             requestEntity.setStartPeriod(new Timestamp(requestPostModel.getStartPeriod()));
             requestEntity.setEndPeriod(new Timestamp(requestPostModel.getEndPeriod()));
             requestEntity.setDate(new Timestamp(requestPostModel.getDate()));
+            requestEntity.setContent(""); //To make content NOT NULL;
 
             requestService.addRequest(requestEntity);
 
@@ -129,6 +130,31 @@ public class JRequestsController {
             requestSenderModel.setSender(senderModel);
 
             return ResponseEntity.status(HttpStatus.OK).body(requestSenderModel);
+        }
+        catch (Exception e)
+        {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        }
+    }
+
+    @RequestMapping(value = "/update-request/post", method = RequestMethod.POST)
+    @ResponseBody
+    public ResponseEntity updateRequest_post(@RequestBody @Validated RequestUpdateModel requestUpdateModel, BindingResult bindingResult) throws Exception{
+        Map<String, Object> response = new HashMap<>();
+        if(bindingResult.hasErrors()){
+            response.put("error", "Data Binding Error");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
+        }
+        try {
+            RequestEntity requestEntity =  requestService.getRequest(requestUpdateModel.getId());
+            if(null != requestEntity){
+                requestEntity.setContent(requestUpdateModel.getContent());
+                requestService.updateRequest(requestEntity);
+                return ResponseEntity.status(HttpStatus.OK).body(null);
+            }
+            else{
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+            }
         }
         catch (Exception e)
         {
