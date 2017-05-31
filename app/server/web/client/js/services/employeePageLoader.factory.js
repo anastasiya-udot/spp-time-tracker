@@ -1,7 +1,7 @@
  TimeTrackerApplication
     .factory('EmployeePageLoader', EmployeePageLoaderController);
 
-function EmplyeePageLoaderController($location, EmployeeService, _) {
+function EmployeePageLoaderController($location, EmployeeService, _) {
     return {
         load: function(userId) {
   
@@ -18,5 +18,5 @@ function EmplyeePageLoaderController($location, EmployeeService, _) {
           }
       }
   }
-  
-EmployeePageLoaderController.$inject = ["$location", 'EmployeeService', '_'];
+
+ EmployeePageLoaderController.$inject = ["$location", 'EmployeeService', '_'];

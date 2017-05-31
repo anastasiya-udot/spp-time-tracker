@@ -28,7 +28,8 @@ function EmployeeServiceController(GetData) {
             }
         },
         get: function(id, callback){
-             let processResponse = _.bind(this._processResponse, this);
+            let processResponse = _.bind(this._processResponse, this);
+            let url = '/employee/get/' + id;
 
             GetData(url, function(res) {
                 processResponse(res);

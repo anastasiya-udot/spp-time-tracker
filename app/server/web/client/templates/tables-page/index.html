@@ -11,16 +11,16 @@
             <th>Lastname</th>
             <th>Patronymic</th>
             <th>Worked hours</th>
-            <th>Work plan</th>
+            <th>Work plan hours</th>
         </tr>
     </thead>
-    <tbody>
-        <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>   
+    <tbody class="employee_table_body">
+        <tr class="employee-row" ng-click="showUser(employee.id)" ng-repeat="employee in employees">
+        <td>{{employee.name}}</td>
+        <td>{{employee.surname}}</td>
+        <td>{{employee.patronymic}}</td>
+        <td>{{Math.trunc(employee.inFact / 1000 / 60 / 60 * 100) / 100}}</td>
+        <td>{{employee.worktype}}</td>
         </tr>
     </tbody>
     </table>

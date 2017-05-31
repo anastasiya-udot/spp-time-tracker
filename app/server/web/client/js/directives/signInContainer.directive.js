@@ -17,7 +17,7 @@ function signInContainerDirectiveController($scope, InitialPageLoader, EmployeeP
   
 
     $scope.sendSignInForm = function() {
-        let url = '/authoization/sign-in/post';
+        let url = '/authorization/sign-in/post';
         let data = {
             email: $scope.signInEmail,
             password: $scope.signInPassword
@@ -39,7 +39,7 @@ function signInContainerDirectiveController($scope, InitialPageLoader, EmployeeP
                  case 200: {
                      let userId;
  
-                     SessionService.startSession(token);
+                     SessionService.startSession(res.data.token);
                      userId = SessionService.getSessionUserId();
                      EmployeePageLoader.load(userId);
                      this.disableSave = false;

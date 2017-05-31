@@ -16,8 +16,8 @@
                 <span class="slash">/</span> 
                 <span id="sign-up" ng-click="onClick('signUp')">Sign up</span>
             </div>
-            <div id="sign-out" ng-show="loggedIn && permission.EMPLOYEE_CONTROL">Back to list</div>
-            <div id="sign-out" ng-show="loggedIn" ng-click="onClick('signOut')">Sign out</div>
+            <div id="sign-out" ng-show="loggedIn && permission.EMPLOYEE_CONTROL" ng-click="backToList()">Back to list</div>
+            <div id="sign-out" ng-show="loggedIn" ng-click="finishSession()">Sign out</div>
         </div> 
     </div>
 </div>

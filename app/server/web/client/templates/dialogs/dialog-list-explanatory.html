@@ -23,10 +23,14 @@
     <div class="dialog-name">Explanatory list</div>
     <div class="dialog-content list">
         <ul class="list" ng-repeat="request in requests">
-            <li class="list-item" ng-click="openFormForExplanatory(request.id)">
-                Request for explanatory from
-                <span class="sender-name">{{request.sender.name}} {{request.sender.surname}}</span><br>
-                <span class="date">{{request.date}}</span><br>
+            <li class="list-item">
+                <span class="info" ng-click="openFormForExplanatory(request.id)">
+                    Request for explanatory from
+                    <span class="sender-name">{{request.sender.name}} {{request.sender.surname}}</span><br>
+                    <span class="date">{{request.date}}</span><br>
+                </span>
+                <span class="sign-order" ng-click="generateOrder(request.id)">
+                </span>
             </li>
         </ul>
     </div>

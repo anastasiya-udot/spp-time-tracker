@@ -13,16 +13,16 @@ function RequestsServiceController(GetData, SessionService, _) {
                          name: req.sender.name,
                          surname: req.sender.surname
                      },
-                     date: (new Date(req.date)).format("yyyy-mm-dd"),
+                     date: moment(new Date(req.date)).format("D MMM YYYY"),
                      startPeriod: {
-                         string: (new Date(req.startPeriod)).format("yyyy-mm-dd"),
+                         string: moment(new Date(req.startPeriod)).format("D MMM YYYY"),
                          value: req.startPeriod
                      },
                      endPeriod: {
-                         string: (new Date(req.endPeriod)).format("yyyy-mm-dd"),
+                         string: moment(new Date(req.endPeriod)).format("D MMM YYYY"),
                         value: req.endPeriod
                      },
-                     content: req.content || 'null'
+                     content: req.content || ''
                  }
              });
           },
@@ -30,6 +30,9 @@ function RequestsServiceController(GetData, SessionService, _) {
            getRequests: function() {
              return this.requests;
          },
+        removeById: function(id) {
+             delete this.getById(id);
+        },
          getById: function(id) {
              return _.find(this.requests, function(req) {
                  return req.id === id;
@@ -43,27 +46,32 @@ function RequestsServiceController(GetData, SessionService, _) {
                      name: req.sender.name,
                      surname: req.sender.surname
                   },
-                  date: (new Date(req.date)).format("yyyy-mm-dd"),
+                  date: moment(new Date(req.date)).format("D MMM YYYY"),
                  startPeriod: {
-                     string: (new Date(req.startPeriod)).format("yyyy-mm-dd"),
+                     string: moment(new Date(req.startPeriod)).format("D MMM YYYY"),
                      value: req.startPeriod
                   },
                   endPeriod: {
-                     string: (new Date(req.endPeriod)).format("yyyy-mm-dd"),
+                     string: moment(new Date(req.endPeriod)).format("D MMM YYYY"),
                      value: req.endPeriod
                   },
                   content: req.content || null
-              }
+              };
               this.requests.push(newRequest);
          },
+        _processData: function(res) {
+             if (res.status === 200) {
+                 this.setRequests(res.data.requests);
+             }
+        },
          get: function(callback) {
-            var url = '/requests/get/' + SessionService.getCurrentPageUserId();
-             var processResponse = _.bind(function(res) {
-                 this.setRequests(res.data);
+             var url = '/requests/get/' + SessionService.getCurrentPageUserId();
+             var processData = _.bind(function(res) {
+                 this._processData(res);
                  callback();
              }, this);
- 
-             GetData(url, processResponse);
+
+             GetData(url, processData);
           }
       }
 }
