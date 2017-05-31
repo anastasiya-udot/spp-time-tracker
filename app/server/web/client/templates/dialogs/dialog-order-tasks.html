@@ -3,6 +3,13 @@
     <div class="dialog-content order">
         <div class="section-name">Set period</div>
         <datetime-range start="start" end="end" presents="presets"></datetime-range>
-        <div class="save-button dialog-button" ng-click="saveFile()">Save as...</div>
+        <div class="save-radio">
+            <div class="save-button dialog-button" ng-click="saveFile()">Save</div>
+            <div class="file-types">
+                <input type="radio" ng-model="fileType" value=".csv" /> CSV<br />
+                <input type="radio" ng-model="fileType" value=".pdf" /> PDF<br />
+                <input type="radio" ng-model="fileType" value=".xls" /> XLS<br />
+            </div>
+        </div>
     </div>
 </div>

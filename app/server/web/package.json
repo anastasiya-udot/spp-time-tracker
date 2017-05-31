@@ -28,6 +28,7 @@
     "gulp-sequence": "^0.4.6",
     "gulp-sourcemaps": "^2.4.1",
     "multipipe": "^1.0.2",
+    "ng-filedialog": "^1.0.0",
     "npm-sass": "^2.0.0",
     "through2": "^2.0.3"
   }

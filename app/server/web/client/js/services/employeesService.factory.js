@@ -1,36 +1,32 @@
- TimeTrackerApplication
+TimeTrackerApplication
     .factory('EmployeesService', EmployeesService);
 
-function EmployeesService() {
+function EmployeesService(PostData, SessionService, _) {
     return {
-        users: [
-            {
-                id: 1,
-                name: 'Nastya',
-                surname: 'Udot',
-                patronymic: 'Lalal',
-                plan: 40,
-                worked: 35
-            },
-            {
-                id: 2,
-                name: 'Someone',
-                surname: 'Else',
-                patronymic: 'Lalal',
-                plan: 40,
-                worked: 30
-            },
-            {
-                id: 2,
-                name: 'Guest',
-                surname: 'Guest',
-                patronymic: 'Lalal',
-                plan: 0,
-                worked: 0
-            }
-        ],
+        users: [],
         getUsers: function() {
             return this.users;
+        },
+        _processData: function(res) {
+            if (res.status) {
+                this.users = res.data.employees;
+            }
+        },
+        get: function(callback) {
+            var data = {
+                "startPeriod" : moment().startOf('week').startOf('day')._d.getTime(),
+                "finishPeriod" : moment().endOf('week').endOf('day')._d.getTime(),
+                "companyId": SessionService.getSessionCompanyId()
+            };
+            var url = '/get-all-employees/get';
+            var processData = _.bind(function(res) {
+                this._processData(res);
+                callback();
+            }, this);
+
+            PostData(url, data, processData);
         }
     }
 }
+
+EmployeesService.$inject = ['PostData', 'SessionService', '_'];

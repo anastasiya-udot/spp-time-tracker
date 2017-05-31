@@ -3,15 +3,15 @@
 
 function PermissionsServiceController($rootScope, RoleService) {
     return {
-        masks: [
-            00001,
-            00010,
-            00100,
-            01000,
-            10000
-        ],
         _getBit: function(value, number) {
-            return !!+value.toString(2)[4 - number];
+            let n = +value;
+            let binary = n.toString(2);
+
+            while (binary.length !== 5) {
+                binary = '0' + binary;
+            }
+
+            return !!+binary[binary.length - 1 - number];
         },
         get: function() {
             let code = RoleService.get();

@@ -21,6 +21,25 @@
             cursor: pointer;
          }
     }
+
+    .save-radio {
+        display: flex;
+        align-items: center;
+
+        .save-button {
+            display: inline-block;
+        }
+
+        .file-types {
+            display: flex;
+            margin: auto;
+
+            input {
+                margin: 4px 6px 0;
+            }
+        }
+
+    }
    
     @import './dialog-form-task';
     @import './dialog-list-explanatory';

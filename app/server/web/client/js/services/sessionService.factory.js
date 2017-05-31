@@ -2,12 +2,11 @@
     .factory('SessionService',[ '$window', '$rootScope', '$location', function($window, $rootScope, $location){
         return {
             observe: function(){
-               /* $rootScope.loggedIn = false;
+               $rootScope.loggedIn = false;
 
                 if ($window.sessionStorage.token){
                     return $rootScope.loggedIn = true;
-                }*/
-                $rootScope.loggedIn = true;
+                }
             },
             getCurrentPageUserId: function(){
                 let url = $location.absUrl();
@@ -18,9 +17,22 @@
             },
             destroySession: function(){
                 delete $window.sessionStorage.token;
+                $location.path('/');
             },
-            getSessionRoleId: function() {
-                /* let token =  $window.sessionStorage.token;
+            getSessionCompanyId: function() {
+                let token =  $window.sessionStorage.token;
+
+                if(token){
+                    let payload = token.split('.')[1];
+
+                    payload = $window.atob(payload);
+                    payload = JSON.parse(payload);
+                    return payload.idCompany;
+                }
+                return null;
+            },
+            getSessionRoleCode: function() {
+                let token =  $window.sessionStorage.token;
   
  
                  if (token){
@@ -31,8 +43,7 @@
                  
                     return payload.role;
                   }
-                return 0;*/
-                return 31;
+                return 0;
             },
             getSessionUserId : function(){
                 let token =  $window.sessionStorage.token;

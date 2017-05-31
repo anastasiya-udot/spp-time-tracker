@@ -11,7 +11,7 @@ function ApplicationHeaderDirective() {
 
 
 
-function ApplicationHeaderDirectiveController($scope, InitialPageLoader, ngDialog, _) {
+function ApplicationHeaderDirectiveController($scope, $location, InitialPageLoader, ngDialog, SessionService, _) {
     $scope.tabs = {};
 
     function resetTabs() {
@@ -29,6 +29,15 @@ function ApplicationHeaderDirectiveController($scope, InitialPageLoader, ngDialo
         InitialPageLoader.setTab(tab);
     };
 
+    $scope.backToList = function() {
+        $location.url('/tables/' + SessionService.getSessionCompanyId());
+    };
+
+
+    $scope.finishSession = function() {
+        SessionService.destroySession();
+
+    };
 
     $scope.openChangeUserInfoDialog = function() {
         ngDialog.open({
@@ -43,4 +52,4 @@ function ApplicationHeaderDirectiveController($scope, InitialPageLoader, ngDialo
     }
 }
 
-ApplicationHeaderDirectiveController.$inject = ['$scope', 'InitialPageLoader', 'ngDialog', '_'];
+ApplicationHeaderDirectiveController.$inject = ['$scope', '$location', 'InitialPageLoader', 'ngDialog', 'SessionService', '_'];

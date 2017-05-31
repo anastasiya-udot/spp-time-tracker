@@ -9,18 +9,18 @@ function TablesAreaDirective() {
     }
 }
 
-function tablesAreaDirectiveController($scope, EmployeesService, fileDialog, _) {
+function tablesAreaDirectiveController($scope, EmployeesService, FileDialog, _) {
 
     $scope.users = EmployeesService.getUsers();
 
 
     
     $scope.saveFile = function(){
-        fileDialog.saveAs(function(filename) {
+        FileDialog.saveAs(function(filename) {
             // your code
         });
     }
 
 }
 
-tablesAreaDirectiveController.$inject = ['$scope', 'EmployeesService', 'fileDialog', '_'];
+tablesAreaDirectiveController.$inject = ['$scope', 'EmployeesService', 'FileDialog', '_'];

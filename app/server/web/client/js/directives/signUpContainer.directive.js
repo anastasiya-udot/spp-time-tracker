@@ -93,7 +93,7 @@ function SignUpContainerDirectiveController($scope, InitialPageLoader, Companies
          function registerCompany() {
              var deferred = $.Deferred();
              PostData(url, data, deferred.resolve);
-             return deffered.promise();
+             return deferred.promise();
          }
 
         if ($scope.newCompany) {
@@ -103,15 +103,14 @@ function SignUpContainerDirectiveController($scope, InitialPageLoader, Companies
                 legalNumber: $scope.registrationLegalNumber,
             });
 
-         registerCompany().done(function(res) {
+            registerCompany().done(function(res) {
                  processResponseRegisterCompany(res);
              });
 
-            PostData(url, data, processResponseRegisterCompany);
         } else {
             url = '/authorization/new-user/post';
             _.extend(data, {
-                company: $scope.company.id
+                company: $scope.company.value
             });
 
             registerNewUser().done(function(res) {

@@ -1,15 +1,16 @@
 TimeTrackerApplication
     .controller('OrderTasksDialogController', OrderTasksDialogController);
 
-function OrderTasksDialogController($scope, fileDialog) {
+function OrderTasksDialogController($scope, FileSaver, ngDialog, Blob, _) {
     $scope.start = moment().subtract(1, 'days');
     $scope.end = moment();
+    $scope.fileType = '.pdf';
 
     $scope.presets = [
         {
             'name': 'This Week',
             'start': moment().startOf('week').startOf('day'),
-            'end': moment().endOf('week').endOf('day'),
+            'end': moment().endOf('week').endOf('day')
         },
         {
             'name': 'This Day',
@@ -18,12 +19,11 @@ function OrderTasksDialogController($scope, fileDialog) {
         }
     ];
 
-
     $scope.saveFile = function(){
-        fileDialog.saveAs(function(filename) {
-            // your code
-        });
-    }
+        var data = new Blob(['hey!!'], { type: 'text/plain;charset=utf-8' });
+        FileSaver.saveAs(data, 'order' + $scope.fileType);
+        ngDialog.closeAll();
+    };
 }
 
-OrderTasksDialogController.$inject = ['$scope', 'fileDialog'];
+OrderTasksDialogController.$inject = ['$scope', 'FileSaver', 'ngDialog', 'Blob', '_'];

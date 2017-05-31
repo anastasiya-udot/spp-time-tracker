@@ -18,11 +18,11 @@
             </div>
         </div>
         <div class="input-explanatory">
-            <textarea cols="50" rows="9" class="explanatory">{{currentExplanatory.content}}</textarea>
+            <textarea ng-model="content" cols="50" rows="9" class="explanatory">{{currentExplanatory.content}}</textarea>
         </div>
         <div class="buttons-area">
-            <span class="button save-button dialog-button">Save as...</span>
-            <span class="button accept-button dialog-button" ng-show="permission.REQUEST_FOR_EXPLANATION">Accept</span>
+            <span class="button save-button dialog-button" ng-click="sendExplanatory()">Send</span>
+            <span class="button accept-button dialog-button" ng-click="removeExplanatory()" ng-show="permission.REQUEST_FOR_EXPLANATION">Accept</span>
         </div>     
     </div>
 </div>
