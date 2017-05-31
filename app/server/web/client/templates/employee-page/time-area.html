@@ -1,0 +1,34 @@
+<div class="profile-time-area">
+    <div class="profile-time-header">
+        <span class="block-name">
+           Tracking:
+        </span>
+        <span class="name"></span>
+    </div>
+    <div class="profile-time-area-contnet">
+        <span class="day-container">
+            <div class="container-name">Day: {{dayDisplay}}
+                <span class="overworked" ng-show="excessiveTime.day">- Overworked!</span>
+            </div>
+            <pie-chart-day></pie-chart-day>
+        </span>
+        <span class="week-container">
+            <div class="container-name">Week: {{weekDisplay}}
+                <span class="overworked" ng-show="excessiveTime.week">- Overworked!</span>
+            </div>
+             <pie-chart-week></pie-chart-week>
+        </span>
+    </div>
+    <div class="time-control-buttons-cotainer">
+        <div class="buttons">
+            <span class="play-button" ng-show="showPlayButton" ng-disabled="controlButtonsDisabled" ng-click="startClick()">
+                <span class="sign"></span>
+                <span class="text">Play</span>
+            </span>
+            <span class="stop-button" ng-hide="showPlayButton" ng-disabled="controlButtonsDisabled" ng-click="stopClick()">
+                <span class="sign"></span>
+                <span class="text">Stop</span>
+            </span>
+        </div>
+    </div>
+</div>

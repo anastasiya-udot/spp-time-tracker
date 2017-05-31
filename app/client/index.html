@@ -3,38 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no">
+    <title>Time tracker</title>
     
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bower_components/angular-dropdowns/angular-dropdowns.css">
+    <link rel="stylesheet" href="bower_components/angular-bootstrap-datetimepicker/src/css/datetimepicker.css"/>
+    <link rel="stylesheet" href="bower_components/ng-dialog/css/ngDialog.min.css">
+    <link rel="stylesheet" href="bower_components/ng-dialog/css/ngDialog-theme-default.min.css">
+    <link rel="stylesheet" href="bower_components/angular-datetime-range/dist/datetime-range.min.css">
+    <link rel="stylesheet" href="stylesheet/main.css">
+
     <script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
     <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-
-    <link rel="stylesheet" href="stylesheet/main.css">
-    <link rel="stylesheet" href="bower_components/angular-dropdowns/angular-dropdowns.css">
     <script type="text/javascript" src="bower_components/underscore/underscore.js"></script>
     <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
     <script type="text/javascript" src="bower_components/angular-route/angular-route.min.js"></script>
     <script type="text/javascript" src="bower_components/angular-dropdowns/angular-dropdowns.js"></script>
     <script type="text/javascript" src="bower_components/angular-underscore-module/angular-underscore-module.js"></script>
     <script type="text/javascript" src="bower_components/angular-messages/angular-messages.min.js"></script>
+    <script type="text/javascript" src="bower_components/angular-file-saver/dist/angular-file-saver.min.js"></script>
+
+    <script type="text/javascript" src="js/lib/nw-fileDialog.js"></script>
+
+    <script type="text/javascript" src="bower_components/jquery-circle-progress/dist/circle-progress.js"></script>
+    <script type="text/javascript" src="bower_components/moment/moment.js"></script>
+    <script type="text/javascript" src="bower_components/angular-bootstrap-datetimepicker/src/js/datetimepicker.js"></script>
+    <script type="text/javascript" src="bower_components/angular-bootstrap-datetimepicker/src/js/datetimepicker.templates.js"></script>
+    <script type="text/javascript" src="bower_components/ng-dialog/js/ngDialog.min.js"></script>
+    <script type="text/javascript" src="bower_components/ng-dialog/js/ngDialog.min.js"></script>
+    <script type="text/javascript" src="bower_components/angular-datetime-range/dist/datetime-range.min.js"></script>
     <script type="text/javascript" src="js/app.js"></script>
     <script type="text/javascript" src="js/services/sessionService.factory.js"></script>
     <script type="text/javascript" src="js/services/httpRequestService.factory.js"></script>
+    <script type="text/javascript" src="js/services/factTime.service.factory.js"></script>
     <script type="text/javascript" src="js/services/roleService.factory.js"></script>
     <script type="text/javascript" src="js/services/permissionsService.factory.js"></script>
     <script type="text/javascript" src="js/services/initialPageLoader.factory.js"></script>
+    <script type="text/javascript" src="js/controllers/changeUserInfoDialogController.controller.js"></script>
     <script type="text/javascript" src="js/directives/applicationHeader.directive.js"></script>
     <script type="text/javascript" src="js/services/patternService.factory.js"></script>
     <script type="text/javascript" src="js/services/employeeService.factory.js"></script>
     <script type="text/javascript" src="js/services/employeePageLoader.factory.js"></script>
     <script type="text/javascript" src="js/services/companiesService.factory.js"></script>
+    <script type="text/javascript" src="js/services/explanatoryService.factory.js"></script>
+    <script type="text/javascript" src="js/services/requestsService.factory.js"></script>
+    <script type="text/javascript" src="js/services/tasksService.factory.js"></script>
     <script type="text/javascript" src="js/directives/registrAuthrizArea.directive.js"></script>
     <script type="text/javascript" src="js/directives/signInContainer.directive.js"></script>
     <script type="text/javascript" src="js/directives/signUpContainer.directive.js"></script>
     <script type="text/javascript" src="js/directives/registrationContainer.directive.js"></script>
     <script type="text/javascript" src="js/directives/inputValidators.directive.js"></script>
+    <script type="text/javascript" src="js/controllers/newRequestFormController.controller.js"></script>
+    <script type="text/javascript" src="js/controllers/explanatoryFormController.controller.js"></script>
+    <script type="text/javascript" src="js/controllers/explanatoryListController.controller.js"></script>
+    <script type="text/javascript" src="js/controllers/orderWorktimeDialogController.controller.js"></script>
+    <script type="text/javascript" src="js/controllers/orderTasksDialogController.controller.js"></script>
+    <script type="text/javascript" src="js/controllers/ordersDialogController.controller.js"></script>
+    <script type="text/javascript" src="js/controllers/newTaskFormController.controller.js"></script>
+    <script type="text/javascript" src="js/directives/profileInfo.directive.js"></script>
+    <script type="text/javascript" src="js/services/startStopService.factory.js"></script>
+    <script type="text/javascript" src="js/services/drawTimerService.factory.js"></script>
+    <script type="text/javascript" src="js/services/dayTimeService.factory.js"></script>
+    <script type="text/javascript" src="js/services/weekTimerService.factory.js"></script>
+    <script type="text/javascript" src="js/directives/pieChartWeek.directive.js"></script>
+    <script type="text/javascript" src="js/directives/pieChartDay.directive.js"></script>
+    <script type="text/javascript" src="js/directives/timeArea.directive.js"></script>
+    <script type="text/javascript" src="js/controllers/confirmDeleteDialogController.controller.js"></script>
+    <script type="text/javascript" src="js/directives/tasksArea.directive.js"></script>
+    <script type="text/javascript" src="js/directives/tablesArea.directive.js"></script>
     <script type="text/javascript" src="js/directives/warningsContainer.directive.js"></script>
     <script type="text/javascript" src="js/controllers/initialPageController.controller.js"></script>
     <script type="text/javascript" src="js/controllers/employeePageController.controller.js"></script>
+    <script type="text/javascript" src="js/services/employeesService.factory.js"></script>
+    <script type="text/javascript" src="js/controllers/tablesPageController.controller.js"></script>
 </head> 
 <body ng-app="time-tracker">
     <div class="time-tracker-background"></div>
@@ -42,4 +83,4 @@
         <div id="time-tracker-container" ng-view></div>    
     </div>
 </body>       
-</html>   
+</html>

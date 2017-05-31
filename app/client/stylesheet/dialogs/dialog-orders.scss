@@ -1,0 +1,12 @@
+.dialog-content {
+
+    &.orders {
+        display: flex;
+        margin-top: 5px;
+        flex-direction: column;
+
+         .button {
+            margin-top: 0;
+            }
+    }
+}

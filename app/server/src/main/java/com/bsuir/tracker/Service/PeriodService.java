@@ -16,6 +16,8 @@ public interface PeriodService {
 
     public List<PeriodEntity> getAllPeriods();
 
+    public List<PeriodEntity> getAllPeriodsByEmployeeId(int id);
+
     public PeriodEntity updatePeriod(PeriodEntity period);
 
     public void deletePeriod(int idPeriod);

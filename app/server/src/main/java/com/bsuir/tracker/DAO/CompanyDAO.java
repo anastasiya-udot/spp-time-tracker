@@ -1,6 +1,8 @@
 package com.bsuir.tracker.DAO;
 
 import com.bsuir.tracker.entity.CompanyEntity;
+import com.bsuir.tracker.model.CompanyNameIdModel;
+
 import java.util.List;
 
 /**
@@ -13,7 +15,11 @@ public interface CompanyDAO {
 
     public CompanyEntity getCompany(int idCompany);                                                     //R
 
+    public CompanyEntity getCompanyByName(String  name);
+
     public List<CompanyEntity> getAllCompanies();
+
+    public List<CompanyNameIdModel> getAllCompaniesNamesId();
 
     public CompanyEntity updateCompany(CompanyEntity company);                                                  //U
 

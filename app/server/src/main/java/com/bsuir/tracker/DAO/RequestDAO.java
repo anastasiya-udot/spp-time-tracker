@@ -16,6 +16,8 @@ public interface RequestDAO {
 
     public List<RequestEntity> getAllRequests();
 
+    public List<RequestEntity> getAllRequestsByDestEmployeeId(int id);
+
     public RequestEntity updateRequest(RequestEntity request);
 
     public void deleteRequest(int idRequest);

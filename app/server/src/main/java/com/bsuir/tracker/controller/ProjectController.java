@@ -22,6 +22,7 @@ import java.util.List;
  */
 
 @Controller
+@RequestMapping(value = "/Backdoor")
 public class ProjectController {
 
     public ProjectController(){
@@ -71,14 +72,26 @@ public class ProjectController {
             modelAndView.addObject("message", "Whoops, something gone wrong with SQL data integrity!");
             return modelAndView;
         }
-        return new ModelAndView("redirect:/Projects");
+        return new ModelAndView("redirect:/Backdoor/Projects");
     }
 
     @RequestMapping(value = "/deleteProject", method = RequestMethod.GET)
     public ModelAndView deleteProject(HttpServletRequest request) {
         int idProject = Integer.parseInt(request.getParameter("id"));
-        projectService.deleteProject(idProject);
-        return new ModelAndView("redirect:/Projects");
+        try {
+            projectService.deleteProject(idProject);
+            return new ModelAndView("redirect:/Backdoor/Projects");
+        }
+        catch (ConstraintViolationException e)
+        {
+            ModelAndView modelAndView = new ModelAndView("redirect:/errorView");
+            modelAndView.addObject("message", "Whoops, you're trying to delete entity that is still in use!");
+            return modelAndView;
+        }
+        catch (DataIntegrityViolationException e)
+        {
+            return GetErrorView("Whoops, something gone wrong with SQL data integrity!");
+        }
     }
 
     @RequestMapping(value = "/editProject", method = RequestMethod.GET)
@@ -91,4 +104,9 @@ public class ProjectController {
         return model;
     }
 
+    private ModelAndView GetErrorView(String message)
+    {
+        ModelAndView modelAndView = new ModelAndView("redirect:/errorView?message=" + message);
+        return modelAndView;
+    }
 }

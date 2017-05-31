@@ -1,0 +1,28 @@
+<div class="explanatory-dialog">
+    <div class="dialog-header">
+        <span class="dialog-name">Request for explanatory</span>
+    </div>
+    <div class="dialog-content form">
+        <div class="header">
+            <div class="from-user">
+                FROM: {{currentExplanatory.sender.name}} {{currentExplanatory.sender.surname}}
+            </div>
+            <div class="date-request">
+                DATE: {{currentExplanatory.date}}
+            </div>
+             <!-- <div class="not-worked">
+                 NOT WORKED OUT: {{notWorkedOut}}
+             </div> -->
+            <div class="period">
+                PERIOD: {{currentExplanatory.startPeriod.string}} - {{currentExplanatory.endPeriod.string}}
+            </div>
+        </div>
+        <div class="input-explanatory">
+            <textarea ng-model="content" cols="50" rows="9" class="explanatory">{{currentExplanatory.content}}</textarea>
+        </div>
+        <div class="buttons-area">
+            <span class="button save-button dialog-button" ng-click="sendExplanatory()">Send</span>
+            <span class="button accept-button dialog-button" ng-click="removeExplanatory()" ng-show="permission.REQUEST_FOR_EXPLANATION">Accept</span>
+        </div>     
+    </div>
+</div>

@@ -1,0 +1,152 @@
+.profile-tasks-area{
+    width: 100%;
+    margin-bottom: 60px;
+
+     .profile-tasks-header-container {
+
+        .profile-tasks-header {
+            background-color: white;
+        }
+
+        .projects-list {
+            background-color: white;
+            position: relative;
+            padding-left: 40px;
+            display: flex;
+            align-items: center;
+    
+            .project-name-number {
+                .number {
+                    font-size: 90px;
+                    font-weight: bold;
+                    color: gray;
+                    opacity: 0.3;
+                    padding-left: 12px; 
+                }
+
+                .name {
+                    font-size: 25px;
+                    font-weight: bold;
+                    color: dimgray;
+                    position: absolute;
+                    bottom: 25px;
+                    left: 125px;
+                    max-width: 40vw;
+                }
+            }
+
+            @mixin setArrow() {
+                background-image: url('../assets/lightbox_controls_next.png');
+                background-size: cover;
+                width: 40px;
+                height: 85px;
+            }
+
+            @mixin hoverArrow() {
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+
+            .button-left {
+                transform: rotate(180deg);
+                @include setArrow();
+                @include hoverArrow();
+                margin-right: 10px;
+            }
+            .button-right {
+                @include setArrow();
+                @include hoverArrow();
+                position: absolute;
+                right: 35px;
+            }
+        }
+    }
+
+    .tasks-list {
+        $height: 80px; 
+
+        @mixin commonItem() {
+            background-color: white;
+            height: $height;
+            display: flex;
+            align-items: center;
+            padding-left: 70px;
+            opacity: 0.9;
+            margin-top: 2px;
+
+            &:hover {
+                opacity: 1;
+            }
+        }
+
+        .tasks-list-item-add {
+
+            @include commonItem();
+            margin-top: 3px;
+            padding-left: 0px;
+            opacity: 1;
+
+            .text {
+                font-size: 20px;
+                color: gray;
+                margin: auto;
+            }
+
+             &:hover {
+                cursor: pointer;
+             }
+
+            .add-sign {
+                background-image: url('../assets/Plus-50.png');
+                background-size: cover;
+                width: 40px;
+                height: 40px;
+
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+        }
+
+        .tasks-list-item {
+            @include commonItem();
+                padding-left: 0;
+                flex-wrap: wrap;
+                justify-content: space-around;
+
+                 .remove-button {
+                    
+                     &:hover {
+                        font-weight: bold;
+                        color: #721c1c;
+                        cursor: pointer;
+                     }
+                 }
+            }
+
+            .task-info {
+                font-size: 14px;
+                color: gray;
+                padding-left: 40px;
+                
+                .code {
+                    color: darkred;
+                    text-transform: uppercase; 
+                }
+
+                .description {
+                    max-width: 60vw;
+                    width: 60vw;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    max-height: 20px;
+                    white-space: nowrap;
+                }
+
+                .date {
+                    color: dodgerblue;
+                }
+            }
+        }
+    }

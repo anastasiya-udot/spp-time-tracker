@@ -1,6 +1,7 @@
 package com.bsuir.tracker.Service;
 
 import com.bsuir.tracker.entity.CompanyEntity;
+import com.bsuir.tracker.model.CompanyNameIdModel;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
@@ -12,7 +13,11 @@ public interface CompanyService {
 
     public CompanyEntity getCompany(int idCompany);                                                     //R
 
+    public CompanyEntity getCompanyByName(String  name);
+
     public List<CompanyEntity> getAllCompanies();
+
+    public List<CompanyNameIdModel> getAllCompaniesNameId();
 
     public CompanyEntity updateCompany(CompanyEntity company);                                                  //U
 

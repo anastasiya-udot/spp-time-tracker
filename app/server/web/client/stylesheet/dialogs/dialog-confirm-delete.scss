@@ -1,0 +1,13 @@
+.dialog-content {
+
+    &.delete {
+        display: flex;
+        align-items: center;
+        margin-top: 15px;
+
+        .confirm, .cancel {
+            width: calc(100%/3)
+        }
+    }
+}
+

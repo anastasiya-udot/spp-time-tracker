@@ -1,0 +1,47 @@
+.dialog-content {
+
+    &.list {
+        background-color: #beafaf;
+        display: flex;
+        flex-direction: column;
+        overflow-y: scroll;
+        height: 179px;
+        margin-top: 5px;
+        margin-bottom: 23px;
+
+        .list-item {
+            padding: 10px;
+            border-bottom: #721c1c dotted 1px;
+            margin-right: 40px;
+            display: flex;
+
+            &:hover {
+                color: #721c1c;
+                cursor: pointer;
+            }
+
+            .sign-order {
+                background-image: url('../../public/assets/Document-50.png');
+                background-size: cover;
+                width: 44px;
+                height: 44px;
+                opacity: 0.5;
+
+                &:hover {
+                    opacity: 1;
+                    cursor: pointer;
+                }
+            }
+
+
+            .remove-button {
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+
+        }
+    }
+}
+

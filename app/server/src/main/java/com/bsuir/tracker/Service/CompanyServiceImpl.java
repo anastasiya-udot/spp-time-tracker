@@ -2,6 +2,7 @@ package com.bsuir.tracker.Service;
 
 import com.bsuir.tracker.DAO.CompanyDAO;
 import com.bsuir.tracker.entity.CompanyEntity;
+import com.bsuir.tracker.model.CompanyNameIdModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -31,6 +32,14 @@ public class CompanyServiceImpl implements CompanyService {
         return companyDAO.getAllCompanies();
     }
 
+    public CompanyEntity getCompanyByName(String  name){
+        return companyDAO.getCompanyByName(name);
+    }
+
+    public List<CompanyNameIdModel> getAllCompaniesNameId(){
+        return  companyDAO.getAllCompaniesNamesId();
+    }
+
     public CompanyEntity updateCompany(CompanyEntity company) {
         return companyDAO.updateCompany(company);
     }
@@ -40,7 +49,7 @@ public class CompanyServiceImpl implements CompanyService {
         companyDAO.deleteCompany(idCompany);
     }
 
-    public void setCompanyDAODAO(CompanyDAO companyDAO){
+    public void setCompanyDAO(CompanyDAO companyDAO){
         this.companyDAO = companyDAO;
     }
 }

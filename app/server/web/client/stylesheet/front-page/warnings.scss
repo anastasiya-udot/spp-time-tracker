@@ -1,0 +1,19 @@
+warnings-container {
+    position: absolute;
+    bottom: 25px;
+    width: 100%;
+    text-align: center;
+
+    .warnings {
+        width: 250px;
+        padding-top: 10px;
+        font-size: 20px;
+        color: white;
+        text-align: center;
+        margin: auto;
+
+        ng-message {
+            width: 250px;
+        }
+    }
+}

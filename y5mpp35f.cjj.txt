@@ -1,0 +1,28 @@
+﻿Merge branch 'develop' into feature-server-integration
+
+# Conflicts:
+#	app/client/index.html
+#	app/server/web/client/js/app.js
+#
+# It looks like you may be committing a merge.
+# If this is not correct, please remove the file
+#	.git/MERGE_HEAD
+# and try again.
+
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch feature-server-integration
+# Your branch is up-to-date with 'origin/feature-server-integration'.
+#
+# All conflicts fixed but you are still merging.
+#
+# Changes to be committed:
+#	modified:   app/server/web/client/index.html
+#	modified:   app/server/web/client/js/app.js
+#	new file:   app/server/web/client/js/controllers/tablesPageController.controller.js
+#	modified:   app/server/web/client/stylesheet/main.scss
+#	new file:   app/server/web/client/stylesheet/tables-page/main.scss
+#	new file:   app/server/web/client/stylesheet/tables-page/tables-area.scss
+#
+

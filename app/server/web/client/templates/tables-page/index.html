@@ -1,0 +1,27 @@
+<application-header></application-header>
+<div class="container-fluid">  
+    <div class="generate_button_area"> 
+        <span class="btn btn-primary generate_button">Generate order by work time</span>
+        <span class="btn btn-primary generate_button">Generate order by tasks</span>
+     </div>   
+    <table class="table table-bordered employee_table">
+    <thead>
+        <tr>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Patronymic</th>
+            <th>Worked hours</th>
+            <th>Work plan hours</th>
+        </tr>
+    </thead>
+    <tbody class="employee_table_body">
+        <tr class="employee-row" ng-click="showUser(employee.id)" ng-repeat="employee in employees">
+        <td>{{employee.name}}</td>
+        <td>{{employee.surname}}</td>
+        <td>{{employee.patronymic}}</td>
+        <td>{{Math.trunc(employee.inFact / 1000 / 60 / 60 * 100) / 100}}</td>
+        <td>{{employee.worktype}}</td>
+        </tr>
+    </tbody>
+    </table>
+</div>

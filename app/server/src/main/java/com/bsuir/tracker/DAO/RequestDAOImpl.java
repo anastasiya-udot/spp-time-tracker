@@ -2,9 +2,11 @@ package com.bsuir.tracker.DAO;
 
 import com.bsuir.tracker.entity.RequestEntity;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import javax.persistence.NoResultException;
 import java.util.List;
 
 /**
@@ -32,6 +34,9 @@ public class RequestDAOImpl implements RequestDAO {
         try {
             result = (RequestEntity) sessionFactory.getCurrentSession().get(RequestEntity.class, idRequest);
         }
+        catch (NoResultException nre){
+            result = null;
+        }
         catch (Exception e){
             System.out.println(e);
             throw new IllegalArgumentException();
@@ -51,12 +56,25 @@ public class RequestDAOImpl implements RequestDAO {
         return result;
     }
 
+    public List<RequestEntity> getAllRequestsByDestEmployeeId(int id) {
+        List<RequestEntity> result = null;
+        try {
+            Query query = sessionFactory.getCurrentSession().createQuery("from RequestEntity where destinationIdemployee=:id");
+            query.setParameter("id", id);
+            result = query.list();
+        }
+        catch (Exception e){
+            System.out.println(e);
+        }
+        return result;
+    }
+
     @Override
     public RequestEntity updateRequest(RequestEntity request) {
         if (request == null){
             throw new IllegalArgumentException();
         }
-        sessionFactory.getCurrentSession().update(request);
+        sessionFactory.getCurrentSession().merge(request); //update
         return request;
     }
 

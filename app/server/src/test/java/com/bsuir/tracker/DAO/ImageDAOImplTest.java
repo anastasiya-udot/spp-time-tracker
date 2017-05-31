@@ -51,7 +51,7 @@ public class ImageDAOImplTest {
         trans.commit();
     }
 
-    @Test(expected = PersistenceException.class)
+    /*@Test(expected = PersistenceException.class)
     public void addImage_idImage() throws Exception{
         ImageEntity imageEntity = new ImageEntity();
         imageEntity.setIdimage(1);
@@ -63,7 +63,7 @@ public class ImageDAOImplTest {
         trans.commit();
         imageDAO.deleteImage(imageEntity.getIdimage());
         trans.commit();
-    }
+    }*/
 
     @Test(expected = PropertyValueException.class)
     public void addImage_throwsPropertyExeption_PublicID() throws Exception {

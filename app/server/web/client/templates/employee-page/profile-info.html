@@ -1,0 +1,38 @@
+<div class="profile-info-container">
+    <open-list></open-list>
+    <div class="profile-info-header">
+        <span class="block-name">
+            Company:
+        </span>
+        <span class="name">{{employee.company.name}}</span>
+    </div>
+    <div class="profile-info">
+        <span class="profile-info-photo"></span>
+        <span class="profile-info-card">
+            <div class="info">
+                <div class="name">{{employee.name}} {{employee.surname}} {{employee.patronymic}}</div>
+                <div class="workday">{{employee.worktype}} h</div>
+                <div class="mail">{{employee.email}}</div>
+            </div>
+            <div class="profile-buttons">
+                <div class="profile-button dropdown tooltip">
+                    <span id="openCalendar" data-toggle="dropdown" data-target=".dropdown" class="dropdown-toggle">
+                        <div class="calendar"></div>
+                    </span>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="openCalendar">
+                        <datetimepicker data-ng-model="data.date" data-datetimepicker-config="{ dropdownSelector: '.dropdown-toggle' }"></datetimepicker>
+                    </ul>
+                    <span class="tooltiptext">Calendar</span>
+                </div>
+                <span class="profile-button tooltip" ng-click="openOrdersDialog()">
+                    <div class="orders"></div>
+                    <span class="tooltiptext">Orders</span>
+                </span>
+                <span class="profile-button tooltip" ng-click="openExplanatoryDialog()">
+                    <div class="explanatory"></div>
+                    <span class="tooltiptext">Explanatory</span>
+                </span>
+            </div>
+        </span>
+    </div> 
+</div>

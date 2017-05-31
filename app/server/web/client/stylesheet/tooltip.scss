@@ -1,0 +1,16 @@
+.tooltip {
+    position: relative;
+    display: inline-block;
+
+    .tooltiptext {
+        width: 65px;
+        color: black;
+        text-align: center;
+        padding: 3px 0;
+
+        position: absolute;
+        left: -6px;
+        top: 52px;
+        z-index: 1;
+    }
+}

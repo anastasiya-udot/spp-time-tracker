@@ -32,6 +32,11 @@ public class PeriodServiceImpl implements PeriodService {
         return periodDAO.getAllPeriods();
     }
 
+    @Transactional
+    public List<PeriodEntity> getAllPeriodsByEmployeeId(int id){
+        return periodDAO.getAllPeriodsByEmployeeId(id);
+    }
+
     @Override
     public PeriodEntity updatePeriod(PeriodEntity period) {
         return periodDAO.updatePeriod(period);
