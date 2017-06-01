@@ -4,10 +4,10 @@ TimeTrackerApplication
 function OrdersDialogController($scope, ngDialog) {
     $scope.openTasksPeriodDialog = function() {
         ngDialog.open({
-            template: '../../templates/dialogs/dialog-order-tasks.html',
+            template: '../../../public/templates/dialogs/dialog-order-tasks.html',
             className: 'ngdialog-theme-default',
             scope: $scope,
-            height: 230,
+            height: 130,
             width: 500,
             name: "order_tasks",
             controller: OrderTasksDialogController
@@ -16,10 +16,10 @@ function OrdersDialogController($scope, ngDialog) {
 
     $scope.openWorktimePeriodDialog = function() {
         ngDialog.open({
-            template: '../../templates/dialogs/dialog-order-worktime.html',
+            template: '../../../public/templates/dialogs/dialog-order-worktime.html',
             className: 'ngdialog-theme-default',
             scope: $scope,
-            height: 230,
+            height: 130,
             width: 500,
             name: "order_worktime",
             controller: OrderWorktimeDialogController

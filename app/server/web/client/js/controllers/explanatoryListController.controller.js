@@ -1,7 +1,7 @@
 TimeTrackerApplication
     .controller('ExplanatoryListDialogController', ExplanatoryListDialogController);
 
-function ExplanatoryListDialogController($scope, ngDialog, RequestsService,RequestService) {
+function ExplanatoryListDialogController($scope, ngDialog, RequestsService, ExplanatoryService) {
 
     function getRequests() {
          var deferred = $.Deferred();
@@ -9,11 +9,19 @@ function ExplanatoryListDialogController($scope, ngDialog, RequestsService,Reque
          return deferred.promise();
      }
 
+    $scope.fileType = 'pdf';
+
+    $scope.generateOrder = function(id) {
+        var url = '/documents/request/' + $scope.fileType + "?request_id=" + id + '&isProtected=true';
+        window.open(url);
+        ngDialog.closeAll();
+    };
+
     $scope.openFormForExplanatory = function(requestId) {
         ExplanatoryService.set(RequestsService.getById(requestId));
 
         ngDialog.open({
-            template: '../../templates/dialogs/dialog-form-explanatory.html',
+            template: '../../../public/templates/dialogs/dialog-form-explanatory.html',
             className: 'ngdialog-theme-default',
             scope: $scope,
             height: 440,
@@ -21,11 +29,11 @@ function ExplanatoryListDialogController($scope, ngDialog, RequestsService,Reque
             name: "explanatory_form",
             controller: ExplanatoryFormController
         });
-    }
+    };
 
     $scope.openNewRequestForm = function() {
         ngDialog.open({
-            template: '../../templates/dialogs/dialog-new-request-from.html',
+            template: '../../../public/templates/dialogs/dialog-new-request-from.html',
             className: 'ngdialog-theme-default',
             scope: $scope,
             height: 385,
@@ -33,11 +41,11 @@ function ExplanatoryListDialogController($scope, ngDialog, RequestsService,Reque
             name: "new_request_form",
             controller: NewRequestFormController
         });
-    }
+    };
 
    getRequests().done(function() {
          $scope.requests = RequestsService.getRequests();
-     });
+   });
 }
 
 ExplanatoryListDialogController.$inject = ['$scope', 'ngDialog', 'RequestsService', 'ExplanatoryService'];

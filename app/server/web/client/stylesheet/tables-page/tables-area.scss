@@ -16,6 +16,16 @@
         opacity: 0.8;
         cursor: pointer;
     }
+
+    .file-types{
+        display: flex;
+        margin: auto;
+        color: white;
+
+        input {
+            margin: 4px 6px 0;
+        }
+    }
     
 }
 
@@ -54,4 +64,15 @@
         }
     }
 
+}
+
+.employee_table_body {
+    .employee-row {
+        opacity: 0.8;
+
+        &:hover {
+            opacity: 1;
+            cursor: pointer;
+        }
+    }
 }

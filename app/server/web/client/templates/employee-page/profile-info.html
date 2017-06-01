@@ -4,16 +4,15 @@
         <span class="block-name">
             Company:
         </span>
-        <span class="name">New Company Name</span>
+        <span class="name">{{employee.company.name}}</span>
     </div>
     <div class="profile-info">
         <span class="profile-info-photo"></span>
         <span class="profile-info-card">
             <div class="info">
-                <div class="name">Udot Anastasiya Yuryevna</div>
-                <div class="role">employee</div>
-                <div class="workday">full day</div>
-                <div class="mail">anastasiya.udot@gmail.com</div>
+                <div class="name">{{employee.name}} {{employee.surname}} {{employee.patronymic}}</div>
+                <div class="workday">{{employee.worktype}} h</div>
+                <div class="mail">{{employee.email}}</div>
             </div>
             <div class="profile-buttons">
                 <div class="profile-button dropdown tooltip">

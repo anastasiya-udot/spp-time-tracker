@@ -4,30 +4,48 @@ TimeTrackerApplication
 function PieChartDayDirective() {
     return {
         restrict: 'E',
-        templateUrl: '../../public/templates/employee-page/pie-chart-day.html',
+        templateUrl: '../../../public/templates/employee-page/pie-chart-day.html',
         controller: PieChartDayDirectiveController
     }
 }
 
-function PieChartDayDirectiveController($scope, DrawTimer, DayService) {
+function PieChartDayDirectiveController($scope, $rootScope, DayService, EmployeeService, _) {
 
-    $scope.dayDisplay = moment().format('MMMM Do');
+    function getTimeForDay() {
+        var deferred = $.Deferred();
+        DayService.getTime(deferred.resolve);
+        return deferred.promise();
+    }
 
-    $(DayService.elementId).on("circle-animation-end", function() {
-        DrawTimer.initActiveCircle(DayService.elementId, { duration: DayService.requiredWorktime }, 0.0);
+    let setPieChartDay = _.bind(function() {
+        $scope.dayTimeFact = Math.trunc(DayService.actualTime / 1000 / 60 / 60 * 100) / 100;
+        var employee = EmployeeService.employee || EmployeeService.defaultEmployee;
+        $scope.dayTimeExpected = employee.worktype / 5;
+    }, this);
+
+    setPieChartDay();
+
+    getTimeForDay().done(function() {
+        setPieChartDay();
+        $rootScope.showPlayButton = !$rootScope.sessionStartedTime;
+        $rootScope.dayDisplay = DayService.dates.startDate.format('MMM Do YY');
     });
 
     $scope.prevDayClicked = function() {
-        DayService.setPreviousDayDates(function() {});
-        $scope.dayDisplay = DayService.generateDisplay();
-        DayService.drawTimer();
+        DayService.setPreviousDayDates(function() {
+            setPieChartDay();
+            $rootScope.dayDisplay = DayService.dates.startDate.format('MMM Do YY');
+            $rootScope.updateTasks();
+        });
     };
-    
+
     $scope.nextDayClicked = function() {
-        DayService.setNextDayDates(function() {});
-        $scope.dayDisplay = DayService.generateDisplay();
-        DayService.drawTimer();
+        DayService.setNextDayDates(function() {
+            setPieChartDay();
+            $rootScope.dayDisplay = DayService.dates.startDate.format('MMM Do YY');
+            $rootScope.updateTasks();
+        });
     };
 }
 
-PieChartDayDirectiveController.$inject = ["$scope", "DrawTimer", "DayService"];
+PieChartDayDirectiveController.$inject = ["$scope", "$rootScope", 'DayService', 'EmployeeService', '_'];

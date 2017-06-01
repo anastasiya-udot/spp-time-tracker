@@ -75,7 +75,7 @@ public class JCompanyController extends AbstractController {
             if(null == employeeToCheck){
                 CompanyEntity companyToCheck = companyService.getCompanyByName(companyRegisterModel.getCompany());
                 if(null == companyToCheck){
-                    AddCompany(companyRegisterModel.getCompany(),
+                    AddCompany(companyRegisterModel.getCompany(),  //можешь спуститься вниз и продебажить как оно добавляет? я щас отвелкусь
                                 companyRegisterModel.getLegalNumber());
 
                     CompanyEntity createdCompany = companyService.getCompanyByName(companyRegisterModel.getCompany());

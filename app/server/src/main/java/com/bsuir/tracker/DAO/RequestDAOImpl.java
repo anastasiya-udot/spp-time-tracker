@@ -6,6 +6,7 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import javax.persistence.NoResultException;
 import java.util.List;
 
 /**
@@ -32,6 +33,9 @@ public class RequestDAOImpl implements RequestDAO {
         RequestEntity result;
         try {
             result = (RequestEntity) sessionFactory.getCurrentSession().get(RequestEntity.class, idRequest);
+        }
+        catch (NoResultException nre){
+            result = null;
         }
         catch (Exception e){
             System.out.println(e);
@@ -70,7 +74,7 @@ public class RequestDAOImpl implements RequestDAO {
         if (request == null){
             throw new IllegalArgumentException();
         }
-        sessionFactory.getCurrentSession().update(request);
+        sessionFactory.getCurrentSession().merge(request); //update
         return request;
     }
 

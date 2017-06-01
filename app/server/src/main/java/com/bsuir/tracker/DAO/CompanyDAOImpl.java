@@ -26,7 +26,7 @@ public class CompanyDAOImpl implements CompanyDAO {
         if (company == null){
             throw new IllegalArgumentException();
         }
-        sessionFactory.getCurrentSession().saveOrUpdate(company);
+        sessionFactory.getCurrentSession().saveOrUpdate(company); //Это выполняет hibernate
     }
 
     @Override

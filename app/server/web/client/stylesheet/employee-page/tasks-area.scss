@@ -36,7 +36,7 @@
             }
 
             @mixin setArrow() {
-                background-image: url('../../assets/lightbox_controls_next.png');
+                background-image: url('../assets/lightbox_controls_next.png');
                 background-size: cover;
                 width: 40px;
                 height: 85px;
@@ -98,7 +98,7 @@
              }
 
             .add-sign {
-                background-image: url('../../assets/Plus-50.png');
+                background-image: url('../assets/Plus-50.png');
                 background-size: cover;
                 width: 40px;
                 height: 40px;

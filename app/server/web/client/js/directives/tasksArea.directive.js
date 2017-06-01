@@ -4,14 +4,24 @@ TimeTrackerApplication
 function TasksAreaDirective() {
     return {
         restrict: "E",
-        templateUrl: '../../public/templates/employee-page/tasks-area.html',
+        templateUrl: '../../../public/templates/employee-page/tasks-area.html',
         controller: TasksAreaDirectiveController
     }
 }
 
-function TasksAreaDirectiveController($scope, ngDialog, TasksService) {
+function TasksAreaDirectiveController($scope, $rootScope, ngDialog, TasksService, DayService, SessionService, _) {
 
-    $scope.tasks = TasksService.getTasks();
+    $rootScope.updateTasks = function() {
+        var id = SessionService.getCurrentPageUserId();
+        var startPeriod = (new Date(DayService.dates.startDate._d)).getTime();
+        var endPeriod = (new Date(DayService.dates.endDate._d)).getTime();
+
+        TasksService.get(id, startPeriod, endPeriod, _.bind(function(){
+            $scope.tasks = TasksService.tasks;
+        }, this));
+    };
+
+    $rootScope.updateTasks();
 
     $scope.openAddNewTaskForm = function() {
         ngDialog.open({
@@ -25,7 +35,8 @@ function TasksAreaDirectiveController($scope, ngDialog, TasksService) {
         });
     };
 
-    $scope.openConfirmDeleteDialog = function() {
+    $scope.openConfirmDeleteDialog = function(id) {
+        $rootScope.deleteTaskId = id;
         ngDialog.open({
             template: '../../public/templates/dialogs/dialog-confirm-delete.html',
             className: 'ngdialog-theme-default',
@@ -38,4 +49,4 @@ function TasksAreaDirectiveController($scope, ngDialog, TasksService) {
     };
 }
 
-TasksAreaDirectiveController.$inject = ["$scope", "ngDialog", "TasksService"];
+TasksAreaDirectiveController.$inject = ["$scope", "$rootScope", "ngDialog", "TasksService", 'DayService', 'SessionService', '_'];

@@ -35,6 +35,7 @@ public class GetTokenService {
             try
             {
                 tokenData.put("id", "" + user.getIdemployee());
+                tokenData.put("idCompany", "" + user.getCompanyIdcompany());
                 tokenData.put("role", roleService.getRole(user.getRoleIdrole()).getCode());
                 tokenData.put("email", user.getEmail());
                 tokenData.put("surname", user.getSurname());

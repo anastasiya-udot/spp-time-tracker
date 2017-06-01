@@ -1,10 +1,11 @@
 TimeTrackerApplication
     .controller('OrderWorktimeController', OrderWorktimeDialogController);
 
-function OrderWorktimeDialogController($scope, fileDialog) {
+function OrderWorktimeDialogController($scope, SessionService, ngDialog) {
    
     $scope.start = moment().subtract(1, 'days');
     $scope.end = moment();
+    $scope.fileType = 'pdf';
 
     $scope.presets = [
         {
@@ -20,11 +21,11 @@ function OrderWorktimeDialogController($scope, fileDialog) {
     ];
 
 
-      $scope.saveFile = function(){
-        fileDialog.saveAs(function(filename) {
-            // your code
-        });
-    }
+    $scope.saveFile = function(){
+        var url = '/documents/worked/' + $scope.fileType + "?employee_id=" + SessionService.getCurrentPageUserId() + '&isProtected=true';
+        window.open(url);
+        ngDialog.closeAll();
+    };
 }
 
-OrderWorktimeDialogController.$inject = ['$scope', 'fileDialog'];
+OrderWorktimeDialogController.$inject = ['$scope', 'SessionService', 'ngDialog'];
